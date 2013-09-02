@@ -10,7 +10,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : Htedsv
-tagline: 奔向德意志
+tagline: nach Deutsch
 author :
   name : Xiaoyu Wang
   email : htedsv@gmail.com
@@ -83,7 +83,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : htedsv
     livefyre :
       site_id : 123
     intensedebate :
