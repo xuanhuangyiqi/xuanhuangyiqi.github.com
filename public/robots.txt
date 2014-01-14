@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://xuanhuangyiqi.github.io/sitemap.xml 
+Sitemap: http://blog.htedsv.com/sitemap.xml 

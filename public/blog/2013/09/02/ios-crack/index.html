@@ -3,15 +3,15 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>iOS Crash Logs 基本调研 - My Octopress Blog</title>
-	<meta name="author" content="Your Name">
+	<title>iOS Crash Logs 基本调研 - Htedsv Backyard</title>
+	<meta name="author" content="htedsv">
 
 	
 	<meta name="description" content="1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。 Crash Log 是什么？ 首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
 	<link rel="canonical" href="">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
 
 
 <body>
-	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
 <nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
@@ -42,7 +42,7 @@
 		<div class="container">
 			<form action="http://google.com/search" method="get">
 				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+				<input type="hidden" name="q" value="site:blog.htedsv.com">
 			</form>
 		</div>
 	</div>
@@ -65,7 +65,7 @@
 	</div>
 	<form class="search" action="http://google.com/search" method="get">
 		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+		<input type="hidden" name="q" value="site:blog.htedsv.com">
 	</form>
 </nav>
 
@@ -79,7 +79,7 @@
 
 <h1>Crash Log 是什么？</h1>
 
-<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
+<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://blog.htedsv.com/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
 
 <p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
 
@@ -194,7 +194,7 @@
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2014
 
-    Your Name
+    htedsv
 
 </footer>
 	<script src="/javascripts/slash.js"></script>

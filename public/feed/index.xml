@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
-  <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-01-14T16:26:08+01:00</updated>
-  <id>http://xuanhuangyiqi.github.io/</id>
+  <title><![CDATA[Htedsv Backyard]]></title>
+  <link href="http://blog.htedsv.com/feed" rel="self"/>
+  <link href="http://blog.htedsv.com/"/>
+  <updated>2014-01-14T16:42:04+01:00</updated>
+  <id>http://blog.htedsv.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[htedsv]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[翻译：如何读论文]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/09/28/"/>
+    <link href="http://blog.htedsv.com/blog/2013/09/28/"/>
     <updated>2013-09-28T00:00:00+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/09/</id>
+    <id>http://blog.htedsv.com/blog/2013/09/</id>
     <content type="html"><![CDATA[<p><a href="http://blizzard.cs.uwaterloo.ca/keshav/home/Papers/data/07/paper-reading.pdf">原文地址</a></p>
 
 <p>本文只翻译了论文第二三部分</p>
@@ -86,14 +86,14 @@
   
   <entry>
     <title type="html"><![CDATA[iOS Crash Logs 基本调研]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack/"/>
+    <link href="http://blog.htedsv.com/blog/2013/09/02/ios-crack/"/>
     <updated>2013-09-02T13:30:03+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack</id>
+    <id>http://blog.htedsv.com/blog/2013/09/02/ios-crack</id>
     <content type="html"><![CDATA[<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
 
 <h1>Crash Log 是什么？</h1>
 
-<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
+<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://blog.htedsv.com/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
 
 <p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
 
@@ -173,9 +173,9 @@
   
   <entry>
     <title type="html"><![CDATA[一个简单的同义词聚类方法]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/"/>
+    <link href="http://blog.htedsv.com/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/"/>
     <updated>2013-04-19T15:57:00+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa</id>
+    <id>http://blog.htedsv.com/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa</id>
     <content type="html"><![CDATA[<p>今天忽然想起上次水了一把冯如杯的事。</p>
 
 <p>当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。</p>
@@ -213,9 +213,9 @@
   
   <entry>
     <title type="html"><![CDATA[python下的lambda递归包装]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
+    <link href="http://blog.htedsv.com/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
     <updated>2013-04-11T11:33:50+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
+    <id>http://blog.htedsv.com/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
     <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -234,9 +234,9 @@
   
   <entry>
     <title type="html"><![CDATA[任务+md笔记——一次GTD实践]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian/"/>
+    <link href="http://blog.htedsv.com/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian/"/>
     <updated>2013-04-05T18:32:17+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian</id>
+    <id>http://blog.htedsv.com/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian</id>
     <content type="html"><![CDATA[<p>一直没找到特别顺心的GTD工具，大多都是因为不能很好的和其他app配合，另外比较奇怪为什么没有比较完善的开源GTD app,于是自己写一个，重在把任务+笔记结合，并且可以通过Geek Tool和Alfred更新和查看简单任务信息，用vi作笔记，配合起来非常方便。项目中有明确的实施细节和用法。</p>
 
 <p><a title="项目" href="https://github.com/xuanhuangyiqi/open-task" target="_blank">项目</a>  <a href="http://task.htedsv.com" target="_blank">效果</a></p>
@@ -247,9 +247,9 @@
   
   <entry>
     <title type="html"><![CDATA[生命游戏与细胞自动机]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
+    <link href="http://blog.htedsv.com/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
     <updated>2013-03-10T15:25:03+01:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
+    <id>http://blog.htedsv.com/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
     <content type="html"><![CDATA[<p>&ldquo;Cellular Automaton&#8221;，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
 <p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
@@ -308,14 +308,14 @@
   
   <entry>
     <title type="html"><![CDATA[推送来电消息到桌面]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/"/>
+    <link href="http://blog.htedsv.com/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/"/>
     <updated>2013-01-26T02:08:12+01:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian</id>
+    <id>http://blog.htedsv.com/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian</id>
     <content type="html"><![CDATA[<blockquote><p>Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
 
 <p>Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p></blockquote>
 
-<p><img src="http://xuanhuangyiqi.github.io/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
+<p><img src="http://blog.htedsv.com/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
 
 <p>于是写了以下脚本来实现推送来电信息到桌面的脚本。</p>
 
@@ -456,9 +456,9 @@ device.telephony.on(&#039;incomingCall&#039;, function (signal)
   
   <entry>
     <title type="html"><![CDATA[Vim使用者的Evernote使用经验（仅供mac用户参考）]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
+    <link href="http://blog.htedsv.com/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
     <updated>2013-01-23T20:17:40+01:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
+    <id>http://blog.htedsv.com/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
     <content type="html"><![CDATA[<p>平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟，编辑过程很不爽，于是尝试在vim下编辑，然后同步到evernote的方案。</p>
 
 <h1>vimrc + evernote_applescript_api</h1>
