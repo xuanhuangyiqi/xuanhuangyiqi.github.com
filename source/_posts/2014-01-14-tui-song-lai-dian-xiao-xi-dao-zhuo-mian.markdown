@@ -1,0 +1,133 @@
+---
+layout: post
+title: "推送来电消息到桌面"
+date: 2013-01-26 02:08:12 +0100
+comments: true
+categories: 
+---
+
+> Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。
+
+> Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?
+
+{% img /images/original_ZIeB_7c5500000bcc118d.jpg %}
+
+于是写了以下脚本来实现推送来电信息到桌面的脚本。
+## 前提 环境
+
+* mac: python(twisted), growl
+* vps: python(twisted)
+* android: on{X}
+
+## 思路
+为了能适应更多情况，我们假设手机及电脑可能不在同一个局域网内，那么显然他们之间没有一个简单的通信方式。所以要依靠VPS，当然如果你有独立的PHP空间，并且用PHP来实现也是一样的。
+
+手机：考虑到只有手机向VPS的请求，而没有反向，所以使用UDP或者http请求比较方便。单独为这个脚本写一个Android程序成本有点高，于是使用了微软的<a href="http://onx.ms/" target="_blank">on{X}</a>服务，简单地说，它是一个Android上的ifttt，用户可以自己用脚本实现“trigger-&gt;service”的功能。简单了解之后，发现on{X}的网络服务只有http请求。
+
+电脑：IP及端口经常变化，而且考虑到服务器的性能，不宜轮询，遂与服务器保持TCP连接，这样服务器同时也能接受http请求（http请求在网络层就是TCP请求）。
+
+## 实现
+使用了python的twisted框架，以下是代码：
+<pre class="brush: python; gutter: true">#Client
+
+import os
+import time
+import urllib
+from twisted.internet import reactor
+from twisted.internet.protocol import Factory, Protocol
+from twisted.internet.endpoints import TCP4ClientEndpoint
+
+class Greeter(Protocol):
+    def sendMessage(self, msg):
+        self.transport.write(&quot;%s\n&quot; % msg)
+        pass
+
+    def dataReceived(self, msg):
+        msg = urllib.unquote(msg)
+        os.system(&quot;export G_TITLE=%s;growl %s&quot;% (&quot;From\ Your\ Phone&quot;, msg))
+
+class GreeterFactory(Factory):
+    def buildProtocol(self, addr):
+        return Greeter()
+
+def gotProtocol(p):
+    pass
+
+point = TCP4ClientEndpoint(reactor, &quot;&lt;SERVER&gt;&quot;, &lt;PORT&gt;)
+d = point.connect(GreeterFactory())
+d.addCallback(gotProtocol)
+reactor.run()</pre>
+<pre class="brush: python; gutter: true">#Server
+
+from twisted.internet.protocol import Protocol, Factory
+from twisted.internet.endpoints import TCP4ServerEndpoint
+from twisted.internet import reactor
+
+class Echo(Protocol):
+    def sendMessage(self, msg):
+        self.transport.write(&quot;%s&quot; % msg)
+
+    def dataReceived(self, data):
+        #self.transport.write(data)
+        if data.startswith(&#039;GET&#039;):
+            msg = data.split(&#039;\n&#039;)[0].split(&#039; &#039;)[1]
+            msg = msg[6:]
+            for x in self.factory.protocols:
+                if x != self:
+                    x.sendMessage(msg)
+    def connectionLost(self, reason):
+        print &#039;lost&#039;
+        self.factory.protocols.remove(self)
+
+class EFactory(Factory):
+    protocol = Echo
+    def __init__(self, quote=None):
+        self.quote = quote or &#039;An&#039;
+        self.protocols = []
+    def buildProtocol(self, addr):
+        p = self.protocol()
+        p.factory = self
+        self.protocols.append(p)
+        return p
+
+while True:
+    endpoint = TCP4ServerEndpoint(reactor, &lt;PORT&gt;)
+    endpoint.listen(EFactory(&quot;Ok&quot;))
+    reactor.run()
+    print &#039;stop&#039;</pre>
+<pre class="brush: javascript; gutter: true">//Android
+device.telephony.on(&#039;incomingCall&#039;, function (signal) 
+{
+    var notification = device.notifications.createNotification(&#039;Calling&#039;);
+    notification.show();
+    device.ajax(
+    {
+      url: &#039;http://&lt;SERVER&gt;:&lt;PORT&gt;/?msg=Call%20From:&#039;+signal.phoneNumber,
+      type: &#039;GET&#039;,
+      headers: {
+        &#039;Content-Type&#039;: &#039;application/xml&#039;
+      }
+    },
+    function onSuccess(body, textStatus, response) {
+      var parsedBody;
+      if(!(body &amp;&amp; (parsedBody = JSON.parse(body)))) {
+        var error = {};
+        error.message = &#039;invalid body format&#039;;
+        error.content = body;
+          console.error(&#039;error: &#039;,error);
+      }
+      console.info(&#039;successfully received http response!&#039;);
+      notification.content = &#039;successfully received http response!&#039;;
+      notification.show();
+    },
+    function onError(textStatus, response) {
+      var error = {};
+      error.message = textStatus;
+      error.statusCode = response.status;
+        console.error(&#039;error: &#039;,error);
+    });
+});</pre>
+<h2>难点</h2>
+值得一提的是小米的权限管理比较恶心，开始我的来电事件一直没有被捕捉到，就是因为被小米拦截了，并且没有给出任何提示。直到现在短信监听器依然不能用，应该是这部分API被锁在MIUI里面了。所以只是实现了来电提示，而没有短信提示。
+
+on{X}的不提供urlencode功能，所以不能用来推送短信内容或者来电人姓名。

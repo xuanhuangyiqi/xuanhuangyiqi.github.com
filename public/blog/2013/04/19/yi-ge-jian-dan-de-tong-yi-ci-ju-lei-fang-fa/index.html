@@ -1,0 +1,167 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>一个简单的同义词聚类方法 - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="今天忽然想起上次水了一把冯如杯的事。 当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。 当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">一个简单的同义词聚类方法</h2>
+	<div class="entry-content"><p>今天忽然想起上次水了一把冯如杯的事。</p>
+
+<p>当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。</p>
+
+<p>当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量，所以此方法推荐给以下情况：</p>
+
+<ul>
+<li>不想浪费时间搞复杂算法</li>
+<li>对准确性要求一般</li>
+<li>样本规模比较小</li>
+</ul>
+
+
+<p>首先我们基于一个事实：一句话会在几个实体之间建立联系，比如</p>
+
+<blockquote><p>苹果是一种水果。</p>
+
+<p>小学生每天要去学校上学。</p></blockquote>
+
+<p>这种关系不一定是具体的关系，也有可能是脑中抽象的关系，比如</p>
+
+<blockquote><p>我今天下午在咖啡厅用笔记本上网</p></blockquote>
+
+<p>咖啡厅和笔记本之间其实没有表面联系，但是却在我们脑中有一个比较强的抽象关联，想到咖啡厅，我们容易想到自己在咖啡厅用笔记本上网。即使是否定某种关联的句子也肯定是我们容易想到一起的某些东西，比如：</p>
+
+<blockquote><p>地球不是绕着太阳转的。</p>
+
+<p>天狗吃月是骗小孩子的。</p></blockquote>
+
+<p>基于这个事实，我把这些文本分隔成句子，对每个句子中出现的所有名词看成一个个节点，任意两个词之间边权 + 1（初始都是0），之后根据情况定一个阈值，高于阈值的边保留，低的删掉。最后根据每个名词的TF &ndash; IDF值从高到低排序，对于某个词x，如果与比它TF &ndash; IDF大的词y在一个子图上，那么忽略x，也就是说每个子图最多只输出TF &ndash; IDF最大的一个词。</p>
+
+<p>虽然这个理论很站不住脚，不过记得当时效果很好。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-19T15:57:00+02:00" pubdate data-updated="true">Apr 19<span>th</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

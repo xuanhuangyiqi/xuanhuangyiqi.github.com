@@ -1,0 +1,224 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>有趣的实验 - My Octopress Blog</title>
+	<meta name="author" content="Your Name">
+
+	
+	<meta name="description" content="2013-01-22 03:49:53 虽然语言相比于目的仅仅是工具，但它确是我能想到最合适的划分手段。 &nbsp; 以下只是列出一些我认为有趣的东西，至于纯粹工程的项目并没有记录。 Python 在线开放笔记（主要功能与Marboo类似，不过比Marboo写的早），通过本地GeekTool查看 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">My Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="page">
+    
+    <h1 class="title">有趣的实验</h1>
+    
+    <div class="entry-content"><p>2013-01-22 03:49:53</p>
+
+<blockquote>虽然语言相比于目的仅仅是工具，但它确是我能想到最合适的划分手段。
+
+&nbsp;
+
+以下只是列出一些我认为有趣的东西，至于纯粹工程的项目并没有记录。</blockquote>
+
+
+<h1><strong>Python</strong></h1>
+
+
+<ul>
+    <li>在线开放笔记（主要功能与Marboo类似，不过比Marboo写的早），通过本地GeekTool查看，Alfred操作条目，vim更新笔记内容，支持markdown。
+<ul>
+    <li><a href="https://github.com/xuanhuangyiqi/open-task">代码</a></li>
+    <li><a href="http://task.htedsv.com">实现</a></li>
+</ul>
+</li>
+    <li>在线聊天室，通过WebSocket通信，目前做得比较简单，只是一个下午弄成的。
+<ul>
+    <li><a href="https://github.com/xuanhuangyiqi/WebChat">代码</a></li>
+    <li><a href="http://chat.htedsv.com">实现</a></li>
+</ul>
+</li>
+    <li>手机来电推送，详见<a href="http://htedsv.com/?p=22">这里</a>。</li>
+    <li>小鱼缸第二版：情侣空间，实现了共同任务、共同好友、日志、消息、新鲜事、Wiki，以及以事件为核心的地点（签到）、相册、评论
+<ul>
+    <li><a href="https://bitbucket.org/htedsv/fishbowl">代码</a></li>
+</ul>
+</li>
+    <li>未来花园帖子消息推送：通过轮询和简单的文本过滤，把我看重的消息（热门蓝种、跳蚤市场）利用growl的api推送过来。难点在于cookie的获取与处理。
+<ul>
+    <li><a href="https://gist.github.com/xuanhuangyiqi/a8948da020feae91e413">代码</a></li>
+</ul>
+</li>
+    <li>ACM-Blog题解识别器：用简单地贝叶斯训练出来的。
+<ul>
+    <li><a href="https://github.com/xuanhuangyiqi/acm_blog_finder">代码</a></li>
+</ul>
+</li>
+    <li>个人Blog：特色在于瀑布流模式的微博模式。
+<ul>
+    <li><a href="https://bitbucket.org/htedsv/blog">代码</a></li>
+</ul>
+</li>
+    <li>Gekode：还在酝酿中，一个全功能的ACMer平台，功能想得过于强大，单独做出一点难以长久发展，于是期待大块的空闲时间来做。
+<ul>
+    <li><a href="https://github.com/xuanhuangyiqi/kode">代码</a></li>
+</ul>
+</li>
+    <li>自动化数据中心：在知乎实习时的一个小尝试，在复杂的sql与模式相对固定的数据需求之间找了个平衡点，设计了一个中文-&gt;Python+SQL的解释器，来帮助运营人员获取非日志文件的数据。
+<ul>
+    <li>代码未公开</li>
+</ul>
+</li>
+</ul>
+
+
+<h1><strong>Objective-C</strong></h1>
+
+
+<ul>
+    <li>小鱼缸第二版iOS端api：除了web端的功能之外，利用街旁api实现了签到功能。
+<ul>
+    <li><a href="https://bitbucket.org/htedsv/fishbowl_ios">代码</a></li>
+</ul>
+</li>
+</ul>
+
+
+<h1><strong>PHP+JS</strong></h1>
+
+
+<ul>
+    <li>老版的个人Blog：通过输入help及其它简单地命令把个人blog当成shell界面进行请求数据。
+<ul>
+    <li>代码已遗失</li>
+</ul>
+</li>
+</ul>
+
+
+<h1><strong>AppleScript</strong></h1>
+
+
+<ul>
+    <li>Daily Task：结合少量Python与SQL语句实现了通过Alfred来操作的GTD应用（思路自认为比较有创意，以后可以开发iOS版）。
+<ul>
+    <li><a href="https://github.com/xuanhuangyiqi/WhatToDo">代码</a></li>
+</ul>
+</li>
+    <li>Evernote Importer: Mac下的Evernote不能大量导入，但是提供了对应的AppleScript导入api，所以由此导入德语单词、日常用语，并用Peek来背。</li>
+</ul>
+
+
+<h1>Javascript</h1>
+
+
+<ul>
+    <li>未来花园消息推送，Chrome插件
+<ul>
+    <li><a href="https://github.com/xuanhuangyiqi/buaabt_message">代码</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    Your Name
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

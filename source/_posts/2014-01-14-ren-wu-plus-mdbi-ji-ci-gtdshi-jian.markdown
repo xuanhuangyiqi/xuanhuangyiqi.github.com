@@ -1,0 +1,13 @@
+---
+layout: post
+title: "任务+md笔记——一次GTD实践"
+date: 2013-04-05 17:32:17 +0100
+comments: true
+categories: 
+---
+
+一直没找到特别顺心的GTD工具，大多都是因为不能很好的和其他app配合，另外比较奇怪为什么没有比较完善的开源GTD app,于是自己写一个，重在把任务+笔记结合，并且可以通过Geek Tool和Alfred更新和查看简单任务信息，用vi作笔记，配合起来非常方便。项目中有明确的实施细节和用法。
+
+<a title="项目" href="https://github.com/xuanhuangyiqi/open-task" target="_blank">项目</a>  <a href="http://task.htedsv.com" target="_blank">效果</a>
+
+ps: 想到一个问题，那就是这个东西和blog有什么区别，似乎都可以用题目和内容来解释他的功能，但是对于笔记，内容更多是没有被读者内化的东西，而blog应该是知识外化的过程。
