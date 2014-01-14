@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 数据挖掘 | Htedsv Backyard]]></title>
+  <link href="http://xuanhuangyiqi.github.io/blog/categories/shu-ju-wa-jue/atom.xml" rel="self"/>
+  <link href="http://xuanhuangyiqi.github.io/"/>
+  <updated>2014-01-14T17:58:28+01:00</updated>
+  <id>http://xuanhuangyiqi.github.io/</id>
+  <author>
+    <name><![CDATA[htedsv]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[一个简单的同义词聚类方法]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/"/>
+    <updated>2013-04-19T15:57:00+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa</id>
+    <content type="html"><![CDATA[<p>今天忽然想起上次水了一把冯如杯的事。</p>
+
+<p>当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。</p>
+
+<p>当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量，所以此方法推荐给以下情况：</p>
+
+<ul>
+<li>不想浪费时间搞复杂算法</li>
+<li>对准确性要求一般</li>
+<li>样本规模比较小</li>
+</ul>
+
+
+<p>首先我们基于一个事实：一句话会在几个实体之间建立联系，比如</p>
+
+<blockquote><p>苹果是一种水果。</p>
+
+<p>小学生每天要去学校上学。</p></blockquote>
+
+<p>这种关系不一定是具体的关系，也有可能是脑中抽象的关系，比如</p>
+
+<blockquote><p>我今天下午在咖啡厅用笔记本上网</p></blockquote>
+
+<p>咖啡厅和笔记本之间其实没有表面联系，但是却在我们脑中有一个比较强的抽象关联，想到咖啡厅，我们容易想到自己在咖啡厅用笔记本上网。即使是否定某种关联的句子也肯定是我们容易想到一起的某些东西，比如：</p>
+
+<blockquote><p>地球不是绕着太阳转的。</p>
+
+<p>天狗吃月是骗小孩子的。</p></blockquote>
+
+<p>基于这个事实，我把这些文本分隔成句子，对每个句子中出现的所有名词看成一个个节点，任意两个词之间边权 + 1（初始都是0），之后根据情况定一个阈值，高于阈值的边保留，低的删掉。最后根据每个名词的TF &ndash; IDF值从高到低排序，对于某个词x，如果与比它TF &ndash; IDF大的词y在一个子图上，那么忽略x，也就是说每个子图最多只输出TF &ndash; IDF最大的一个词。</p>
+
+<p>虽然这个理论很站不住脚，不过记得当时效果很好。</p>
+]]></content>
+  </entry>
+  
+</feed>

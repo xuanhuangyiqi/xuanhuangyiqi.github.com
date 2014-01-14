@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 自动机 | Htedsv Backyard]]></title>
+  <link href="http://xuanhuangyiqi.github.io/blog/categories/zi-dong-ji/atom.xml" rel="self"/>
+  <link href="http://xuanhuangyiqi.github.io/"/>
+  <updated>2014-01-14T17:58:28+01:00</updated>
+  <id>http://xuanhuangyiqi.github.io/</id>
+  <author>
+    <name><![CDATA[htedsv]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[生命游戏与细胞自动机]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
+    <updated>2013-03-10T15:25:03+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
+    <content type="html"><![CDATA[<p>&ldquo;Cellular Automaton"，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
+
+<p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+
+<p>```
+import time
+from random import random</p>
+
+<p>SIZE = 20</p>
+
+<p>matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]</p>
+
+<p>while True:</p>
+
+<pre><code>for x in matrix:
+    for y in x:
+        if y: print 1,
+        else: print ' ',
+    print
+print '\n\n\n\n';
+time.sleep(1)
+matrix = (lambda t:
+            [
+                [
+                    [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
+                    for y in range(SIZE)
+                ] for x in range(SIZE)
+            ]
+        )(matrix)
+</code></pre>
+
+<p>```</p>
+
+<p>我发现这个过程竟然是收敛的，问题来了，如何制定收敛的规则呢？</p>
+]]></content>
+  </entry>
+  
+</feed>

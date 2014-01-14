@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 工具 | Htedsv Backyard]]></title>
+  <link href="http://xuanhuangyiqi.github.io/blog/categories/gong-ju/atom.xml" rel="self"/>
+  <link href="http://xuanhuangyiqi.github.io/"/>
+  <updated>2014-01-14T17:58:28+01:00</updated>
+  <id>http://xuanhuangyiqi.github.io/</id>
+  <author>
+    <name><![CDATA[htedsv]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[任务+md笔记——一次GTD实践]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian/"/>
+    <updated>2013-04-05T18:32:17+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian</id>
+    <content type="html"><![CDATA[<p>一直没找到特别顺心的GTD工具，大多都是因为不能很好的和其他app配合，另外比较奇怪为什么没有比较完善的开源GTD app,于是自己写一个，重在把任务+笔记结合，并且可以通过Geek Tool和Alfred更新和查看简单任务信息，用vi作笔记，配合起来非常方便。项目中有明确的实施细节和用法。</p>
+
+<p><a title="项目" href="https://github.com/xuanhuangyiqi/open-task" target="_blank">项目</a>  <a href="http://task.htedsv.com" target="_blank">效果</a></p>
+
+<p>ps: 想到一个问题，那就是这个东西和blog有什么区别，似乎都可以用题目和内容来解释他的功能，但是对于笔记，内容更多是没有被读者内化的东西，而blog应该是知识外化的过程。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[推送来电消息到桌面]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/"/>
+    <updated>2013-01-26T02:08:12+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian</id>
+    <content type="html"><![CDATA[<blockquote><p>Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
+
+<p>Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p></blockquote>
+
+<p><img src="/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
+
+<p>于是写了以下脚本来实现推送来电信息到桌面的脚本。</p>
+
+<h2>前提 环境</h2>
+
+<ul>
+<li>mac: python(twisted), growl</li>
+<li>vps: python(twisted)</li>
+<li>android: on{X}</li>
+</ul>
+
+
+<h2>思路</h2>
+
+<p>为了能适应更多情况，我们假设手机及电脑可能不在同一个局域网内，那么显然他们之间没有一个简单的通信方式。所以要依靠VPS，当然如果你有独立的PHP空间，并且用PHP来实现也是一样的。</p>
+
+<p>手机：考虑到只有手机向VPS的请求，而没有反向，所以使用UDP或者http请求比较方便。单独为这个脚本写一个Android程序成本有点高，于是使用了微软的<a href="http://onx.ms/" target="_blank">on{X}</a>服务，简单地说，它是一个Android上的ifttt，用户可以自己用脚本实现“trigger-&gt;service”的功能。简单了解之后，发现on{X}的网络服务只有http请求。</p>
+
+<p>电脑：IP及端口经常变化，而且考虑到服务器的性能，不宜轮询，遂与服务器保持TCP连接，这样服务器同时也能接受http请求（http请求在网络层就是TCP请求）。</p>
+
+<h2>实现</h2>
+
+<p>使用了python的twisted框架，以下是代码：</p>
+
+<pre class="brush: python; gutter: true">#Client
+
+import os
+import time
+import urllib
+from twisted.internet import reactor
+from twisted.internet.protocol import Factory, Protocol
+from twisted.internet.endpoints import TCP4ClientEndpoint
+
+class Greeter(Protocol):
+    def sendMessage(self, msg):
+        self.transport.write(&quot;%s\n&quot; % msg)
+        pass
+
+    def dataReceived(self, msg):
+        msg = urllib.unquote(msg)
+        os.system(&quot;export G_TITLE=%s;growl %s&quot;% (&quot;From\ Your\ Phone&quot;, msg))
+
+class GreeterFactory(Factory):
+    def buildProtocol(self, addr):
+        return Greeter()
+
+def gotProtocol(p):
+    pass
+
+point = TCP4ClientEndpoint(reactor, &quot;&lt;SERVER&gt;&quot;, &lt;PORT&gt;)
+d = point.connect(GreeterFactory())
+d.addCallback(gotProtocol)
+reactor.run()</pre>
+
+
+<pre class="brush: python; gutter: true">#Server
+
+from twisted.internet.protocol import Protocol, Factory
+from twisted.internet.endpoints import TCP4ServerEndpoint
+from twisted.internet import reactor
+
+class Echo(Protocol):
+    def sendMessage(self, msg):
+        self.transport.write(&quot;%s&quot; % msg)
+
+    def dataReceived(self, data):
+        #self.transport.write(data)
+        if data.startswith(&#039;GET&#039;):
+            msg = data.split(&#039;\n&#039;)[0].split(&#039; &#039;)[1]
+            msg = msg[6:]
+            for x in self.factory.protocols:
+                if x != self:
+                    x.sendMessage(msg)
+    def connectionLost(self, reason):
+        print &#039;lost&#039;
+        self.factory.protocols.remove(self)
+
+class EFactory(Factory):
+    protocol = Echo
+    def __init__(self, quote=None):
+        self.quote = quote or &#039;An&#039;
+        self.protocols = []
+    def buildProtocol(self, addr):
+        p = self.protocol()
+        p.factory = self
+        self.protocols.append(p)
+        return p
+
+while True:
+    endpoint = TCP4ServerEndpoint(reactor, &lt;PORT&gt;)
+    endpoint.listen(EFactory(&quot;Ok&quot;))
+    reactor.run()
+    print &#039;stop&#039;</pre>
+
+
+<pre class="brush: javascript; gutter: true">//Android
+device.telephony.on(&#039;incomingCall&#039;, function (signal) 
+{
+    var notification = device.notifications.createNotification(&#039;Calling&#039;);
+    notification.show();
+    device.ajax(
+    {
+      url: &#039;http://&lt;SERVER&gt;:&lt;PORT&gt;/?msg=Call%20From:&#039;+signal.phoneNumber,
+      type: &#039;GET&#039;,
+      headers: {
+        &#039;Content-Type&#039;: &#039;application/xml&#039;
+      }
+    },
+    function onSuccess(body, textStatus, response) {
+      var parsedBody;
+      if(!(body &amp;&amp; (parsedBody = JSON.parse(body)))) {
+        var error = {};
+        error.message = &#039;invalid body format&#039;;
+        error.content = body;
+          console.error(&#039;error: &#039;,error);
+      }
+      console.info(&#039;successfully received http response!&#039;);
+      notification.content = &#039;successfully received http response!&#039;;
+      notification.show();
+    },
+    function onError(textStatus, response) {
+      var error = {};
+      error.message = textStatus;
+      error.statusCode = response.status;
+        console.error(&#039;error: &#039;,error);
+    });
+});</pre>
+
+
+<h2>难点</h2>
+
+
+<p>值得一提的是小米的权限管理比较恶心，开始我的来电事件一直没有被捕捉到，就是因为被小米拦截了，并且没有给出任何提示。直到现在短信监听器依然不能用，应该是这部分API被锁在MIUI里面了。所以只是实现了来电提示，而没有短信提示。</p>
+
+<p>on{X}的不提供urlencode功能，所以不能用来推送短信内容或者来电人姓名。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vim使用者的Evernote使用经验（仅供mac用户参考）]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
+    <updated>2013-01-23T20:17:40+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
+    <content type="html"><![CDATA[<p>平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟，编辑过程很不爽，于是尝试在vim下编辑，然后同步到evernote的方案。</p>
+
+<h1>vimrc + evernote_applescript_api</h1>
+
+<p>在<code>~/.vimrc</code>中设置快捷键
+```
+map <F6> :call SaveToEN()<CR>
+func SaveToEN()</p>
+
+<pre><code>  exec "osascript /path/to/savetoen.scpt "
+</code></pre>
+
+<p>endfunc
+<code>
+之后编写对应的`.scpt`脚本即可。
+</code>
+create note title filepath with text content notebook &ldquo;回顾总结&rdquo;
+```
+但是问题出在Applescript的文件操作不支持中文，出现乱码，尝试各种文件操作用法均无果，没有找到合适解决方案，目测可能原因有两个：</p>
+
+<ol>
+<li>苹果开发者压根没打算会有非英语语言者使用Applescript，读写文件使用ASCII。</li>
+<li>读写文件使用的是Mac自己的编码，而不是UTF8。（可能性不大）</li>
+</ol>
+
+
+<p>无论如何，没有必要继续尝试。</p>
+
+<h1>vimrc+pbcopy</h1>
+
+<p>```
+func SaveToEn()</p>
+
+<pre><code>exec "w"
+exec "!cat % &gt; pbcopy"
+</code></pre>
+
+<p>endfunc
+```
+pbcopy是mac下的复制命令，执行这个操作之后，文件内容就进入剪切版了，在 Evernote中粘贴就好了。什么？你写markdown？看下面的方法吧</p>
+
+<h1>vimrc + vimwiki = Markdown</h1>
+
+<p>很多人离开Evernote是因为它不支持markdown，那么看看下面这个方法：</p>
+
+<p>vimwiki是一个vim的插件，可以写markdown语法，然后导出成HTML文件，详细内容自行查看</p>
+
+<p><code>
+:help vimwiki
+</code></p>
+
+<p>我们的目标就是每次在vi中按下F6时打开生成的html，之后就可以轻松复制粘贴了。但是首先要能够区分什么样的文件打开html文件，什么样的直接放进剪切板，我们这里把所有.wiki的文件认为是需要用html打开的。那么下一步就是要让vim知道什么后缀的文件是wiki文件。首先要确定vim不认识这个文件。</p>
+
+<p><code>
+:echo &amp;filetype
+</code></p>
+
+<p>如果没有输出，说明确实不认识，否则的话记住这个输出，并且跳过下面这个步骤。</p>
+
+<p>如果vim不认识这个文件，就需要修改<code>filetype.vim</code>，没有的话创建</p>
+
+<p><code>
+:echo $VIMRUNTINE
+/usr/share/vim/vim73
+sudo vi /usr/share/vim/vim73/filetype.vim
+</code></p>
+
+<p>添加:</p>
+
+<p><code>
+au BufNewFile,BufRead *.wiki    setf vimwiki
+</code>
+vimwiki的html导出路径管理不是很方便，例如要在<code>/&lt;path&gt;/vimwiki/</code>下面写wiki文件，那么html回保存在<code>/&lt;path&gt;/vimwiki_html/</code>，不是很方便，我的做法是修改<code>~/.vim/ftplugin/vimwiki.vim</code>文件第201行为
+<code>
+\ w &lt;bar&gt; call vimwiki#html#Wiki2HTML(expand(VimwikiGet('&lt;strong&gt;path&lt;/strong&gt;')),
+</code>
+这样就会在wiki的同文件夹下生成html。</p>
+
+<p>然后再修改下vimrc
+```
+func SaveToEn()</p>
+
+<pre><code>exec "w"; 
+if &amp;filetype == vimwiki'
+    exec &amp;quot;Vimwiki2HTML&amp;quot;
+    exec &amp;quot;!open %:r.html&amp;quot;
+else
+    exec &amp;quot;!cat % &gt; pbcopy&amp;quot;
+endif
+</code></pre>
+
+<p>endfunc
+```
+大功告成了！</p>
+]]></content>
+  </entry>
+  
+</feed>

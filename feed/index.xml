@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-01-14T17:40:09+01:00</updated>
+  <updated>2014-01-14T17:58:28+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -15,12 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[翻译：如何读论文]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/09/28/"/>
-    <updated>2013-09-28T00:00:00+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/09/</id>
-    <content type="html"><![CDATA[<p><a href="http://blizzard.cs.uwaterloo.ca/keshav/home/Papers/data/07/paper-reading.pdf">原文地址</a></p>
-
-<p>本文只翻译了论文第二三部分</p>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/09/28/ru-he-du-lun-wen/"/>
+    <updated>2013-09-28T14:02:01+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/09/28/ru-he-du-lun-wen</id>
+    <content type="html"><![CDATA[<p>本文只翻译了论文第二三部分</p>
 
 <h1>读论文的三个阶段</h1>
 
@@ -51,6 +49,8 @@
 <p>通过这些信息，你可能选择不继续读（并且不用打印出来，节省树木）。这可能因为你对这篇论文没兴趣，或者你对相关的领域了解的不充分，或者这些作者设定了错误的假设。第一个阶段对于不是你领域的论文已经足够了，但是某天会被证明很重要。</p>
 
 <p>顺便的，当你写一篇论文时，你可以期望大多数审阅人可以只进行第一个阶段。小心选择清晰的段落和子段落标题，并且写简明综合的概述，如果一个审阅人在一个阶段之后不能理解主旨，这个论文就可能被拒绝；如果一个读者不能在5分钟内不能理解论文的关键点，这个文章就可能不再被读。因为这些理由，一个能通过选好的图总结一篇论文的“绘声绘色的概述”是一个接触的想法，并且可以越来越多的在科学周刊中看到。</p>
+
+<p><a href="http://blizzard.cs.uwaterloo.ca/keshav/home/Papers/data/07/paper-reading.pdf">原文地址</a></p>
 
 <h2>第二个阶段</h2>
 
