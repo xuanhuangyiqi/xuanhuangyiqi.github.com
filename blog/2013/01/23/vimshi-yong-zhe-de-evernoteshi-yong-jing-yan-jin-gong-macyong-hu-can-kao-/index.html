@@ -1,0 +1,246 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Vim使用者的Evernote使用经验（仅供mac用户参考） - Htedsv Backyard</title>
+	<meta name="author" content="htedsv">
+
+	
+	<meta name="description" content="平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:blog.htedsv.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blog.htedsv.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Vim使用者的Evernote使用经验（仅供mac用户参考）</h2>
+	<div class="entry-content"><p>平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟，编辑过程很不爽，于是尝试在vim下编辑，然后同步到evernote的方案。</p>
+
+<h1>vimrc + evernote_applescript_api</h1>
+
+<p>在<code>~/.vimrc</code>中设置快捷键</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>map &lt;F6&gt; :call SaveToEN()&lt;CR&gt;
+</span><span class='line'>func SaveToEN()
+</span><span class='line'>      exec "osascript /path/to/savetoen.scpt "
+</span><span class='line'>endfunc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后编写对应的<code>.scpt</code>脚本即可。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>create note title filepath with text content notebook "回顾总结"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是问题出在Applescript的文件操作不支持中文，出现乱码，尝试各种文件操作用法均无果，没有找到合适解决方案，目测可能原因有两个：</p>
+
+<ol>
+<li>苹果开发者压根没打算会有非英语语言者使用Applescript，读写文件使用ASCII。</li>
+<li>读写文件使用的是Mac自己的编码，而不是UTF8。（可能性不大）</li>
+</ol>
+
+
+<p>无论如何，没有必要继续尝试。</p>
+
+<h1>vimrc+pbcopy</h1>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>func SaveToEn()
+</span><span class='line'>    exec "w"
+</span><span class='line'>    exec "!cat % &gt; pbcopy"
+</span><span class='line'>endfunc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>pbcopy是mac下的复制命令，执行这个操作之后，文件内容就进入剪切版了，在 Evernote中粘贴就好了。什么？你写markdown？看下面的方法吧</p>
+
+<h1>vimrc + vimwiki = Markdown</h1>
+
+<p>很多人离开Evernote是因为它不支持markdown，那么看看下面这个方法：</p>
+
+<p>vimwiki是一个vim的插件，可以写markdown语法，然后导出成HTML文件，详细内容自行查看</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:help vimwiki</span></code></pre></td></tr></table></div></figure>
+
+
+<p>我们的目标就是每次在vi中按下F6时打开生成的html，之后就可以轻松复制粘贴了。但是首先要能够区分什么样的文件打开html文件，什么样的直接放进剪切板，我们这里把所有.wiki的文件认为是需要用html打开的。那么下一步就是要让vim知道什么后缀的文件是wiki文件。首先要确定vim不认识这个文件。</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:echo &filetype</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果没有输出，说明确实不认识，否则的话记住这个输出，并且跳过下面这个步骤。</p>
+
+<p>如果vim不认识这个文件，就需要修改<code>filetype.vim</code>，没有的话创建</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:echo $VIMRUNTINE
+</span><span class='line'>/usr/share/vim/vim73
+</span><span class='line'>sudo vi /usr/share/vim/vim73/filetype.vim</span></code></pre></td></tr></table></div></figure>
+
+
+<p>添加:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>au BufNewFile,BufRead *.wiki    setf vimwiki</span></code></pre></td></tr></table></div></figure>
+
+
+<p>vimwiki的html导出路径管理不是很方便，例如要在<code>/&lt;path&gt;/vimwiki/</code>下面写wiki文件，那么html回保存在<code>/&lt;path&gt;/vimwiki_html/</code>，不是很方便，我的做法是修改<code>~/.vim/ftplugin/vimwiki.vim</code>文件第201行为</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>\ w &lt;bar&gt; call vimwiki#html#Wiki2HTML(expand(VimwikiGet('&lt;strong&gt;path&lt;/strong&gt;')),</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样就会在wiki的同文件夹下生成html。</p>
+
+<p>然后再修改下vimrc</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>func SaveToEn()
+</span><span class='line'>    exec "w"; 
+</span><span class='line'>    if &filetype == vimwiki'
+</span><span class='line'>        exec &quot;Vimwiki2HTML&quot;
+</span><span class='line'>        exec &quot;!open %:r.html&quot;
+</span><span class='line'>    else
+</span><span class='line'>        exec &quot;!cat % &gt; pbcopy&quot;
+</span><span class='line'>    endif
+</span><span class='line'>endfunc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>大功告成了！</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-23T20:17:40+01:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2013</time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    htedsv
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
