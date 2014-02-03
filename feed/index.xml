@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-01-18T16:58:45+01:00</updated>
+  <updated>2014-02-03T22:21:25+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[德语助手Workflow]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/02/03/godic/"/>
+    <updated>2014-02-03T22:04:57+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/02/03/godic</id>
+    <content type="html"><![CDATA[<p>前两天mac下的德语助手不知怎么变聪明了，发现我没有购买，于是彻底不能用了，断网重装都不能解决，于是果断放弃，当晚写了一个alfred的workflow来代替。缺点就是在线查询确实慢。。。</p>
+
+<p><img src="http://xuanhuangyiqi.github.io/images/ScreenShot2014-02-03at9.58.55PM.png"></p>
+
+<p>废话不多说，上项目链接：</p>
+
+<p><a href="https://github.com/xuanhuangyiqi/godic-alfred">项目地址</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[翻译：如何读论文]]></title>
@@ -33,6 +48,9 @@
 <li>读结论</li>
 <li>粗看索引，剔出一些你已经看过的。</li>
 </ol>
+
+
+<!--more-->
 
 
 <p>在第一阶段结束的时候，你应该能够回答5个问题：</p>
@@ -98,6 +116,9 @@
 <p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
 
 <p>另外，看到下面各个Thread的函数堆栈中，能看到每行最右面有错误发生的<em>函数名</em>和对应的<em>行数</em>，如果你自己尝试做这个试验就会发现开始<em>函数</em>的位置是一个16位内存地址，过了一会才会自动被Xcode转换成函数名。</p>
+
+<!--more-->
+
 
 <h1>Symbolicate</h1>
 
@@ -189,6 +210,9 @@
 </ul>
 
 
+<!--more-->
+
+
 <p>首先我们基于一个事实：一句话会在几个实体之间建立联系，比如</p>
 
 <blockquote><p>苹果是一种水果。</p>
@@ -217,6 +241,9 @@
     <updated>2013-04-11T11:33:50+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
     <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code></p>
+
+<!--more-->
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>g = lambda func, *args:  func(func, *args)</span></code></pre></td></tr></table></div></figure>
@@ -253,6 +280,9 @@
     <content type="html"><![CDATA[<p>&ldquo;Cellular Automaton&#8221;，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
 <p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+
+<!--more-->
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -318,6 +348,9 @@
 <p><img src="http://xuanhuangyiqi.github.io/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
 
 <p>于是写了以下脚本来实现推送来电信息到桌面的脚本。</p>
+
+<!--more-->
+
 
 <h2>前提 环境</h2>
 
@@ -460,6 +493,9 @@ device.telephony.on(&#039;incomingCall&#039;, function (signal)
     <updated>2013-01-23T20:17:40+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
     <content type="html"><![CDATA[<p>平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟，编辑过程很不爽，于是尝试在vim下编辑，然后同步到evernote的方案。</p>
+
+<!--more-->
+
 
 <h1>vimrc + evernote_applescript_api</h1>
 

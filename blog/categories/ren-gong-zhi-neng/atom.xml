@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 人工智能 | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/ren-gong-zhi-neng/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-01-18T16:58:45+01:00</updated>
+  <updated>2014-02-03T22:21:25+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -21,6 +21,9 @@
     <content type="html"><![CDATA[<p>&ldquo;Cellular Automaton"，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
 <p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+
+<!--more-->
+
 
 <p>```
 import time

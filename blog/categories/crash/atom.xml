@@ -4,7 +4,7 @@
   <title><![CDATA[Category: crash | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/crash/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-01-18T16:58:45+01:00</updated>
+  <updated>2014-02-03T22:21:25+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -27,6 +27,9 @@
 <p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
 
 <p>另外，看到下面各个Thread的函数堆栈中，能看到每行最右面有错误发生的<em>函数名</em>和对应的<em>行数</em>，如果你自己尝试做这个试验就会发现开始<em>函数</em>的位置是一个16位内存地址，过了一会才会自动被Xcode转换成函数名。</p>
+
+<!--more-->
+
 
 <h1>Symbolicate</h1>
 

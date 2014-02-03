@@ -4,7 +4,7 @@
   <title><![CDATA[Category: TFIDF | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/tfidf/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-01-18T16:58:45+01:00</updated>
+  <updated>2014-02-03T22:21:25+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -29,6 +29,9 @@
 <li>对准确性要求一般</li>
 <li>样本规模比较小</li>
 </ul>
+
+
+<!--more-->
 
 
 <p>首先我们基于一个事实：一句话会在几个实体之间建立联系，比如</p>
