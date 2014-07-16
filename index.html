@@ -7,7 +7,8 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="前天做了一个梦：在火车上，列车员来查票，给她看了我的车票之后，他让我在上面写一个密码，来证明这张票是我的。 在德国，买火车票的时候，有些车票并不是实名，所以要在车票上签名才能使用。因为德国上火车不需要检票，只需要上车之后列车员查票，并且一般不要求同时出示对应证件。而签名， &hellip;">
+	<meta name="description" content="复习无聊，写点东西，想起来昨天“数学逻辑”课上最后一道题有些意思，拿出来分享一下： 我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
+\[ \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \] \[ \ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -17,21 +18,52 @@
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </head>
 
 
 <body>
 	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
 <nav id="main-nav"><ul class="main">
-	<li><a href="/you-qu-de-shi-yan/">有趣的实验</a></li>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </nav>
 <nav id="mobile-nav">
 	<div class="alignleft menu">
 		<a class="button">Menu</a>
 		<div class="container"><ul class="main">
-	<li><a href="/you-qu-de-shi-yan/">有趣的实验</a></li>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </div>
 	</div>
@@ -83,6 +115,85 @@
     <article class="post">
 	<h2 class="title">
 		
+		<a href="/blog/2014/07/16/lambda/">
+		
+			Lambda</a>
+	</h2>
+	<div class="entry-content">
+		<p>复习无聊，写点东西，想起来昨天“数学逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
+
+<p>我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
+\[  \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \]</p>
+
+<p>\[  \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \]</p>
+
+<p>\[  \mathfrak{A}_3 = (\{0, 1\}, ◦), a ◦ b = (a+b) mod 2 \]</p>
+
+<p>对于$ i, j \in {1, 2, 3}, i&lt;j $ 给出一个FO范式$\phi$来使得对于任意$i, j$都有$ \mathfrak{A}_i \models \phi $ 但是 $\mathfrak{A}_j \models \urcorner\phi$</p>
+
+<p><a href="https://logic.rwth-aachen.de/files/MaLo-SS14/home12.pdf">原题目</a>中要求对于每个<script type="math/tex">i, j</script>各写一个<script type="math/tex">\phi_{i,j}</script>，本题提高了难度，用一个范式写出来，如果这个题用编程的方法实现，大概是这样的，我们假设了：</p>
+
+<pre><code>for all a in {0, 1}:
+
+if i == 1, j == 2 then
+	return (a ◦ !a == 0)
+elif i == 1, j == 3 then
+	return (a ◦ !a == 0)
+elif i == 2, j == 3 then
+	return ((a ◦ a) != (!a ◦ !a))
+</code></pre>
+
+<p>显然，我们对于特定的<script type="math/tex">i, j</script>我们选择了尽量简单的区分两种运算符的范式，如果你能看懂上面的思路，那么下面就是要把这些东西依次转化成FO范式：</p>
+
+<script type="math/tex; mode=display"> \forall a(((i=1,j=2)\land(a◦!a == 0))\vee((i=1,j=3)\land(a ◦!a == 0))\vee((i=2,j=3)\land((a ◦ a) != (!a ◦ !a)))) </script>
+
+<p>不过在FO范式中，我们只定义了◦操作，所以要把取反“!”和常数“0”替换掉，例如我们定义取反<script type="math/tex">$\exists y(y \neq a \land \varphi)</script>$，替换常数0的过程省略。</p>
+
+<p>下一步要替换掉每个if条件，我们只要判断这个范式不符合第6-i-j个结构的性质就可以了，比如对于i=1, j=2,我们可以判断<script type="math/tex">$ ((a ◦ a) != (!a ◦ !a)) </script>$。</p>
+
+<p>这道题的改进版思路有两个重要的解题关键：替换常数和if。是不是感觉很熟悉？对！纯lambda算子，理解它的关键就是在于所有现代编程的3大控制结构：循环、选择、顺序是如何替换成lambda表达式的，以及在纯lambda中不出现常数，或者说是常量，有的只有函数。下面给一个简单的关于纯lambda思考题：</p>
+
+<p>我们用$\lambda xy.x$代表常量True，$\lambda xy.y$代表常量False。写出下列函数的lambda形式：</p>
+
+<ul>
+  <li>and</li>
+  <li>or</li>
+  <li>not</li>
+  <li>xor</li>
+  <li>implies</li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-16T13:39:35+02:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+
+    <article class="post">
+	<h2 class="title">
+		
 		<a href="/blog/2014/06/24/encrypt-from-dream/">
 		
 			从一个梦中得到的关于生活中的加密方法</a>
@@ -92,20 +203,22 @@
 
 <p>在德国，买火车票的时候，有些车票并不是实名，所以要在车票上签名才能使用。因为德国上火车不需要检票，只需要上车之后列车员查票，并且一般不要求同时出示对应证件。而签名，似乎只是为了表示确认车票的使用者，而不能随便更改。这种措施显然没有什么意义，任何倒票、冒名用票的手段都不能被防止。</p>
 
-<p>显然倒票只能从购票的时候控制，所以不做讨论。我们下面来说下<strong>如何防止偷票坐车</strong>。</p>
+<p>显然倒票只能从购票的时候控制，所以不做讨论。我们下面来说下__如何防止偷票坐车__。</p>
 
 <ul>
-<li>按照现有签名的办法，那么在检票员查票时应该同时查车票和有效证件，然后保证车票签名和证件姓名一致，证件照片和持票人本人一致，从而证明票人一致。但是因为增加了“证件”从而可能会引发一些问题，比如恰好偷票人和购票人姓名一样（当然可以通过增加生日来区分），比如伪造有效证件，或者忘记携带身份证，身份证被偷……</li>
+  <li>按照现有签名的办法，那么在检票员查票时应该同时查车票和有效证件，然后保证车票签名和证件姓名一致，证件照片和持票人本人一致，从而证明票人一致。但是因为增加了“证件”从而可能会引发一些问题，比如恰好偷票人和购票人姓名一样（当然可以通过增加生日来区分），比如伪造有效证件，或者忘记携带身份证，身份证被偷……</li>
 </ul>
-
 
 <p>下面提一下我在梦中的做法，也就是计算机加密算法的基础————大数分解：</p>
 
 <ul>
-<li><p>首先想两个大质数，然后它们的乘积写到车票上，显然这个大数与两个质数唯一对应。查票人只要检查持票人能否写出两个质数，乘积为车票上的数即可。对于非法持有人，理论上是不能通过车票上的大数直接得到两个质因数的。</p></li>
-<li><p>显然上面的方法要求持票人记住两个大质数，难以实现。所以完全可以换成两个普通的对自己有意义的大数，检票时，只要向检票员证明分解方法和两个数分别对自己的意义。</p></li>
+  <li>
+    <p>首先想两个大质数，然后它们的乘积写到车票上，显然这个大数与两个质数唯一对应。查票人只要检查持票人能否写出两个质数，乘积为车票上的数即可。对于非法持有人，理论上是不能通过车票上的大数直接得到两个质因数的。</p>
+  </li>
+  <li>
+    <p>显然上面的方法要求持票人记住两个大质数，难以实现。所以完全可以换成两个普通的对自己有意义的大数，检票时，只要向检票员证明分解方法和两个数分别对自己的意义。</p>
+  </li>
 </ul>
-
 
 <p>嗯，这就是我前天做梦的内容。</p>
 
@@ -148,31 +261,26 @@
 			最近这三年</a>
 	</h2>
 	<div class="entry-content">
-		<h1>前言</h1>
-
+		<h1 id="section">前言</h1>
 <p>两年前想着，考过德福之后写一篇最近这一年，来总结一下德语学习对于一个IT男的影响。当时万万没想到，真正拿到语言证明竟然是在那两年之后。今天收到了第二份足以让我入学的语言证书，才想起当初给自己的约定，于是写下此文缅怀本应该最珍贵那三年。</p>
 
-<h1>起因</h1>
-
+<h1 id="section-1">起因</h1>
 <p>对于一心想毕业直接工作的我，从来没把学习与成绩看得很重要。直到大三即将开始的暑假，受到女友的怂恿，决定一起尝试一个最不靠谱的选择————去德国留学。我只记得当时虽然意识到这个选择一定是错的，但是我决定和她一起沿着错误的路走到正确。</p>
 
-<h1>经过</h1>
-
+<h1 id="section-2">经过</h1>
 <p>在做出这个决定之后，我们争取一切时间一起报班学德语。同时也决心拒绝一切可能会影响留德之路的一切机会。在学了一年德语之后，开始尝试参加德语考试，一年3次德福考试被我们考了个遍，最后还是成绩很低。最后拿着语言条件限制的录取通知书来德国读语言班，并和大多数来德国读语言班的同学一样，半年后通过，入学。</p>
 
-<h1>最重要的两年</h1>
-
+<h1 id="section-3">最重要的两年</h1>
 <p>对于我而言，最重要的两年就是大三、大四。这两年内的决定会直接决定我未来的人生轨迹。这两年，可以潜下心认真继续搞ACM，或许能拿到更好成绩，从而有更多机会去美国或者国内顶级IT公司；我也可以认真找个实习，或许可以去一家比知乎或者雅虎更好的公司；或者早一点去唐老师的实验室，做一些有意思的研究，也可能已经去了美国一个不错的学校。再不济，放弃一些德福备考的时间，多做些外包，也能让当时的生活有很大的改善。但是当时决定了一条路，就要一直走下去，如果中途放弃，拐了弯，不管新的路是否更加宽阔，“德语学习的经历”对我来说才是真正的走了“弯路”。所以，我能做的就是放弃一切可能影响我的诱惑。</p>
 
-<h1>收获</h1>
-
+<h1 id="section-4">收获</h1>
 <p>大一大二我过的顺风顺水，究其原因是和很多大牛们学到要学会“走捷径”，这样能节省不少时间做更多的事。对于不管是计算机、软件的学生，还是IT从业人员，这一思想根深蒂固。我大一可以用OpenCV实现看似很牛逼的识别功能，大二用脚本语言框架来做各种Web项目，但其实做到这些都不需要你懂得太多。这一观念，是直到我德语数次失败之后才意识到的。大三大四我尝试学习思考一些复杂的过程，比如理解函数式编程，比如用机器学习方法获得一些有趣的实验，还有理解，甚至背写ACM的一些复杂算法。但是浮躁的内心已经让我无法专注于这些真正值得在那个年纪做的东西。</p>
 
 <p>学了德语，在德国上了课，才让我认识到，真正厉害的人都是能耐心的做枯燥的事的。那些看似很好掌握，有威力强大的东西，对别人同样很简单。这些想法，恐怕我如果不学德语，一辈子都无法意识到的。</p>
 
-<h1>目标与规划</h1>
-
+<h1 id="section-5">目标与规划</h1>
 <p>刚刚开学，身边的人都在讨论着毕业之后的路，大多是选择读博，确实毕业也不过是2年之后的事了。而毕业对于我似乎还算遥远，我并没有明确的想做什么。只是觉得，来到德国或者说亚琛最难得的就是能与世隔绝的学些大部头的东西，这些东西是我在国内恐怕难以做到的。所以就趁这段时间，学一些以后恐怕很难再直接用到，却又非常重要的理论课。至于我以后要做什么，确实和我现在在学什么关系不大，在一些理论课上，我已经清晰地感受到自己的基本功有多麽不扎实了。通过一些感兴趣的课拿到足够学分之后，我再开始考虑以后的问题，相信到时候选择会更多。</p>
+
 
 		
 		
@@ -211,7 +319,7 @@
 	<div class="entry-content">
 		<p>前两天mac下的德语助手不知怎么变聪明了，发现我没有购买，于是彻底不能用了，断网重装都不能解决，于是果断放弃，当晚写了一个alfred的workflow来代替。缺点就是在线查询确实慢。。。</p>
 
-<p><img src="/images/ScreenShot2014-02-03at9.58.55PM.png"></p>
+<p><img src="/images/ScreenShot2014-02-03at9.58.55PM.png" /></p>
 
 <p>废话不多说，上项目链接：</p>
 
@@ -254,20 +362,19 @@
 	<div class="entry-content">
 		<p>本文只翻译了论文第二三部分</p>
 
-<h1>读论文的三个阶段</h1>
+<h1 id="section">读论文的三个阶段</h1>
 
-<h2>第一个阶段</h2>
+<h2 id="section-1">第一个阶段</h2>
 
 <p>第一个阶段就是快速浏览文章，对文章有概括的认识。你可以决定是否进行下面的阶段，这个阶段大约需要5-10分钟，并且包含一下几个步骤：</p>
 
 <ol>
-<li>仔细阅读标题、摘要和介绍</li>
-<li>阅读段落和子段落标题，但是忽略其他的一切。</li>
-<li>粗看数学的内容（如果有的话）来确定基本的数学基础</li>
-<li>读结论</li>
-<li>粗看索引，剔出一些你已经看过的。</li>
+  <li>仔细阅读标题、摘要和介绍</li>
+  <li>阅读段落和子段落标题，但是忽略其他的一切。</li>
+  <li>粗看数学的内容（如果有的话）来确定基本的数学基础</li>
+  <li>读结论</li>
+  <li>粗看索引，剔出一些你已经看过的。</li>
 </ol>
-
 
 
 		
@@ -311,7 +418,7 @@
 	<div class="entry-content">
 		<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
 
-<h1>Crash Log 是什么？</h1>
+<h1 id="crash-log-">Crash Log 是什么？</h1>
 
 <p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
 
@@ -366,11 +473,10 @@
 <p>当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量，所以此方法推荐给以下情况：</p>
 
 <ul>
-<li>不想浪费时间搞复杂算法</li>
-<li>对准确性要求一般</li>
-<li>样本规模比较小</li>
+  <li>不想浪费时间搞复杂算法</li>
+  <li>对准确性要求一般</li>
+  <li>样本规模比较小</li>
 </ul>
-
 
 
 		
@@ -412,8 +518,7 @@
 			Python下的lambda递归包装</a>
 	</h2>
 	<div class="entry-content">
-		<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code></p>
-
+		<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
 
 		
 		<a href="/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/" class="more-link">Read on &rarr;</a>
@@ -499,9 +604,9 @@
 			生命游戏与细胞自动机</a>
 	</h2>
 	<div class="entry-content">
-		<p>&ldquo;Cellular Automaton&#8221;，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
+		<p>“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
-<p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+<p>Aber ich finde ein Phaenomen interessant. “Cellular Automaton” war erhoben durch ein Spiel, “Conways Spiel des Leben”. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
 
 
 		
@@ -527,54 +632,6 @@
 
 
 	<a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/ren-gong-zhi-neng/'>人工智能</a>, <a class='category' href='/blog/categories/sheng-ming-you-xi/'>生命游戏</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/">
-		
-			推送来电消息到桌面</a>
-	</h2>
-	<div class="entry-content">
-		<blockquote><p>Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
-
-<p>Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p></blockquote>
-
-<p><img src="/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
-
-<p>于是写了以下脚本来实现推送来电信息到桌面的脚本。</p>
-
-
-		
-		<a href="/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-26T02:08:12+01:00" pubdate data-updated="true">Jan 26<span>th</span>, 2013</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/android/'>Android</a>, <a class='category' href='/blog/categories/onx/'>onx</a>, <a class='category' href='/blog/categories/gong-ju/'>工具</a>, <a class='category' href='/blog/categories/tui-song/'>推送</a>
 
 
 </div>

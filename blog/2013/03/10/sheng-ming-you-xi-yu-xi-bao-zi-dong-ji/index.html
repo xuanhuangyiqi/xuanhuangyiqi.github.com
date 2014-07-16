@@ -7,7 +7,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="&ldquo;Cellular Automaton&#8221;，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich &hellip;">
+	<meta name="description" content="“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -17,21 +17,52 @@
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </head>
 
 
 <body>
 	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
 <nav id="main-nav"><ul class="main">
-	<li><a href="/you-qu-de-shi-yan/">有趣的实验</a></li>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </nav>
 <nav id="mobile-nav">
 	<div class="alignleft menu">
 		<a class="button">Menu</a>
 		<div class="container"><ul class="main">
-	<li><a href="/you-qu-de-shi-yan/">有趣的实验</a></li>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </div>
 	</div>
@@ -79,60 +110,57 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">生命游戏与细胞自动机</h2>
-	<div class="entry-content"><p>&ldquo;Cellular Automaton&#8221;，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
+	<div class="entry-content"><p>“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
-<p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+<p>Aber ich finde ein Phaenomen interessant. “Cellular Automaton” war erhoben durch ein Spiel, “Conways Spiel des Leben”. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
 
 <!--more-->
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import time
-</span><span class='line'>from random import random
-</span><span class='line'>
-</span><span class='line'>SIZE = 20
-</span><span class='line'>
-</span><span class='line'>matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]
-</span><span class='line'>
-</span><span class='line'>while True:
-</span><span class='line'>    for x in matrix:
-</span><span class='line'>        for y in x:
-</span><span class='line'>            if y: print 1,
-</span><span class='line'>            else: print ' ',
-</span><span class='line'>        print
-</span><span class='line'>    print '\n\n\n\n';
-</span><span class='line'>    time.sleep(1)
-</span><span class='line'>    matrix = (lambda t:
-</span><span class='line'>                [
-</span><span class='line'>                    [
-</span><span class='line'>                        [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
-</span><span class='line'>                        for y in range(SIZE)
-</span><span class='line'>                    ] for x in range(SIZE)
-</span><span class='line'>                ]
-</span><span class='line'>            )(matrix)</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">import time
+</span><span class="line">from random import random
+</span><span class="line">
+</span><span class="line">SIZE = 20
+</span><span class="line">
+</span><span class="line">matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]
+</span><span class="line">
+</span><span class="line">while True:
+</span><span class="line">    for x in matrix:
+</span><span class="line">        for y in x:
+</span><span class="line">            if y: print 1,
+</span><span class="line">            else: print ' ',
+</span><span class="line">        print
+</span><span class="line">    print '\n\n\n\n';
+</span><span class="line">    time.sleep(1)
+</span><span class="line">    matrix = (lambda t:
+</span><span class="line">                [
+</span><span class="line">                    [
+</span><span class="line">                        [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
+</span><span class="line">                        for y in range(SIZE)
+</span><span class="line">                    ] for x in range(SIZE)
+</span><span class="line">                ]
+</span><span class="line">            )(matrix)</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>我发现这个过程竟然是收敛的，问题来了，如何制定收敛的规则呢？</p>
 </div>
@@ -171,15 +199,6 @@
 		
 		
 		
-        <!-- JiaThis Button BEGIN -->
-        <div class="jiathis_style_32x32" style="height: 32px;">
-            <a class="jiathis_button_tsina"></a>
-            <a class="jiathis_button_weixin"></a>
-            <a class="jiathis_button_renren"></a>
-            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-        </div>
-        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-        <!-- JiaThis Button END -->
 	</div>
 	
 </div>

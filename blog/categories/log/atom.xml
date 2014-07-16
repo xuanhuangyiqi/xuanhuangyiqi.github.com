@@ -4,7 +4,7 @@
   <title><![CDATA[Category: log | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/log/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-06-24T11:03:06+02:00</updated>
+  <updated>2014-07-16T15:23:44+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -20,9 +20,9 @@
     <id>http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack</id>
     <content type="html"><![CDATA[<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
 
-<h1>Crash Log 是什么？</h1>
+<h1 id="crash-log-">Crash Log 是什么？</h1>
 
-<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
+<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
 
 <p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
 
@@ -30,62 +30,64 @@
 
 <!--more-->
 
-
-<h1>Symbolicate</h1>
+<h1 id="symbolicate">Symbolicate</h1>
 
 <p>Symbolicate过程就是把对应的函数栈转化成函数名的过程，我们为了方便，在后面把这个过程叫做<em>解析</em>。这个过程是怎么实现的呢？</p>
 
 <p>首先，无论是在模拟器，还是真机debug一个app的过程中，除了XXX.app之外，还会生成一个XXX.app.dSYM文件（准确地说，这两个都是文件夹），如果你想知道生成的这两个文件路径，可以在terminal下使用mac的内嵌find工具mdfind：
 <div>
-  <pre><code class='bash'>$ mdfind -name &amp;ldquo;XXX.app&amp;rdquo;</code></pre>
+  <pre><code class='bash'>$ mdfind -name “XXX.app”</code></pre>
 </div>
 
 它是Spotlight功能的核心，在你的系统有文件更新时能及时更新索引，因此速度还是很快的，当然它还可以根据其他所引进行搜索。</p>
 
 <p>dSYM文件保存了这个app的符号表，即指令内存地址和源代码的函数名和行数关系。这个文件显然保存了app源码的大量信息，因此是不能随意公布的。当然，只有你本机上包含有app的dSYM文件，其中的指令地址才能被解析成函数名（这句话是不严谨的，我们后面在解释）。</p>
 
-<h1>Xcode 解析工具</h1>
+<h1 id="xcode-">Xcode 解析工具</h1>
 
 <p>解析的工作分为很多步，我们来介绍几个Xcode自带的相关小工具：</p>
 
 <ul>
-<li><p>atos，用以获取某内存地址所对应的函数名。用法：
+  <li>
+    <p>atos，用以获取某内存地址所对应的函数名。用法：
 <div>
   <pre><code class='bash'>$ atos -o /path/to/XXX.app/XXX.app.dSYM/Contents/Resources/DWARF/XXX -arch i386 0x973000</code></pre>
 </div>
 
-这个函数是指定了arch的，即i386，这是模拟器（或者说mac）的处理器arch，对于iOS设备就是armv6／7。如果你指定的arch和app以及dsym文件的arch不对，是会报错的。那么如何知道一个app的arch呢？前面我已经说了最常见的两个，如果你不确定是哪个，就可以用</p></li>
-<li><p>dwarfdump
+这个函数是指定了arch的，即i386，这是模拟器（或者说mac）的处理器arch，对于iOS设备就是armv6／7。如果你指定的arch和app以及dsym文件的arch不对，是会报错的。那么如何知道一个app的arch呢？前面我已经说了最常见的两个，如果你不确定是哪个，就可以用</p>
+  </li>
+  <li>
+    <p>dwarfdump
 <div>
   <pre><code class='bash'>$ dwarfdump -u ~/Library/Developer/Xcode/iOS\ DeviceSupport/5.0.1\ (9A405)/Symbols/System/Library/Frameworks/UIKit.framework/UIKit</code></pre>
 </div>
-</p></li>
-<li><p>symbolicatecrash 这是symbolicate过程的核心脚本
+</p>
+  </li>
+  <li>
+    <p>symbolicatecrash 这是symbolicate过程的核心脚本
 <div>
   <pre><code class='bash'>$ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash</code></pre>
 </div>
-</p></li>
+</p>
+  </li>
 </ul>
 
-
-<h1>动态库与静态库</h1>
+<h1 id="section">动态库与静态库</h1>
 
 <p>在学习C语言的时候，我们就应该接触过这两种库，静态库是在编译时把其中涉及到的指令一起放入最终生成的app，动态库则是在运行时动态查找库的。在iOS开发中，动态库的常见形式是dylib或者Framework。</p>
 
 <p>无论是app还是Framework，在生成的时候都是有特定的arch的，这是可以用dwarfdump命令可以查到。但是app会把符号表放到单独的dSYM文件中，库文件的符号表会在自己内部。这就是我现在不能理解的问题，只要有足够多种类的语句，是可以通过外部app的调用把库的每条语句解析出来的。这是不是一种不安全的设计？</p>
 
-<h1>现有Crash Log服务</h1>
-
+<h1 id="crash-log">现有Crash Log服务</h1>
 <ul>
-<li>QuincyApp 主要用于app发行前的crash管理</li>
-<li>Crashlytics 界面友好</li>
-<li>Crittercism 统计内容详细</li>
+  <li>QuincyApp 主要用于app发行前的crash管理</li>
+  <li>Crashlytics 界面友好</li>
+  <li>Crittercism 统计内容详细</li>
 </ul>
 
-
-<h1>解析过程</h1>
-
+<h1 id="section-1">解析过程</h1>
 <p>在执行解析的过程中，首先从dSYM文件中找到app编译时所调用的动态库的名称、UUID、arch。然后利用mac自带的mdfind功能在全局搜索是否存在对应的库，只有完全匹配才可以解析。目前遇到的问题是如果使用模拟器制造crash，那么crash文件底层库的内容不会被解析出来，已经判断出是因为Xcode.app文件下的arch为i386的Framework的UUID与app的dSYM的不符。具体原因需要进一步了解。而真机测试时调用的库文件在另外的文件夹，似乎不会出现类似的问题。</p>
+
 ]]></content>
   </entry>
   

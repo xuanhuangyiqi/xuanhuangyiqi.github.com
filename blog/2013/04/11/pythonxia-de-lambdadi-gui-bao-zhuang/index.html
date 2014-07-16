@@ -17,21 +17,52 @@
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </head>
 
 
 <body>
 	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
 <nav id="main-nav"><ul class="main">
-	<li><a href="/you-qu-de-shi-yan/">有趣的实验</a></li>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </nav>
 <nav id="mobile-nav">
 	<div class="alignleft menu">
 		<a class="button">Menu</a>
 		<div class="container"><ul class="main">
-	<li><a href="/you-qu-de-shi-yan/">有趣的实验</a></li>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </div>
 	</div>
@@ -79,22 +110,17 @@
 	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Python下的lambda递归包装</h2>
-	<div class="entry-content"><p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code></p>
-
+	<div class="entry-content"><p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
 <!--more-->
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>g = lambda func, *args:  func(func, *args)</span></code></pre></td></tr></table></div></figure>
-
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">g = lambda func, *args:  func(func, *args)</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
 
 <p>然后就可以写自递归函数了，例如经典的求阶乘</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f = lambda self, n: 1 if n == 1 else n*self(self, n-1)
-</span><span class='line'>g(f, 10)</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">f = lambda self, n: 1 if n == 1 else n*self(self, n-1)
+</span><span class="line">g(f, 10)</span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
 
 
@@ -131,15 +157,6 @@
 		
 		
 		
-        <!-- JiaThis Button BEGIN -->
-        <div class="jiathis_style_32x32" style="height: 32px;">
-            <a class="jiathis_button_tsina"></a>
-            <a class="jiathis_button_weixin"></a>
-            <a class="jiathis_button_renren"></a>
-            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-        </div>
-        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-        <!-- JiaThis Button END -->
 	</div>
 	
 </div>

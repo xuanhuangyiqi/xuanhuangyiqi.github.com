@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-06-24T11:03:06+02:00</updated>
+  <updated>2014-07-16T15:23:44+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[lambda]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda/"/>
+    <updated>2014-07-16T13:39:35+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda</id>
+    <content type="html"><![CDATA[<p>复习无聊，写点东西，想起来昨天“数学逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
+
+<p>我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
+\[  \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \]</p>
+
+<p>\[  \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \]</p>
+
+<p>\[  \mathfrak{A}_3 = (\{0, 1\}, ◦), a ◦ b = (a+b) mod 2 \]</p>
+
+<p>对于$ i, j \in {1, 2, 3}, i&lt;j $ 给出一个FO范式$\phi$来使得对于任意$i, j$都有$ \mathfrak{A}_i \models \phi $ 但是 $\mathfrak{A}_j \models \urcorner\phi$</p>
+
+<p><a href="https://logic.rwth-aachen.de/files/MaLo-SS14/home12.pdf">原题目</a>中要求对于每个<script type="math/tex">i, j</script>各写一个<script type="math/tex">\phi_{i,j}</script>，本题提高了难度，用一个范式写出来，如果这个题用编程的方法实现，大概是这样的，我们假设了：</p>
+
+<pre><code>for all a in {0, 1}:
+
+if i == 1, j == 2 then
+	return (a ◦ !a == 0)
+elif i == 1, j == 3 then
+	return (a ◦ !a == 0)
+elif i == 2, j == 3 then
+	return ((a ◦ a) != (!a ◦ !a))
+</code></pre>
+
+<p>显然，我们对于特定的<script type="math/tex">i, j</script>我们选择了尽量简单的区分两种运算符的范式，如果你能看懂上面的思路，那么下面就是要把这些东西依次转化成FO范式：</p>
+
+<script type="math/tex; mode=display"> \forall a(((i=1,j=2)\land(a◦!a == 0))\vee((i=1,j=3)\land(a ◦!a == 0))\vee((i=2,j=3)\land((a ◦ a) != (!a ◦ !a)))) </script>
+
+<p>不过在FO范式中，我们只定义了◦操作，所以要把取反“!”和常数“0”替换掉，例如我们定义取反<script type="math/tex">$\exists y(y \neq a \land \varphi)</script>$，替换常数0的过程省略。</p>
+
+<p>下一步要替换掉每个if条件，我们只要判断这个范式不符合第6-i-j个结构的性质就可以了，比如对于i=1, j=2,我们可以判断<script type="math/tex">$ ((a ◦ a) != (!a ◦ !a)) </script>$。</p>
+
+<p>这道题的改进版思路有两个重要的解题关键：替换常数和if。是不是感觉很熟悉？对！纯lambda算子，理解它的关键就是在于所有现代编程的3大控制结构：循环、选择、顺序是如何替换成lambda表达式的，以及在纯lambda中不出现常数，或者说是常量，有的只有函数。下面给一个简单的关于纯lambda思考题：</p>
+
+<p>我们用$\lambda xy.x$代表常量True，$\lambda xy.y$代表常量False。写出下列函数的lambda形式：</p>
+
+<ul>
+  <li>and</li>
+  <li>or</li>
+  <li>not</li>
+  <li>xor</li>
+  <li>implies</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[从一个梦中得到的关于生活中的加密方法]]></title>
@@ -22,20 +73,22 @@
 
 <p>在德国，买火车票的时候，有些车票并不是实名，所以要在车票上签名才能使用。因为德国上火车不需要检票，只需要上车之后列车员查票，并且一般不要求同时出示对应证件。而签名，似乎只是为了表示确认车票的使用者，而不能随便更改。这种措施显然没有什么意义，任何倒票、冒名用票的手段都不能被防止。</p>
 
-<p>显然倒票只能从购票的时候控制，所以不做讨论。我们下面来说下<strong>如何防止偷票坐车</strong>。</p>
+<p>显然倒票只能从购票的时候控制，所以不做讨论。我们下面来说下__如何防止偷票坐车__。</p>
 
 <ul>
-<li>按照现有签名的办法，那么在检票员查票时应该同时查车票和有效证件，然后保证车票签名和证件姓名一致，证件照片和持票人本人一致，从而证明票人一致。但是因为增加了“证件”从而可能会引发一些问题，比如恰好偷票人和购票人姓名一样（当然可以通过增加生日来区分），比如伪造有效证件，或者忘记携带身份证，身份证被偷……</li>
+  <li>按照现有签名的办法，那么在检票员查票时应该同时查车票和有效证件，然后保证车票签名和证件姓名一致，证件照片和持票人本人一致，从而证明票人一致。但是因为增加了“证件”从而可能会引发一些问题，比如恰好偷票人和购票人姓名一样（当然可以通过增加生日来区分），比如伪造有效证件，或者忘记携带身份证，身份证被偷……</li>
 </ul>
-
 
 <p>下面提一下我在梦中的做法，也就是计算机加密算法的基础————大数分解：</p>
 
 <ul>
-<li><p>首先想两个大质数，然后它们的乘积写到车票上，显然这个大数与两个质数唯一对应。查票人只要检查持票人能否写出两个质数，乘积为车票上的数即可。对于非法持有人，理论上是不能通过车票上的大数直接得到两个质因数的。</p></li>
-<li><p>显然上面的方法要求持票人记住两个大质数，难以实现。所以完全可以换成两个普通的对自己有意义的大数，检票时，只要向检票员证明分解方法和两个数分别对自己的意义。</p></li>
+  <li>
+    <p>首先想两个大质数，然后它们的乘积写到车票上，显然这个大数与两个质数唯一对应。查票人只要检查持票人能否写出两个质数，乘积为车票上的数即可。对于非法持有人，理论上是不能通过车票上的大数直接得到两个质因数的。</p>
+  </li>
+  <li>
+    <p>显然上面的方法要求持票人记住两个大质数，难以实现。所以完全可以换成两个普通的对自己有意义的大数，检票时，只要向检票员证明分解方法和两个数分别对自己的意义。</p>
+  </li>
 </ul>
-
 
 <p>嗯，这就是我前天做梦的内容。</p>
 ]]></content>
@@ -46,31 +99,26 @@
     <link href="http://xuanhuangyiqi.github.io/blog/2014/04/17/zui-jin-zhe-san-nian/"/>
     <updated>2014-04-17T21:00:34+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2014/04/17/zui-jin-zhe-san-nian</id>
-    <content type="html"><![CDATA[<h1>前言</h1>
-
+    <content type="html"><![CDATA[<h1 id="section">前言</h1>
 <p>两年前想着，考过德福之后写一篇最近这一年，来总结一下德语学习对于一个IT男的影响。当时万万没想到，真正拿到语言证明竟然是在那两年之后。今天收到了第二份足以让我入学的语言证书，才想起当初给自己的约定，于是写下此文缅怀本应该最珍贵那三年。</p>
 
-<h1>起因</h1>
-
+<h1 id="section-1">起因</h1>
 <p>对于一心想毕业直接工作的我，从来没把学习与成绩看得很重要。直到大三即将开始的暑假，受到女友的怂恿，决定一起尝试一个最不靠谱的选择————去德国留学。我只记得当时虽然意识到这个选择一定是错的，但是我决定和她一起沿着错误的路走到正确。</p>
 
-<h1>经过</h1>
-
+<h1 id="section-2">经过</h1>
 <p>在做出这个决定之后，我们争取一切时间一起报班学德语。同时也决心拒绝一切可能会影响留德之路的一切机会。在学了一年德语之后，开始尝试参加德语考试，一年3次德福考试被我们考了个遍，最后还是成绩很低。最后拿着语言条件限制的录取通知书来德国读语言班，并和大多数来德国读语言班的同学一样，半年后通过，入学。</p>
 
-<h1>最重要的两年</h1>
-
+<h1 id="section-3">最重要的两年</h1>
 <p>对于我而言，最重要的两年就是大三、大四。这两年内的决定会直接决定我未来的人生轨迹。这两年，可以潜下心认真继续搞ACM，或许能拿到更好成绩，从而有更多机会去美国或者国内顶级IT公司；我也可以认真找个实习，或许可以去一家比知乎或者雅虎更好的公司；或者早一点去唐老师的实验室，做一些有意思的研究，也可能已经去了美国一个不错的学校。再不济，放弃一些德福备考的时间，多做些外包，也能让当时的生活有很大的改善。但是当时决定了一条路，就要一直走下去，如果中途放弃，拐了弯，不管新的路是否更加宽阔，“德语学习的经历”对我来说才是真正的走了“弯路”。所以，我能做的就是放弃一切可能影响我的诱惑。</p>
 
-<h1>收获</h1>
-
+<h1 id="section-4">收获</h1>
 <p>大一大二我过的顺风顺水，究其原因是和很多大牛们学到要学会“走捷径”，这样能节省不少时间做更多的事。对于不管是计算机、软件的学生，还是IT从业人员，这一思想根深蒂固。我大一可以用OpenCV实现看似很牛逼的识别功能，大二用脚本语言框架来做各种Web项目，但其实做到这些都不需要你懂得太多。这一观念，是直到我德语数次失败之后才意识到的。大三大四我尝试学习思考一些复杂的过程，比如理解函数式编程，比如用机器学习方法获得一些有趣的实验，还有理解，甚至背写ACM的一些复杂算法。但是浮躁的内心已经让我无法专注于这些真正值得在那个年纪做的东西。</p>
 
 <p>学了德语，在德国上了课，才让我认识到，真正厉害的人都是能耐心的做枯燥的事的。那些看似很好掌握，有威力强大的东西，对别人同样很简单。这些想法，恐怕我如果不学德语，一辈子都无法意识到的。</p>
 
-<h1>目标与规划</h1>
-
+<h1 id="section-5">目标与规划</h1>
 <p>刚刚开学，身边的人都在讨论着毕业之后的路，大多是选择读博，确实毕业也不过是2年之后的事了。而毕业对于我似乎还算遥远，我并没有明确的想做什么。只是觉得，来到德国或者说亚琛最难得的就是能与世隔绝的学些大部头的东西，这些东西是我在国内恐怕难以做到的。所以就趁这段时间，学一些以后恐怕很难再直接用到，却又非常重要的理论课。至于我以后要做什么，确实和我现在在学什么关系不大，在一些理论课上，我已经清晰地感受到自己的基本功有多麽不扎实了。通过一些感兴趣的课拿到足够学分之后，我再开始考虑以后的问题，相信到时候选择会更多。</p>
+
 ]]></content>
   </entry>
   
@@ -81,7 +129,7 @@
     <id>http://xuanhuangyiqi.github.io/blog/2014/02/03/godic</id>
     <content type="html"><![CDATA[<p>前两天mac下的德语助手不知怎么变聪明了，发现我没有购买，于是彻底不能用了，断网重装都不能解决，于是果断放弃，当晚写了一个alfred的workflow来代替。缺点就是在线查询确实慢。。。</p>
 
-<p><img src="http://xuanhuangyiqi.github.io/images/ScreenShot2014-02-03at9.58.55PM.png"></p>
+<p><img src="http://xuanhuangyiqi.github.io/images/ScreenShot2014-02-03at9.58.55PM.png" /></p>
 
 <p>废话不多说，上项目链接：</p>
 
@@ -96,34 +144,30 @@
     <id>http://xuanhuangyiqi.github.io/blog/2013/09/28/ru-he-du-lun-wen</id>
     <content type="html"><![CDATA[<p>本文只翻译了论文第二三部分</p>
 
-<h1>读论文的三个阶段</h1>
+<h1 id="section">读论文的三个阶段</h1>
 
-<h2>第一个阶段</h2>
+<h2 id="section-1">第一个阶段</h2>
 
 <p>第一个阶段就是快速浏览文章，对文章有概括的认识。你可以决定是否进行下面的阶段，这个阶段大约需要5-10分钟，并且包含一下几个步骤：</p>
 
 <ol>
-<li>仔细阅读标题、摘要和介绍</li>
-<li>阅读段落和子段落标题，但是忽略其他的一切。</li>
-<li>粗看数学的内容（如果有的话）来确定基本的数学基础</li>
-<li>读结论</li>
-<li>粗看索引，剔出一些你已经看过的。</li>
+  <li>仔细阅读标题、摘要和介绍</li>
+  <li>阅读段落和子段落标题，但是忽略其他的一切。</li>
+  <li>粗看数学的内容（如果有的话）来确定基本的数学基础</li>
+  <li>读结论</li>
+  <li>粗看索引，剔出一些你已经看过的。</li>
 </ol>
 
-
 <!--more-->
-
-
 <p>在第一阶段结束的时候，你应该能够回答5个问题：</p>
 
 <ol>
-<li>类别：这个论文属于什么类？测量论文？一个已有系统的分析？还是一个研究标准的描述？</li>
-<li>上下文：和哪些其他论文相关？有哪些理论基础被用于分析这个问题？</li>
-<li>正确性：这个假设正确吗？</li>
-<li>贡献：这个论文的主要贡献</li>
-<li>清晰：这个论文值得写吗？</li>
+  <li>类别：这个论文属于什么类？测量论文？一个已有系统的分析？还是一个研究标准的描述？</li>
+  <li>上下文：和哪些其他论文相关？有哪些理论基础被用于分析这个问题？</li>
+  <li>正确性：这个假设正确吗？</li>
+  <li>贡献：这个论文的主要贡献</li>
+  <li>清晰：这个论文值得写吗？</li>
 </ol>
-
 
 <p>通过这些信息，你可能选择不继续读（并且不用打印出来，节省树木）。这可能因为你对这篇论文没兴趣，或者你对相关的领域了解的不充分，或者这些作者设定了错误的假设。第一个阶段对于不是你领域的论文已经足够了，但是某天会被证明很重要。</p>
 
@@ -131,28 +175,27 @@
 
 <p><a href="http://blizzard.cs.uwaterloo.ca/keshav/home/Papers/data/07/paper-reading.pdf">原文地址</a></p>
 
-<h2>第二个阶段</h2>
+<h2 id="section-2">第二个阶段</h2>
 
 <p>在第二个阶段，越多要有更多的关注，但是忽略证明的细节。这可以帮助你记住关键点，或者按照你读到的在旁边记下注释。 Augsburg大学的Dominik Grusemann表示，你“记下不懂得部分或者想问作者的问题”。如果你是一个论文评审人，这些注释会帮助你当你在写回顾的时候，和在一个项目会议中回忆你写的的回顾的时候。</p>
 
 <ol>
-<li>仔细看论文中图、图表和其他图解。特别关注图形。它的坐标轴有标注吗？结果展示有错误条吗，他们有很重要的统计学意义。这些常见的错误会把匆忙、错误的从真正优秀的论文中分辨出来。</li>
-<li>记得为了以后的阅读，标记重要的未读会议。</li>
+  <li>仔细看论文中图、图表和其他图解。特别关注图形。它的坐标轴有标注吗？结果展示有错误条吗，他们有很重要的统计学意义。这些常见的错误会把匆忙、错误的从真正优秀的论文中分辨出来。</li>
+  <li>记得为了以后的阅读，标记重要的未读会议。</li>
 </ol>
-
 
 <p>第二个部分对于有经验的读者应该占据一个小时。度过这个阶段，你应该有能力抓住文章的内容。你应该有能力根据支持的证据给别人总结论文的主要事实。这个详细的级别对于一篇你感兴趣的论文是合适的，但是在你的研究特长上面还不够。</p>
 
 <p>有时候你即使在第二阶段结束的时候也不能理解一篇文章。这可能是因为这个主题的术语或者所写对你是新的。或者作者想用你不理解的证明方法或者实验技巧，所以这个论文的含量是不能预测的。这个论文可能是有没有证实的断言和大量的会议挤出来的。或者有可能多的时候太晚了，你很累了。你现在可以选择（a）把这个论文放一边，希望你的生涯中不需要明白这些材料（b）读完背景材料之后，等会再回到这篇论文中（c）保留现在的状态，进入第三阶段。</p>
 
-<h2>第三个阶段</h2>
+<h2 id="section-3">第三个阶段</h2>
 
 <p>为了完整理解这篇论文，尤其你是一个审稿人，需要第三个阶段。第三阶段最关键的是尝试“实际重现”这篇论文：就是说，和作者做相同的假设，重新做一边下面的工作。通过对比这个重新构造的过程和论文，你就可以不仅仅看出论文体现的创造力，而且还有没有写出来的失败和假设。</p>
 
 <p>这个过程需要把大量精力放在细节。你可以了解并且挑战陈述中的每个假设。另外，你可以考虑你如何表述一个特定的想法。这个和虚拟与实际情况的对比能引导你对证明过程和展示技巧更加敏锐的目光，而且你非常可能把它加到你的工具指令中。在这个过程中，你可以略记下一些想法为了未来的工作。
 这个过程对于初学者可能持续很多小时，对于有经验的读者也要多于一个小时，甚至更多。在这个阶段的最后，你应该有能力从记忆中把把想法重新构造出论文全部的结构，而且有能力识别重要和不重要的观点，尤其是，你应该有能力指出重要工作的隐含的假设，和缺失的引用，以及试验和分析技巧潜在问题。</p>
 
-<h1>做文献调研</h1>
+<h1 id="section-4">做文献调研</h1>
 
 <p>论文阅读技巧在文献调研的过程中得到测试。这将需要你读10篇论文，可能在一个不熟悉的领域。你需要读什么样的论文？这里有你应该怎么用三阶段法实施。
 首先，使用学术搜索引擎，比如Google Scholar或者CiteSeer，还有选择好的关键词去搜索3-5篇这个领域中最近高引用的论文。每篇文章进行一个阶段，然后读他们的相关工作的段落。你会发现一个近几年相关工作的简略总结。如果你能发现这样一个调研，你就完成了。读这个调研，祝你好运。</p>
@@ -170,7 +213,7 @@
     <id>http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack</id>
     <content type="html"><![CDATA[<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
 
-<h1>Crash Log 是什么？</h1>
+<h1 id="crash-log-">Crash Log 是什么？</h1>
 
 <p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
 
@@ -180,76 +223,62 @@
 
 <!--more-->
 
-
-<h1>Symbolicate</h1>
+<h1 id="symbolicate">Symbolicate</h1>
 
 <p>Symbolicate过程就是把对应的函数栈转化成函数名的过程，我们为了方便，在后面把这个过程叫做<em>解析</em>。这个过程是怎么实现的呢？</p>
 
 <p>首先，无论是在模拟器，还是真机debug一个app的过程中，除了XXX.app之外，还会生成一个XXX.app.dSYM文件（准确地说，这两个都是文件夹），如果你想知道生成的这两个文件路径，可以在terminal下使用mac的内嵌find工具mdfind：</p>
-
 <div>
-  <pre><code class='bash'>$ mdfind -name &quot;XXX.app&quot;</code></pre>
+  <pre><code class="bash">$ mdfind -name &quot;XXX.app&quot;</code></pre>
 </div>
-
 
 <p>它是Spotlight功能的核心，在你的系统有文件更新时能及时更新索引，因此速度还是很快的，当然它还可以根据其他所引进行搜索。</p>
 
 <p>dSYM文件保存了这个app的符号表，即指令内存地址和源代码的函数名和行数关系。这个文件显然保存了app源码的大量信息，因此是不能随意公布的。当然，只有你本机上包含有app的dSYM文件，其中的指令地址才能被解析成函数名（这句话是不严谨的，我们后面在解释）。</p>
 
-<h1>Xcode 解析工具</h1>
+<h1 id="xcode-">Xcode 解析工具</h1>
 
 <p>解析的工作分为很多步，我们来介绍几个Xcode自带的相关小工具：</p>
 
 <ul>
-<li>atos，用以获取某内存地址所对应的函数名。用法：</li>
+  <li>atos，用以获取某内存地址所对应的函数名。用法：</li>
 </ul>
-
-
 <div>
-  <pre><code class='bash'>$ atos -o /path/to/XXX.app/XXX.app.dSYM/Contents/Resources/DWARF/XXX -arch i386 0x973000</code></pre>
+  <pre><code class="bash">$ atos -o /path/to/XXX.app/XXX.app.dSYM/Contents/Resources/DWARF/XXX -arch i386 0x973000</code></pre>
 </div>
-
 
 <p>这个函数是指定了arch的，即i386，这是模拟器（或者说mac）的处理器arch，对于iOS设备就是armv6／7。如果你指定的arch和app以及dsym文件的arch不对，是会报错的。那么如何知道一个app的arch呢？前面我已经说了最常见的两个，如果你不确定是哪个，就可以用</p>
 
 <ul>
-<li>dwarfdump</li>
+  <li>dwarfdump</li>
 </ul>
-
-
 <div>
-  <pre><code class='bash'>$ dwarfdump -u ~/Library/Developer/Xcode/iOS\ DeviceSupport/5.0.1\ \(9A405\)/Symbols/System/Library/Frameworks/UIKit.framework/UIKit</code></pre>
+  <pre><code class="bash">$ dwarfdump -u ~/Library/Developer/Xcode/iOS\ DeviceSupport/5.0.1\ \(9A405\)/Symbols/System/Library/Frameworks/UIKit.framework/UIKit</code></pre>
 </div>
-
 
 <ul>
-<li>symbolicatecrash 这是symbolicate过程的核心脚本</li>
+  <li>symbolicatecrash 这是symbolicate过程的核心脚本</li>
 </ul>
-
-
 <div>
-  <pre><code class='bash'>$ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash</code></pre>
+  <pre><code class="bash">$ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash</code></pre>
 </div>
 
-
-<h1>动态库与静态库</h1>
+<h1 id="section">动态库与静态库</h1>
 
 <p>在学习C语言的时候，我们就应该接触过这两种库，静态库是在编译时把其中涉及到的指令一起放入最终生成的app，动态库则是在运行时动态查找库的。在iOS开发中，动态库的常见形式是dylib或者Framework。</p>
 
 <p>无论是app还是Framework，在生成的时候都是有特定的arch的，这是可以用dwarfdump命令可以查到。但是app会把符号表放到单独的dSYM文件中，库文件的符号表会在自己内部。这就是我现在不能理解的问题，只要有足够多种类的语句，是可以通过外部app的调用把库的每条语句解析出来的。这是不是一种不安全的设计？</p>
 
-<h1>现有Crash Log服务</h1>
-
+<h1 id="crash-log">现有Crash Log服务</h1>
 <ul>
-<li>QuincyApp 主要用于app发行前的crash管理</li>
-<li>Crashlytics 界面友好</li>
-<li>Crittercism 统计内容详细</li>
+  <li>QuincyApp 主要用于app发行前的crash管理</li>
+  <li>Crashlytics 界面友好</li>
+  <li>Crittercism 统计内容详细</li>
 </ul>
 
-
-<h1>解析过程</h1>
-
+<h1 id="section-1">解析过程</h1>
 <p>在执行解析的过程中，首先从dSYM文件中找到app编译时所调用的动态库的名称、UUID、arch。然后利用mac自带的mdfind功能在全局搜索是否存在对应的库，只有完全匹配才可以解析。目前遇到的问题是如果使用模拟器制造crash，那么crash文件底层库的内容不会被解析出来，已经判断出是因为Xcode.app文件下的arch为i386的Framework的UUID与app的dSYM的不符。具体原因需要进一步了解。而真机测试时调用的库文件在另外的文件夹，似乎不会出现类似的问题。</p>
+
 ]]></content>
   </entry>
   
@@ -265,32 +294,40 @@
 <p>当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量，所以此方法推荐给以下情况：</p>
 
 <ul>
-<li>不想浪费时间搞复杂算法</li>
-<li>对准确性要求一般</li>
-<li>样本规模比较小</li>
+  <li>不想浪费时间搞复杂算法</li>
+  <li>对准确性要求一般</li>
+  <li>样本规模比较小</li>
 </ul>
-
 
 <!--more-->
 
-
 <p>首先我们基于一个事实：一句话会在几个实体之间建立联系，比如</p>
 
-<blockquote><p>苹果是一种水果。</p>
+<blockquote>
+  <p>苹果是一种水果。 </p>
+</blockquote>
 
-<p>小学生每天要去学校上学。</p></blockquote>
+<blockquote>
+  <p>小学生每天要去学校上学。</p>
+</blockquote>
 
 <p>这种关系不一定是具体的关系，也有可能是脑中抽象的关系，比如</p>
 
-<blockquote><p>我今天下午在咖啡厅用笔记本上网</p></blockquote>
+<blockquote>
+  <p>我今天下午在咖啡厅用笔记本上网</p>
+</blockquote>
 
 <p>咖啡厅和笔记本之间其实没有表面联系，但是却在我们脑中有一个比较强的抽象关联，想到咖啡厅，我们容易想到自己在咖啡厅用笔记本上网。即使是否定某种关联的句子也肯定是我们容易想到一起的某些东西，比如：</p>
 
-<blockquote><p>地球不是绕着太阳转的。</p>
+<blockquote>
+  <p>地球不是绕着太阳转的。</p>
+</blockquote>
 
-<p>天狗吃月是骗小孩子的。</p></blockquote>
+<blockquote>
+  <p>天狗吃月是骗小孩子的。</p>
+</blockquote>
 
-<p>基于这个事实，我把这些文本分隔成句子，对每个句子中出现的所有名词看成一个个节点，任意两个词之间边权 + 1（初始都是0），之后根据情况定一个阈值，高于阈值的边保留，低的删掉。最后根据每个名词的TF &ndash; IDF值从高到低排序，对于某个词x，如果与比它TF &ndash; IDF大的词y在一个子图上，那么忽略x，也就是说每个子图最多只输出TF &ndash; IDF最大的一个词。</p>
+<p>基于这个事实，我把这些文本分隔成句子，对每个句子中出现的所有名词看成一个个节点，任意两个词之间边权 + 1（初始都是0），之后根据情况定一个阈值，高于阈值的边保留，低的删掉。最后根据每个名词的TF - IDF值从高到低排序，对于某个词x，如果与比它TF - IDF大的词y在一个子图上，那么忽略x，也就是说每个子图最多只输出TF - IDF最大的一个词。</p>
 
 <p>虽然这个理论很站不住脚，不过记得当时效果很好。</p>
 ]]></content>
@@ -301,22 +338,17 @@
     <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
     <updated>2013-04-11T11:33:50+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
-    <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code></p>
-
+    <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
 <!--more-->
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>g = lambda func, *args:  func(func, *args)</span></code></pre></td></tr></table></div></figure>
-
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">g = lambda func, *args:  func(func, *args)</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
 
 <p>然后就可以写自递归函数了，例如经典的求阶乘</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>f = lambda self, n: 1 if n == 1 else n*self(self, n-1)
-</span><span class='line'>g(f, 10)</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">f = lambda self, n: 1 if n == 1 else n*self(self, n-1)
+</span><span class="line">g(f, 10)</span></code></pre></td></tr></table></div></figure></notextile></div>
 ]]></content>
   </entry>
   
@@ -338,60 +370,57 @@
     <link href="http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
     <updated>2013-03-10T15:25:03+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
-    <content type="html"><![CDATA[<p>&ldquo;Cellular Automaton&#8221;，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
+    <content type="html"><![CDATA[<p>“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
-<p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+<p>Aber ich finde ein Phaenomen interessant. “Cellular Automaton” war erhoben durch ein Spiel, “Conways Spiel des Leben”. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
 
 <!--more-->
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import time
-</span><span class='line'>from random import random
-</span><span class='line'>
-</span><span class='line'>SIZE = 20
-</span><span class='line'>
-</span><span class='line'>matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]
-</span><span class='line'>
-</span><span class='line'>while True:
-</span><span class='line'>    for x in matrix:
-</span><span class='line'>        for y in x:
-</span><span class='line'>            if y: print 1,
-</span><span class='line'>            else: print ' ',
-</span><span class='line'>        print
-</span><span class='line'>    print '\n\n\n\n';
-</span><span class='line'>    time.sleep(1)
-</span><span class='line'>    matrix = (lambda t:
-</span><span class='line'>                [
-</span><span class='line'>                    [
-</span><span class='line'>                        [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
-</span><span class='line'>                        for y in range(SIZE)
-</span><span class='line'>                    ] for x in range(SIZE)
-</span><span class='line'>                ]
-</span><span class='line'>            )(matrix)</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">import time
+</span><span class="line">from random import random
+</span><span class="line">
+</span><span class="line">SIZE = 20
+</span><span class="line">
+</span><span class="line">matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]
+</span><span class="line">
+</span><span class="line">while True:
+</span><span class="line">    for x in matrix:
+</span><span class="line">        for y in x:
+</span><span class="line">            if y: print 1,
+</span><span class="line">            else: print ' ',
+</span><span class="line">        print
+</span><span class="line">    print '\n\n\n\n';
+</span><span class="line">    time.sleep(1)
+</span><span class="line">    matrix = (lambda t:
+</span><span class="line">                [
+</span><span class="line">                    [
+</span><span class="line">                        [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
+</span><span class="line">                        for y in range(SIZE)
+</span><span class="line">                    ] for x in range(SIZE)
+</span><span class="line">                ]
+</span><span class="line">            )(matrix)</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>我发现这个过程竟然是收敛的，问题来了，如何制定收敛的规则呢？</p>
 ]]></content>
@@ -402,146 +431,138 @@
     <link href="http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/"/>
     <updated>2013-01-26T02:08:12+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian</id>
-    <content type="html"><![CDATA[<blockquote><p>Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
+    <content type="html"><![CDATA[<blockquote>
+  <p>Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
+</blockquote>
 
-<p>Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p></blockquote>
+<blockquote>
+  <p>Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p>
+</blockquote>
 
-<p><img src="http://xuanhuangyiqi.github.io/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
+<p><img src="http://xuanhuangyiqi.github.io/images/original_ZIeB_7c5500000bcc118d.jpg" /></p>
 
-<p>于是写了以下脚本来实现推送来电信息到桌面的脚本。</p>
+<p>于是写了以下脚本来实现推送来电信息到桌面的脚本。
+<!--more--></p>
 
-<!--more-->
-
-
-<h2>前提 环境</h2>
+<h2 id="section">前提 环境</h2>
 
 <ul>
-<li>mac: python(twisted), growl</li>
-<li>vps: python(twisted)</li>
-<li>android: on{X}</li>
+  <li>mac: python(twisted), growl</li>
+  <li>vps: python(twisted)</li>
+  <li>android: on{X}</li>
 </ul>
 
-
-<h2>思路</h2>
-
+<h2 id="section-1">思路</h2>
 <p>为了能适应更多情况，我们假设手机及电脑可能不在同一个局域网内，那么显然他们之间没有一个简单的通信方式。所以要依靠VPS，当然如果你有独立的PHP空间，并且用PHP来实现也是一样的。</p>
 
 <p>手机：考虑到只有手机向VPS的请求，而没有反向，所以使用UDP或者http请求比较方便。单独为这个脚本写一个Android程序成本有点高，于是使用了微软的<a href="http://onx.ms/" target="_blank">on{X}</a>服务，简单地说，它是一个Android上的ifttt，用户可以自己用脚本实现“trigger-&gt;service”的功能。简单了解之后，发现on{X}的网络服务只有http请求。</p>
 
 <p>电脑：IP及端口经常变化，而且考虑到服务器的性能，不宜轮询，遂与服务器保持TCP连接，这样服务器同时也能接受http请求（http请求在网络层就是TCP请求）。</p>
 
-<h2>实现</h2>
+<h2 id="section-2">实现</h2>
+<p>使用了python的twisted框架，以下是代码：
+&lt;pre class=&#8221;brush: python; gutter: true&#8221;&gt;#Client</p>
 
-<p>使用了python的twisted框架，以下是代码：</p>
-
-<pre class="brush: python; gutter: true">#Client
-
-import os
+<p>import os
 import time
 import urllib
 from twisted.internet import reactor
 from twisted.internet.protocol import Factory, Protocol
-from twisted.internet.endpoints import TCP4ClientEndpoint
+from twisted.internet.endpoints import TCP4ClientEndpoint</p>
 
-class Greeter(Protocol):
+<p>class Greeter(Protocol):
     def sendMessage(self, msg):
         self.transport.write(&quot;%s\n&quot; % msg)
-        pass
+        pass</p>
 
-    def dataReceived(self, msg):
-        msg = urllib.unquote(msg)
-        os.system(&quot;export G_TITLE=%s;growl %s&quot;% (&quot;From\ Your\ Phone&quot;, msg))
+<pre><code>def dataReceived(self, msg):
+    msg = urllib.unquote(msg)
+    os.system(&amp;quot;export G_TITLE=%s;growl %s&amp;quot;% (&amp;quot;From\ Your\ Phone&amp;quot;, msg))
+</code></pre>
 
-class GreeterFactory(Factory):
+<p>class GreeterFactory(Factory):
     def buildProtocol(self, addr):
-        return Greeter()
+        return Greeter()</p>
 
-def gotProtocol(p):
-    pass
+<p>def gotProtocol(p):
+    pass</p>
 
-point = TCP4ClientEndpoint(reactor, &quot;&lt;SERVER&gt;&quot;, &lt;PORT&gt;)
+<p>point = TCP4ClientEndpoint(reactor, &quot;&lt;SERVER&gt;&quot;, &lt;PORT&gt;)
 d = point.connect(GreeterFactory())
 d.addCallback(gotProtocol)
-reactor.run()</pre>
+reactor.run()&lt;/pre&gt;
+&lt;pre class=&#8221;brush: python; gutter: true&#8221;&gt;#Server</p>
 
-
-<pre class="brush: python; gutter: true">#Server
-
-from twisted.internet.protocol import Protocol, Factory
+<p>from twisted.internet.protocol import Protocol, Factory
 from twisted.internet.endpoints import TCP4ServerEndpoint
-from twisted.internet import reactor
+from twisted.internet import reactor</p>
 
-class Echo(Protocol):
+<p>class Echo(Protocol):
     def sendMessage(self, msg):
-        self.transport.write(&quot;%s&quot; % msg)
+        self.transport.write(&quot;%s&quot; % msg)</p>
 
-    def dataReceived(self, data):
-        #self.transport.write(data)
-        if data.startswith(&#039;GET&#039;):
-            msg = data.split(&#039;\n&#039;)[0].split(&#039; &#039;)[1]
-            msg = msg[6:]
-            for x in self.factory.protocols:
-                if x != self:
-                    x.sendMessage(msg)
-    def connectionLost(self, reason):
-        print &#039;lost&#039;
-        self.factory.protocols.remove(self)
+<pre><code>def dataReceived(self, data):
+    #self.transport.write(data)
+    if data.startswith(&amp;#039;GET&amp;#039;):
+        msg = data.split(&amp;#039;\n&amp;#039;)[0].split(&amp;#039; &amp;#039;)[1]
+        msg = msg[6:]
+        for x in self.factory.protocols:
+            if x != self:
+                x.sendMessage(msg)
+def connectionLost(self, reason):
+    print &amp;#039;lost&amp;#039;
+    self.factory.protocols.remove(self)
+</code></pre>
 
-class EFactory(Factory):
+<p>class EFactory(Factory):
     protocol = Echo
-    def __init__(self, quote=None):
-        self.quote = quote or &#039;An&#039;
+    def <strong>init</strong>(self, quote=None):
+        self.quote = quote or &#8216;An&#8217;
         self.protocols = []
     def buildProtocol(self, addr):
         p = self.protocol()
         p.factory = self
         self.protocols.append(p)
-        return p
+        return p</p>
 
-while True:
+<p>while True:
     endpoint = TCP4ServerEndpoint(reactor, &lt;PORT&gt;)
     endpoint.listen(EFactory(&quot;Ok&quot;))
     reactor.run()
-    print &#039;stop&#039;</pre>
-
-
-<pre class="brush: javascript; gutter: true">//Android
-device.telephony.on(&#039;incomingCall&#039;, function (signal) 
+    print &#8216;stop&#8217;&lt;/pre&gt;
+&lt;pre class=&#8221;brush: javascript; gutter: true&#8221;&gt;//Android
+device.telephony.on(&#8216;incomingCall&#8217;, function (signal) 
 {
-    var notification = device.notifications.createNotification(&#039;Calling&#039;);
+    var notification = device.notifications.createNotification(&#8216;Calling&#8217;);
     notification.show();
     device.ajax(
     {
-      url: &#039;http://&lt;SERVER&gt;:&lt;PORT&gt;/?msg=Call%20From:&#039;+signal.phoneNumber,
-      type: &#039;GET&#039;,
+      url: &#8216;http://&lt;SERVER&gt;:&lt;PORT&gt;/?msg=Call%20From:&#8217;+signal.phoneNumber,
+      type: &#8216;GET&#8217;,
       headers: {
-        &#039;Content-Type&#039;: &#039;application/xml&#039;
+        &#8216;Content-Type&#8217;: &#8216;application/xml&#8217;
       }
     },
     function onSuccess(body, textStatus, response) {
       var parsedBody;
       if(!(body &amp;&amp; (parsedBody = JSON.parse(body)))) {
         var error = {};
-        error.message = &#039;invalid body format&#039;;
+        error.message = &#8216;invalid body format&#8217;;
         error.content = body;
-          console.error(&#039;error: &#039;,error);
+          console.error(&#8216;error: &#8216;,error);
       }
-      console.info(&#039;successfully received http response!&#039;);
-      notification.content = &#039;successfully received http response!&#039;;
+      console.info(&#8216;successfully received http response!&#8217;);
+      notification.content = &#8216;successfully received http response!&#8217;;
       notification.show();
     },
     function onError(textStatus, response) {
       var error = {};
       error.message = textStatus;
       error.statusCode = response.status;
-        console.error(&#039;error: &#039;,error);
+        console.error(&#8216;error: &#8216;,error);
     });
-});</pre>
-
-
+});&lt;/pre&gt;</p>
 <h2>难点</h2>
-
-
 <p>值得一提的是小米的权限管理比较恶心，开始我的来电事件一直没有被捕捉到，就是因为被小米拦截了，并且没有给出任何提示。直到现在短信监听器依然不能用，应该是这部分API被锁在MIUI里面了。所以只是实现了来电提示，而没有短信提示。</p>
 
 <p>on{X}的不提供urlencode功能，所以不能用来推送短信内容或者来电人姓名。</p>
@@ -557,116 +578,94 @@ device.telephony.on(&#039;incomingCall&#039;, function (signal)
 
 <!--more-->
 
-
-<h1>vimrc + evernote_applescript_api</h1>
-
-<p>在<code>~/.vimrc</code>中设置快捷键</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>map &lt;F6&gt; :call SaveToEN()&lt;CR&gt;
-</span><span class='line'>func SaveToEN()
-</span><span class='line'>      exec "osascript /path/to/savetoen.scpt "
-</span><span class='line'>endfunc</span></code></pre></td></tr></table></div></figure>
-
-
-<p>之后编写对应的<code>.scpt</code>脚本即可。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>create note title filepath with text content notebook "回顾总结"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>但是问题出在Applescript的文件操作不支持中文，出现乱码，尝试各种文件操作用法均无果，没有找到合适解决方案，目测可能原因有两个：</p>
+<h1 id="vimrc--evernoteapplescriptapi">vimrc + evernote_applescript_api</h1>
+<p>在<code>~/.vimrc</code>中设置快捷键
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">map &lt;F6&gt; :call SaveToEN()&lt;CR&gt;
+</span><span class="line">func SaveToEN()
+</span><span class="line">      exec "osascript /path/to/savetoen.scpt "
+</span><span class="line">endfunc</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
+之后编写对应的<code>.scpt</code>脚本即可。
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">create note title filepath with text content notebook "回顾总结"</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
+但是问题出在Applescript的文件操作不支持中文，出现乱码，尝试各种文件操作用法均无果，没有找到合适解决方案，目测可能原因有两个：</p>
 
 <ol>
-<li>苹果开发者压根没打算会有非英语语言者使用Applescript，读写文件使用ASCII。</li>
-<li>读写文件使用的是Mac自己的编码，而不是UTF8。（可能性不大）</li>
+  <li>苹果开发者压根没打算会有非英语语言者使用Applescript，读写文件使用ASCII。</li>
+  <li>读写文件使用的是Mac自己的编码，而不是UTF8。（可能性不大）</li>
 </ol>
-
 
 <p>无论如何，没有必要继续尝试。</p>
 
-<h1>vimrc+pbcopy</h1>
+<h1 id="vimrcpbcopy">vimrc+pbcopy</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>func SaveToEn()
-</span><span class='line'>    exec "w"
-</span><span class='line'>    exec "!cat % &gt; pbcopy"
-</span><span class='line'>endfunc</span></code></pre></td></tr></table></div></figure>
-
-
-<p>pbcopy是mac下的复制命令，执行这个操作之后，文件内容就进入剪切版了，在 Evernote中粘贴就好了。什么？你写markdown？看下面的方法吧</p>
-
-<h1>vimrc + vimwiki = Markdown</h1>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">func SaveToEn()
+</span><span class="line">    exec "w"
+</span><span class="line">    exec "!cat % &gt; pbcopy"
+</span><span class="line">endfunc</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>pbcopy是mac下的复制命令，执行这个操作之后，文件内容就进入剪切版了，在 Evernote中粘贴就好了。什么？你写markdown？看下面的方法吧
+#vimrc + vimwiki = Markdown</p>
 
 <p>很多人离开Evernote是因为它不支持markdown，那么看看下面这个方法：</p>
 
 <p>vimwiki是一个vim的插件，可以写markdown语法，然后导出成HTML文件，详细内容自行查看</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:help vimwiki</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:help vimwiki</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>我们的目标就是每次在vi中按下F6时打开生成的html，之后就可以轻松复制粘贴了。但是首先要能够区分什么样的文件打开html文件，什么样的直接放进剪切板，我们这里把所有.wiki的文件认为是需要用html打开的。那么下一步就是要让vim知道什么后缀的文件是wiki文件。首先要确定vim不认识这个文件。</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:echo &filetype</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:echo &amp;filetype</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>如果没有输出，说明确实不认识，否则的话记住这个输出，并且跳过下面这个步骤。</p>
 
 <p>如果vim不认识这个文件，就需要修改<code>filetype.vim</code>，没有的话创建</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>:echo $VIMRUNTINE
-</span><span class='line'>/usr/share/vim/vim73
-</span><span class='line'>sudo vi /usr/share/vim/vim73/filetype.vim</span></code></pre></td></tr></table></div></figure>
-
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">:echo $VIMRUNTINE
+</span><span class="line">/usr/share/vim/vim73
+</span><span class="line">sudo vi /usr/share/vim/vim73/filetype.vim</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>添加:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>au BufNewFile,BufRead *.wiki    setf vimwiki</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">au BufNewFile,BufRead *.wiki    setf vimwiki</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>vimwiki的html导出路径管理不是很方便，例如要在<code>/&lt;path&gt;/vimwiki/</code>下面写wiki文件，那么html回保存在<code>/&lt;path&gt;/vimwiki_html/</code>，不是很方便，我的做法是修改<code>~/.vim/ftplugin/vimwiki.vim</code>文件第201行为
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">\ w &lt;bar&gt; call vimwiki#html#Wiki2HTML(expand(VimwikiGet('&lt;strong&gt;path&lt;/strong&gt;')),</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
+这样就会在wiki的同文件夹下生成html。</p>
 
+<p>然后再修改下vimrc
+&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">func SaveToEn()
+</span><span class="line">    exec "w"; 
+</span><span class="line">    if &amp;filetype == vimwiki'
+</span><span class="line">        exec &quot;Vimwiki2HTML&quot;
+</span><span class="line">        exec &quot;!open %:r.html&quot;
+</span><span class="line">    else
+</span><span class="line">        exec &quot;!cat % &gt; pbcopy&quot;
+</span><span class="line">    endif
+</span><span class="line">endfunc</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;
+大功告成了！</p>
 
-<p>vimwiki的html导出路径管理不是很方便，例如要在<code>/&lt;path&gt;/vimwiki/</code>下面写wiki文件，那么html回保存在<code>/&lt;path&gt;/vimwiki_html/</code>，不是很方便，我的做法是修改<code>~/.vim/ftplugin/vimwiki.vim</code>文件第201行为</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>\ w &lt;bar&gt; call vimwiki#html#Wiki2HTML(expand(VimwikiGet('&lt;strong&gt;path&lt;/strong&gt;')),</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这样就会在wiki的同文件夹下生成html。</p>
-
-<p>然后再修改下vimrc</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>func SaveToEn()
-</span><span class='line'>    exec "w"; 
-</span><span class='line'>    if &filetype == vimwiki'
-</span><span class='line'>        exec &quot;Vimwiki2HTML&quot;
-</span><span class='line'>        exec &quot;!open %:r.html&quot;
-</span><span class='line'>    else
-</span><span class='line'>        exec &quot;!cat % &gt; pbcopy&quot;
-</span><span class='line'>    endif
-</span><span class='line'>endfunc</span></code></pre></td></tr></table></div></figure>
-
-
-<p>大功告成了！</p>
 ]]></content>
   </entry>
   

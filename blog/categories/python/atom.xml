@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-06-24T11:03:06+02:00</updated>
+  <updated>2014-07-16T15:23:44+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -18,12 +18,9 @@
     <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
     <updated>2013-04-11T11:33:50+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
-    <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code></p>
-
+    <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
 <!--more-->
-
-
-<p><code>
+<code>
 g = lambda func, *args:  func(func, *args)
 </code></p>
 
@@ -41,13 +38,11 @@ g(f, 10)
     <link href="http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
     <updated>2013-03-10T15:25:03+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
-    <content type="html"><![CDATA[<p>&ldquo;Cellular Automaton"，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
+    <content type="html"><![CDATA[<p>“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
-<p>Aber ich finde ein Phaenomen interessant. &ldquo;Cellular Automaton&rdquo; war erhoben durch ein Spiel, &ldquo;Conways Spiel des Leben&rdquo;. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
+<p>Aber ich finde ein Phaenomen interessant. “Cellular Automaton” war erhoben durch ein Spiel, “Conways Spiel des Leben”. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
 
 <!--more-->
-
-
 <p>```
 import time
 from random import random</p>
@@ -56,26 +51,23 @@ from random import random</p>
 
 <p>matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]</p>
 
-<p>while True:</p>
-
-<pre><code>for x in matrix:
-    for y in x:
-        if y: print 1,
-        else: print ' ',
-    print
-print '\n\n\n\n';
-time.sleep(1)
-matrix = (lambda t:
-            [
+<p>while True:
+    for x in matrix:
+        for y in x:
+            if y: print 1,
+            else: print ‘ ‘,
+        print
+    print ‘\n\n\n\n’;
+    time.sleep(1)
+    matrix = (lambda t:
                 [
-                    [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
-                    for y in range(SIZE)
-                ] for x in range(SIZE)
-            ]
-        )(matrix)
-</code></pre>
-
-<p>```</p>
+                    [
+                        [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
+                        for y in range(SIZE)
+                    ] for x in range(SIZE)
+                ]
+            )(matrix)
+```</p>
 
 <p>我发现这个过程竟然是收敛的，问题来了，如何制定收敛的规则呢？</p>
 ]]></content>

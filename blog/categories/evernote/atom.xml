@@ -4,7 +4,7 @@
   <title><![CDATA[Category: evernote | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/evernote/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-06-24T11:03:06+02:00</updated>
+  <updated>2014-07-16T15:23:44+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -22,47 +22,37 @@
 
 <!--more-->
 
-
-<h1>vimrc + evernote_applescript_api</h1>
-
+<h1 id="vimrc--evernoteapplescriptapi">vimrc + evernote_applescript_api</h1>
 <p>在<code>~/.vimrc</code>中设置快捷键
-```
-map <F6> :call SaveToEN()<CR>
-func SaveToEN()</p>
-
-<pre><code>  exec "osascript /path/to/savetoen.scpt "
-</code></pre>
-
-<p>endfunc
 <code>
-之后编写对应的`.scpt`脚本即可。
+map &lt;F6&gt; :call SaveToEN()&lt;CR&gt;
+func SaveToEN()
+      exec "osascript /path/to/savetoen.scpt "
+endfunc
 </code>
-create note title filepath with text content notebook &ldquo;回顾总结&rdquo;
-```
+之后编写对应的<code>.scpt</code>脚本即可。
+<code>
+create note title filepath with text content notebook "回顾总结"
+</code>
 但是问题出在Applescript的文件操作不支持中文，出现乱码，尝试各种文件操作用法均无果，没有找到合适解决方案，目测可能原因有两个：</p>
 
 <ol>
-<li>苹果开发者压根没打算会有非英语语言者使用Applescript，读写文件使用ASCII。</li>
-<li>读写文件使用的是Mac自己的编码，而不是UTF8。（可能性不大）</li>
+  <li>苹果开发者压根没打算会有非英语语言者使用Applescript，读写文件使用ASCII。</li>
+  <li>读写文件使用的是Mac自己的编码，而不是UTF8。（可能性不大）</li>
 </ol>
-
 
 <p>无论如何，没有必要继续尝试。</p>
 
-<h1>vimrc+pbcopy</h1>
+<h1 id="vimrcpbcopy">vimrc+pbcopy</h1>
 
-<p>```
-func SaveToEn()</p>
-
-<pre><code>exec "w"
-exec "!cat % &gt; pbcopy"
-</code></pre>
-
-<p>endfunc
-```
-pbcopy是mac下的复制命令，执行这个操作之后，文件内容就进入剪切版了，在 Evernote中粘贴就好了。什么？你写markdown？看下面的方法吧</p>
-
-<h1>vimrc + vimwiki = Markdown</h1>
+<p><code>
+func SaveToEn()
+    exec "w"
+    exec "!cat % &gt; pbcopy"
+endfunc
+</code>
+pbcopy是mac下的复制命令，执行这个操作之后，文件内容就进入剪切版了，在 Evernote中粘贴就好了。什么？你写markdown？看下面的方法吧
+#vimrc + vimwiki = Markdown</p>
 
 <p>很多人离开Evernote是因为它不支持markdown，那么看看下面这个方法：</p>
 
@@ -100,21 +90,19 @@ vimwiki的html导出路径管理不是很方便，例如要在<code>/&lt;path&gt
 这样就会在wiki的同文件夹下生成html。</p>
 
 <p>然后再修改下vimrc
-```
-func SaveToEn()</p>
-
-<pre><code>exec "w"; 
-if &amp;filetype == vimwiki'
-    exec &amp;quot;Vimwiki2HTML&amp;quot;
-    exec &amp;quot;!open %:r.html&amp;quot;
-else
-    exec &amp;quot;!cat % &gt; pbcopy&amp;quot;
-endif
-</code></pre>
-
-<p>endfunc
-```
+<code>
+func SaveToEn()
+    exec "w"; 
+    if &amp;filetype == vimwiki'
+        exec &amp;quot;Vimwiki2HTML&amp;quot;
+        exec &amp;quot;!open %:r.html&amp;quot;
+    else
+        exec &amp;quot;!cat % &gt; pbcopy&amp;quot;
+    endif
+endfunc
+</code>
 大功告成了！</p>
+
 ]]></content>
   </entry>
   
