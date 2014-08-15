@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-07-30T10:02:24+02:00</updated>
+  <updated>2014-08-15T20:18:20+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -19,11 +19,11 @@
     <updated>2013-01-26T02:08:12+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian</id>
     <content type="html"><![CDATA[<blockquote>
-  <p>Condition 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
+  <p>Scenario 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
 </blockquote>
 
 <blockquote>
-  <p>Condition 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p>
+  <p>Scenario 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p>
 </blockquote>
 
 <p><img src="/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
@@ -97,7 +97,7 @@ from twisted.internet import reactor</p>
             if x != self:
                 x.sendMessage(msg)
 def connectionLost(self, reason):
-    print &amp;#039;lost&amp;#039;
+     &amp;#039;lost&amp;#039;
     self.factory.protocols.remove(self)
 </code></pre>
 
@@ -116,7 +116,7 @@ def connectionLost(self, reason):
     endpoint = TCP4ServerEndpoint(reactor, &lt;PORT&gt;)
     endpoint.listen(EFactory(&quot;Ok&quot;))
     reactor.run()
-    print 'stop'&lt;/pre&gt;
+     'stop'&lt;/pre&gt;
 &lt;pre class="brush: javascript; gutter: true"&gt;//Android
 device.telephony.on('incomingCall', function (signal) 
 {
