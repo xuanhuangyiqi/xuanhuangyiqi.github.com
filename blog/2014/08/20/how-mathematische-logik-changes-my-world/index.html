@@ -1,0 +1,233 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数理逻辑如何改变我的世界 - Htedsv Backyard</title>
+	<meta name="author" content="htedsv">
+
+	
+	<meta name="description" content="在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念， &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/110950069380933156197?rel=author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/htedsv" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/xuanhuangyiqi" title="GitHub">GitHub</a>
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">数理逻辑如何改变我的世界</h2>
+	<div class="entry-content"><p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
+
+<p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
+
+<p>Master的第一学期学习了数理逻辑之后，我的世界观进一步被摧毁。我在之前从没认真想过“为什么计算机科学可以看做数学的分支？”“计算机科学在过去几十年都有哪些成果？”“为什么说图灵是计算机之父？他的成就都有什么价值？”这类的问题。这些问题似乎成为了计算机科学系统的公理，不需要证明，也无法解释。虽然并不是每个问题都能直接从“数理逻辑”上找到答案，但是很多它却给了我们一个入口，让我们看到计算机科学目前很少被关注的一面。</p>
+
+<h1 id="section">计算机科学与数学</h1>
+
+<p>如果去问刚上本科的我，为什么说计算机科学是数学的分支，我多半会说“因为算法、数据结构都是数学问题，计算机科学经常要处理一些数学问题。”这个回答内容不算错，不过答非所问，因为既然说“分支”，必然是有“根”有“叶”。计算机处理数学问题最多只能说“计算机和数学关系密切，计算机因为其性能特点，能帮助解决一些数学问题”。然而体现不出计算机理论如何建立在数学之上，或者说计算机有什么核心理论是从数学得出的。</p>
+
+<p>如果说有的话，我觉得“数理逻辑”应该是其中最重要的一门。很多基础学科都会有一些理论能普世万物，“数理逻辑”因为其主要其应用领域算到了计算机科学下面，但很多核心概念都是能普世万物的。比如公理系统，公理系统并不只作用于数域，任何<strong>理论(Theory)</strong>都有可能会有有一个公理系统。公理系统具体来说就是描述一个理论最小的句子集合，以至于建立在该理论上面的所有句子都能通过这个集合的句子组合判断真伪。而一个理论，正是一个无限的句子集合。建立在这个基础上，我们就可以轻易判断一个理论有没有可能被证明。这仿佛给给各学科开疆拓土，只要有公理系统，那么任何问题都可以用形式化方法判断真伪，当然也不会有什么“无法证明的问题”了。然而并不是每个理论都能被公理化（具体细节专业性较强，在此不做讨论），而且对于自然学科，总会有新的发现，因此公理系统也就不断变化，即使是已经被证明的理论，也会在之后被推翻。</p>
+
+<p>回到计算机与数学上面，正是因为数学与计算机对计算问题的研究都建立在一个较为封闭的系统，因此才会有价值。具体到编程语言上，可以把命令式编程语言中看成顺序结构、循环结构与判断结构看成它的公理系统，它与函数式编程的基础“Lambda表达式”是原子等价的，因此可以把他们具有同样的表达能力。</p>
+
+<p>数理逻辑中另外一个非常有用的定理就是一阶逻辑的完备性定理。很多问题一旦涉及到“无限”，那么许多有限问题上的做法都不能适用了，比如我们不能对比两个无限字符串中某个字母的个数的长度奇偶性。而完备性定理正是帮我们把无限问题放在有限问题上解决。</p>
+
+<h1 id="acm">数理逻辑与ACM</h1>
+
+<p>在来德国之前，我从来没有怀疑过计算机领域还有什么问题是因为其模型抽象而难以理解，主要还是因为德国大学在ACM方面基本没有涉足。然而从数理逻辑课上遇到的很多问题，即使直接看答案也要思考几个小时才能彻底看懂。所以说，其实抽象的问题很多，只是通过编程方法能够表达出来的数量很有限。</p>
+
+<p>另一方面，ACM涉及的知识散碎，各种算法间相互关联性并不大，所以每掌握一门新算法，收获是常数增长，从中得到的一些小方法或许能够很好地解决一些常见小问题，但是没有体系，无法深入。</p>
+
+<h1 id="section-1">关于图灵机</h1>
+
+<p>很多人都喜欢表达对图灵这一计算机科学鼻祖的憧憬，不过大多数人可能对其认识仅仅停留在知道图灵机的程度上，至于图灵机的意义和相关理论，感兴趣的人似乎不多。了解的多一些的可能还会知道它和自动机关系密切，受限图灵机是和自动机、以及Pushdown System等价的，然而根据市面上的为数不多的自动机相关资料，很少会提及它与数理逻辑之间的关系。事实上受限图灵机或者说与其对应的自动机课可以看成一个<strong>理论</strong>，也就是说，图灵机也可以被公理化的。在自动机领域有很多图灵机的变种，有些互相等价，有些不等价，甚至随便一次自动机考试的试卷都能看到一个新变种。要讨论清楚任意两种之间的关系可能方法各异，但是如果从最本源的角度——公理系统来考虑，很多问题一下子就简单多了。</p>
+
+<h1 id="section-2">函数式编程</h1>
+
+<p>与其要讨论“函数式编程”这种被讨论烂的话题，不如简单说一下相对不那么烂的“Lambda演算”。所谓的看似高端的函数是语言Lisp、Scheme、Haskell从抽象程度的角度来看都是Lambda演算的一个具体实现方法。那些希望通过掌握Lisp来标榜自己的人，与其掌握一个实现，不如首先想透lambda表达式相关的一些抽象问题。比如Lambda不允许自递归，而是通过不动点的方式。</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-20T18:25:31+02:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+
+    htedsv
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'htedsvbackyard';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xuanhuangyiqi.github.io/blog/2014/08/20/how-mathematische-logik-changes-my-world/';
+        var disqus_url = 'http://xuanhuangyiqi.github.io/blog/2014/08/20/how-mathematische-logik-changes-my-world/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//go.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-47274484-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>
