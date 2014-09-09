@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-08-20T21:15:58+02:00</updated>
+  <updated>2014-09-09T00:19:05+08:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -14,10 +14,41 @@
 
   
   <entry>
+    <title type="html"><![CDATA[考试总结]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/09/08/kao-shi-zong-jie/"/>
+    <updated>2014-09-08T22:33:34+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/09/08/kao-shi-zong-jie</id>
+    <content type="html"><![CDATA[<p>中秋佳节之际做一些小学生做的事情：考试总结。</p>
+
+<p>这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。唯一一门挂掉的MA课是我自认为本科期间做过很多相关工作（包括两次实验室经历和一次实习经历）的“数据挖掘”。通过的3门都是之前接触不多，反而最后能低分飘过。下面总结一下原因：</p>
+
+<h1 id="section">基础知识薄弱</h1>
+
+<p>现在回头看看，确实觉得这一学期学的很辛苦，但是实际上那些被奉为神课的课并没有想象的那么难，即使缺少一些必要的基础知识，也是可以通过以前学习的考试技巧来Hack一下。尤其是理论方向的课，现在想想，每门课研究的“实体”其实都有章可循。大概都是归为相关性质与相关实例，性质引出实例，不同的实例又有不同的新性质。另外，通过考试内容可以发现，很多性质的证明并不重要，不需要深刻的理解。</p>
+
+<h1 id="section-1">题型不适应</h1>
+
+<p>基本每门课都不会给太多复习资料，对于第一次来德国，完全不知道如何复习，很多国内通用的复习策略在这里行不通。比如没有办法通过作业中的题目本身来判断是否可能在考试中出现，尤其是第一门的数据挖掘，看了一遍卷子就直接傻了。</p>
+
+<h1 id="section-2">时间安排不合理</h1>
+
+<p>考前一方面有些轻敌，一方面回家心切，所以5门必须的考试被安排在15天里，以至于第一门发现策略失败后，后面完全没有时间调整。另外一个很主观的原因就是这学期记忆力大不如前，连写带画的看了5遍的课件，考试时还是记不住。</p>
+
+<p>时间安排的另一个方面就是平时上课写作业，每天被作业牵着鼻子走，最后只是为了草草完成作业，难点没有时间搞懂，重点也没有时间回顾。</p>
+
+<h1 id="section-3">考试与学习的协调</h1>
+
+<p>这也是最让我最难以权衡的。正如和在国内一样，应对考试必须要有很多额外的时间去刷题，背一些没有启发性的知识，并不是你把课上的东西领会了或者有所推广就一定能考试。所谓启发性，也就是我最感兴趣的。而这些启发性又难以用标准化的题目去考核。所以到了最后，就不得已放弃很多思考启发性问题的时间去背一些标准化的概念。</p>
+
+<p>上个学期总体说来时间安排还算合理，或者说幸运，每天一门作业。在接下来的学期上课撞车更严重，恐怕要更加努力了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[数理逻辑如何改变我的世界]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/20/how-mathematische-logik-changes-my-world/"/>
-    <updated>2014-08-20T18:25:31+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/08/20/how-mathematische-logik-changes-my-world</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/21/how-mathematische-logik-changes-my-world/"/>
+    <updated>2014-08-21T00:25:31+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/08/21/how-mathematische-logik-changes-my-world</id>
     <content type="html"><![CDATA[<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
 
 <p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
@@ -52,9 +83,9 @@
   
   <entry>
     <title type="html"><![CDATA[Angluin-Learning-Algorithm]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/15/anluin-learning-algorithm/"/>
-    <updated>2014-08-15T20:24:10+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/08/15/anluin-learning-algorithm</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/16/anluin-learning-algorithm/"/>
+    <updated>2014-08-16T02:24:10+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/08/16/anluin-learning-algorithm</id>
     <content type="html"><![CDATA[<p>前两天在知乎回答了一个关于<a href="http://www.zhihu.com/question/24824487/answer/29196253">识别某种特定语言的方法</a>，根据这两天0赞同的情况，不禁让我对知户上计算机从业者的基础理论水平深表怀疑，不过当我看到第一名的答案时确实非常激动，因为一下子想起了2年前在知乎实习时为了识别某个语言，发现用正则表达式可能会非常麻烦，于是写了个自动机，当时刚刚从编译课上学了些自动机的原理，并且第一次正式尝试用它来解决实际遇到的问题，自然是非常激动，而第一名的方法也正是通过构造自动机来生成正则表达式。</p>
 
 <p>不过在那之后，“自动机”与“编译”在我脑中基本成为两个非常相似的概念。我因为自动机的神奇而对编译中各种文法以及编译器的实现产生了兴趣。自认为目前做过最NB的一件事也于此相关——在看过龙书第一章，并且学习了推到规则之后，自己动手写了个简单的编译器作为大作业，不过大作业并没有因此得到满分，因为理论的欠缺，我甚至分不清lexical和syntax之间的区别，自认为高明的把词法分析、语法分析写在一起，并且跳过符号表；这些都被老师当成了扣分点。</p>
@@ -82,7 +113,7 @@
   <entry>
     <title type="html"><![CDATA[反面看极简生活]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/"/>
-    <updated>2014-07-30T08:54:47+02:00</updated>
+    <updated>2014-07-30T14:54:47+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo</id>
     <content type="html"><![CDATA[<p>这篇来说一下自己对于极简生活的2年多的实践和成果。最重要的不是倡导人去追求极简，而是如何让它改善我们现有的生活。当然我的大部分观点和主流极简主义倡导者是有出入的。</p>
 
@@ -105,7 +136,7 @@
   <entry>
     <title type="html"><![CDATA[lambda]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda/"/>
-    <updated>2014-07-16T13:39:35+02:00</updated>
+    <updated>2014-07-16T19:39:35+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda</id>
     <content type="html"><![CDATA[<p>复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
 
@@ -156,7 +187,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[从一个梦中得到的关于生活中的加密方法]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2014/06/24/encrypt-from-dream/"/>
-    <updated>2014-06-24T10:30:05+02:00</updated>
+    <updated>2014-06-24T16:30:05+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2014/06/24/encrypt-from-dream</id>
     <content type="html"><![CDATA[<p>前天做了一个梦：在火车上，列车员来查票，给她看了我的车票之后，他让我在上面写一个密码，来证明这张票是我的。</p>
 
@@ -185,9 +216,9 @@ elif i == 2, j == 3 then
   
   <entry>
     <title type="html"><![CDATA[最近这三年]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/04/17/zui-jin-zhe-san-nian/"/>
-    <updated>2014-04-17T21:00:34+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/04/17/zui-jin-zhe-san-nian</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/04/18/zui-jin-zhe-san-nian/"/>
+    <updated>2014-04-18T03:00:34+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/04/18/zui-jin-zhe-san-nian</id>
     <content type="html"><![CDATA[<h1 id="section">前言</h1>
 <p>两年前想着，考过德福之后写一篇最近这一年，来总结一下德语学习对于一个IT男的影响。当时万万没想到，真正拿到语言证明竟然是在那两年之后。今天收到了第二份足以让我入学的语言证书，才想起当初给自己的约定，于是写下此文缅怀本应该最珍贵那三年。</p>
 
@@ -213,9 +244,9 @@ elif i == 2, j == 3 then
   
   <entry>
     <title type="html"><![CDATA[德语助手Workflow]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/02/03/godic/"/>
-    <updated>2014-02-03T22:04:57+01:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/02/03/godic</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/02/04/godic/"/>
+    <updated>2014-02-04T05:04:57+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/02/04/godic</id>
     <content type="html"><![CDATA[<p>前两天mac下的德语助手不知怎么变聪明了，发现我没有购买，于是彻底不能用了，断网重装都不能解决，于是果断放弃，当晚写了一个alfred的workflow来代替。缺点就是在线查询确实慢。。。</p>
 
 <p><img src="http://xuanhuangyiqi.github.io/images/ScreenShot2014-02-03at9.58.55PM.png" /></p>
@@ -229,7 +260,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[翻译：如何读论文]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/09/28/ru-he-du-lun-wen/"/>
-    <updated>2013-09-28T14:02:01+02:00</updated>
+    <updated>2013-09-28T20:02:01+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/09/28/ru-he-du-lun-wen</id>
     <content type="html"><![CDATA[<p>本文只翻译了论文第二三部分</p>
 
@@ -298,7 +329,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[iOS Crash Logs 基本调研]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack/"/>
-    <updated>2013-09-02T13:30:03+02:00</updated>
+    <updated>2013-09-02T19:30:03+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack</id>
     <content type="html"><![CDATA[<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
 
@@ -374,7 +405,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[一个简单的同义词聚类方法]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/"/>
-    <updated>2013-04-19T15:57:00+02:00</updated>
+    <updated>2013-04-19T21:57:00+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa</id>
     <content type="html"><![CDATA[<p>今天忽然想起上次水了一把冯如杯的事。</p>
 
@@ -425,7 +456,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[python下的lambda递归包装]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
-    <updated>2013-04-11T11:33:50+02:00</updated>
+    <updated>2013-04-11T17:33:50+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
     <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
 <!--more-->
@@ -443,9 +474,9 @@ elif i == 2, j == 3 then
   
   <entry>
     <title type="html"><![CDATA[任务+md笔记——一次GTD实践]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian/"/>
-    <updated>2013-04-05T18:32:17+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/06/ren-wu-plus-mdbi-ji-ci-gtdshi-jian/"/>
+    <updated>2013-04-06T00:32:17+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/04/06/ren-wu-plus-mdbi-ji-ci-gtdshi-jian</id>
     <content type="html"><![CDATA[<p>一直没找到特别顺心的GTD工具，大多都是因为不能很好的和其他app配合，另外比较奇怪为什么没有比较完善的开源GTD app,于是自己写一个，重在把任务+笔记结合，并且可以通过Geek Tool和Alfred更新和查看简单任务信息，用vi作笔记，配合起来非常方便。项目中有明确的实施细节和用法。</p>
 
 <p><a title="项目" href="https://github.com/xuanhuangyiqi/open-task" target="_blank">项目</a>  <a href="http://task.htedsv.com" target="_blank">效果</a></p>
@@ -457,7 +488,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[生命游戏与细胞自动机]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
-    <updated>2013-03-10T15:25:03+01:00</updated>
+    <updated>2013-03-10T22:25:03+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
     <content type="html"><![CDATA[<p>“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
 
@@ -518,7 +549,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[推送来电消息到桌面]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian/"/>
-    <updated>2013-01-26T02:08:12+01:00</updated>
+    <updated>2013-01-26T09:08:12+08:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/01/26/tui-song-lai-dian-xiao-xi-dao-zhuo-mian</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Scenario 1:IT男有时候会把手机放在一个非常隐蔽的地方，然后专心致志的盯着屏幕写代码，这时来了重要电话，你却没听见。</p>
@@ -660,9 +691,9 @@ device.telephony.on(&#8216;incomingCall&#8217;, function (signal)
   
   <entry>
     <title type="html"><![CDATA[Vim使用者的Evernote使用经验（仅供mac用户参考）]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
-    <updated>2013-01-23T20:17:40+01:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/24/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
+    <updated>2013-01-24T03:17:40+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/01/24/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
     <content type="html"><![CDATA[<p>平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟，编辑过程很不爽，于是尝试在vim下编辑，然后同步到evernote的方案。</p>
 
 <!--more-->
