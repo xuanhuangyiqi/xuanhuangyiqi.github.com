@@ -7,7 +7,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="今天忽然想起上次水了一把冯如杯的事。 当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。 当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量， &hellip;">
+	<meta name="description" content="1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。 Crash Log 是什么？ 首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -109,6 +109,56 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2013/09/02/ios-crack/">
+		
+			iOS Crash Logs 基本调研</a>
+	</h2>
+	<div class="entry-content">
+		<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
+
+<h1 id="crash-log-">Crash Log 是什么？</h1>
+
+<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
+
+<p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
+
+<p>另外，看到下面各个Thread的函数堆栈中，能看到每行最右面有错误发生的<em>函数名</em>和对应的<em>行数</em>，如果你自己尝试做这个试验就会发现开始<em>函数</em>的位置是一个16位内存地址，过了一会才会自动被Xcode转换成函数名。</p>
+
+
+		
+		<a href="/blog/2013/09/02/ios-crack/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-02T19:30:03+08:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2013</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/crash/'>crash</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>, <a class='category' href='/blog/categories/log/'>log</a>, <a class='category' href='/blog/categories/symbolicate/'>symbolicate</a>, <a class='category' href='/blog/categories/diao-yan/'>调研</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
