@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 考试 | Htedsv Backyard]]></title>
+  <link href="http://xuanhuangyiqi.github.io/blog/categories/kao-shi/atom.xml" rel="self"/>
+  <link href="http://xuanhuangyiqi.github.io/"/>
+  <updated>2014-09-16T14:31:38+08:00</updated>
+  <id>http://xuanhuangyiqi.github.io/</id>
+  <author>
+    <name><![CDATA[htedsv]]></name>
+    <email><![CDATA[htedsv@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[考试总结]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/09/08/kao-shi-zong-jie/"/>
+    <updated>2014-09-08T22:33:34+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/09/08/kao-shi-zong-jie</id>
+    <content type="html"><![CDATA[<p>中秋佳节之际做一些小学生做的事情：考试总结。</p>
+
+<p>这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。唯一一门挂掉的MA课是我自认为本科期间做过很多相关工作（包括两次实验室经历和一次实习经历）的“数据挖掘”。通过的3门都是之前接触不多，反而最后能低分飘过。下面总结一下原因：
+<!--more--></p>
+
+<h1 id="section">基础知识薄弱</h1>
+
+<p>现在回头看看，确实觉得这一学期学的很辛苦，但是实际上那些被奉为神课的课并没有想象的那么难，即使缺少一些必要的基础知识，也是可以通过以前学习的考试技巧来Hack一下。尤其是理论方向的课，现在想想，每门课研究的“实体”其实都有章可循。大概都是归为相关性质与相关实例，性质引出实例，不同的实例又有不同的新性质。另外，通过考试内容可以发现，很多性质的证明并不重要，不需要深刻的理解。</p>
+
+<h1 id="section-1">题型不适应</h1>
+
+<p>基本每门课都不会给太多复习资料，对于第一次来德国，完全不知道如何复习，很多国内通用的复习策略在这里行不通。比如没有办法通过作业中的题目本身来判断是否可能在考试中出现，尤其是第一门的数据挖掘，看了一遍卷子就直接傻了。</p>
+
+<h1 id="section-2">时间安排不合理</h1>
+
+<p>考前一方面有些轻敌，一方面回家心切，所以5门必须的考试被安排在15天里，以至于第一门发现策略失败后，后面完全没有时间调整。另外一个很主观的原因就是这学期记忆力大不如前，连写带画的看了5遍的课件，考试时还是记不住。</p>
+
+<p>时间安排的另一个方面就是平时上课写作业，每天被作业牵着鼻子走，最后只是为了草草完成作业，难点没有时间搞懂，重点也没有时间回顾。</p>
+
+<h1 id="section-3">考试与学习的协调</h1>
+
+<p>这也是最让我最难以权衡的。正如和在国内一样，应对考试必须要有很多额外的时间去刷题，背一些没有启发性的知识，并不是你把课上的东西领会了或者有所推广就一定能考试。所谓启发性，也就是我最感兴趣的。而这些启发性又难以用标准化的题目去考核。所以到了最后，就不得已放弃很多思考启发性问题的时间去背一些标准化的概念。</p>
+
+<p>上个学期总体说来时间安排还算合理，或者说幸运，每天一门作业。在接下来的学期上课撞车更严重，恐怕要更加努力了。</p>
+]]></content>
+  </entry>
+  
+</feed>

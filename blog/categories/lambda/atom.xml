@@ -4,7 +4,7 @@
   <title><![CDATA[Category: lambda | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/lambda/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-09-15T00:20:03+08:00</updated>
+  <updated>2014-09-16T14:31:38+08:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[lambda]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda/"/>
+    <updated>2014-07-16T19:39:35+08:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda</id>
+    <content type="html"><![CDATA[<p>复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
+
+<p>我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
+\[  \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \]</p>
+
+<p>\[  \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \]</p>
+
+<p>\[  \mathfrak{A}_3 = (\{0, 1\}, ◦), a ◦ b = (a+b) mod 2 \]</p>
+
+<p>对于$ i, j \in {1, 2, 3}, i&lt;j $ 给出一个FO范式$\phi$来使得对于任意$i, j$都有$ \mathfrak{A}_i \models \phi $ 但是 $\mathfrak{A}_j \models \urcorner\phi$</p>
+
+<!--more-->
+
+<p><a href="https://logic.rwth-aachen.de/files/MaLo-SS14/home12.pdf">原题目</a>中要求对于每个<script type="math/tex">i, j</script>各写一个<script type="math/tex">\phi_{i,j}</script>，本题提高了难度，用一个范式写出来，如果这个题用编程的方法实现，大概是这样的，我们假设了：</p>
+
+<pre><code>for all a in {0, 1}:
+
+if i == 1, j == 2 then
+	return (a ◦ !a == 0)
+elif i == 1, j == 3 then
+	return (a ◦ !a == 0)
+elif i == 2, j == 3 then
+	return ((a ◦ a) != (!a ◦ !a))
+</code></pre>
+
+<p>显然，我们对于特定的<script type="math/tex">i, j</script>我们选择了尽量简单的区分两种运算符的范式，如果你能看懂上面的思路，那么下面就是要把这些东西依次转化成FO范式：</p>
+
+<script type="math/tex; mode=display"> \forall a(((i=1,j=2)\land(a◦!a == 0))\vee((i=1,j=3)\land(a ◦!a == 0))\vee((i=2,j=3)\land((a ◦ a) != (!a ◦ !a)))) </script>
+
+<p>不过在FO范式中，我们只定义了◦操作，所以要把取反“!”和常数“0”替换掉，例如我们定义取反<script type="math/tex">$\exists y(y \neq a \land \varphi)</script>$，替换常数0的过程省略。</p>
+
+<p>下一步要替换掉每个if条件，我们只要判断这个范式不符合第(6-i-j)个结构的性质就可以了，比如对于i=1, j=2,我们可以判断$ ((a ◦ a) != (!a ◦ !a)) $。</p>
+
+<p>这道题的改进版思路有两个重要的解题关键：替换常数和if。是不是感觉很熟悉？对！纯lambda算子，理解它的关键就是在于所有现代编程的3大控制结构：循环、选择、顺序是如何替换成lambda表达式的，以及在纯lambda中不出现常数，或者说是常量，有的只有函数。下面给一个简单的关于纯lambda思考题：</p>
+
+<p>我们用$\lambda xy.x$代表常量True，$\lambda xy.y$代表常量False。写出下列函数的lambda形式：</p>
+
+<ul>
+  <li>and</li>
+  <li>or</li>
+  <li>not</li>
+  <li>xor</li>
+  <li>implies</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[python下的lambda递归包装]]></title>
