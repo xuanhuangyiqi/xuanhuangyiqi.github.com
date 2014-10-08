@@ -4,7 +4,7 @@
   <title><![CDATA[Category: lambda | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/lambda/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-09-25T16:29:08+08:00</updated>
+  <updated>2014-10-08T19:00:16+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[lambda]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda/"/>
-    <updated>2014-07-16T19:39:35+08:00</updated>
+    <updated>2014-07-16T13:39:35+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2014/07/16/lambda</id>
     <content type="html"><![CDATA[<p>复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
 
@@ -69,7 +69,7 @@ elif i == 2, j == 3 then
   <entry>
     <title type="html"><![CDATA[python下的lambda递归包装]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
-    <updated>2013-04-11T17:33:50+08:00</updated>
+    <updated>2013-04-11T11:33:50+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
     <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
 <!--more-->

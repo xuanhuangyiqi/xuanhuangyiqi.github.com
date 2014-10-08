@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-09-25T16:29:08+08:00</updated>
+  <updated>2014-10-08T19:00:16+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vim使用者的Evernote使用经验（仅供mac用户参考）]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/24/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
-    <updated>2013-01-24T03:17:40+08:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/01/24/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-/"/>
+    <updated>2013-01-23T20:17:40+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2013/01/23/vimshi-yong-zhe-de-evernoteshi-yong-jing-yan-jin-gong-macyong-hu-can-kao-</id>
     <content type="html"><![CDATA[<p>平时在vim下写东西比较多，很多操作vim操作都习惯了，但是缺点就是不易管理和同步，vimwiki等插件也都用过，但是很难做到evernote这么强大（尽管evernote有很多缺点，后面详述）。evernote在编辑习惯上和大多数IDE一致，而且不能像vim定制快捷键，再加上各种延迟，编辑过程很不爽，于是尝试在vim下编辑，然后同步到evernote的方案。</p>
 
 <!--more-->

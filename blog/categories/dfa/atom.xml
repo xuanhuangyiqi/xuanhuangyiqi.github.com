@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DFA | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/dfa/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-09-25T16:29:08+08:00</updated>
+  <updated>2014-10-08T19:00:16+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Angluin-Learning-Algorithm]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/16/anluin-learning-algorithm/"/>
-    <updated>2014-08-16T02:24:10+08:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/08/16/anluin-learning-algorithm</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/15/anluin-learning-algorithm/"/>
+    <updated>2014-08-15T20:24:10+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/08/15/anluin-learning-algorithm</id>
     <content type="html"><![CDATA[<p>前两天在知乎回答了一个关于<a href="http://www.zhihu.com/question/24824487/answer/29196253">识别某种特定语言的方法</a>，根据这两天0赞同的情况，不禁让我对知户上计算机从业者的基础理论水平深表怀疑，不过当我看到第一名的答案时确实非常激动，因为一下子想起了2年前在知乎实习时为了识别某个语言，发现用正则表达式可能会非常麻烦，于是写了个自动机，当时刚刚从编译课上学了些自动机的原理，并且第一次正式尝试用它来解决实际遇到的问题，自然是非常激动，而第一名的方法也正是通过构造自动机来生成正则表达式。</p>
 
 <p>不过在那之后，“自动机”与“编译”在我脑中基本成为两个非常相似的概念。我因为自动机的神奇而对编译中各种文法以及编译器的实现产生了兴趣。自认为目前做过最NB的一件事也于此相关——在看过龙书第一章，并且学习了推到规则之后，自己动手写了个简单的编译器作为大作业，不过大作业并没有因此得到满分，因为理论的欠缺，我甚至分不清lexical和syntax之间的区别，自认为高明的把词法分析、语法分析写在一起，并且跳过符号表；这些都被老师当成了扣分点。</p>

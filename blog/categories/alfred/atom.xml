@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Alfred | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/alfred/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-09-25T16:29:08+08:00</updated>
+  <updated>2014-10-08T19:00:16+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[德语助手Workflow]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/02/04/godic/"/>
-    <updated>2014-02-04T05:04:57+08:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/02/04/godic</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/02/03/godic/"/>
+    <updated>2014-02-03T22:04:57+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/02/03/godic</id>
     <content type="html"><![CDATA[<p>前两天mac下的德语助手不知怎么变聪明了，发现我没有购买，于是彻底不能用了，断网重装都不能解决，于是果断放弃，当晚写了一个alfred的workflow来代替。缺点就是在线查询确实慢。。。</p>
 
 <p><img src="/images/ScreenShot2014-02-03at9.58.55PM.png"></p>

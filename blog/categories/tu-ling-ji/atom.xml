@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 图灵机 | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/tu-ling-ji/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-09-25T16:29:08+08:00</updated>
+  <updated>2014-10-08T19:00:16+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[数理逻辑如何改变我的世界]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/21/how-mathematische-logik-changes-my-world/"/>
-    <updated>2014-08-21T00:25:31+08:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2014/08/21/how-mathematische-logik-changes-my-world</id>
+    <link href="http://xuanhuangyiqi.github.io/blog/2014/08/20/how-mathematische-logik-changes-my-world/"/>
+    <updated>2014-08-20T18:25:31+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2014/08/20/how-mathematische-logik-changes-my-world</id>
     <content type="html"><![CDATA[<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
 
 <p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
