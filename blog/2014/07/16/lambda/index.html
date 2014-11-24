@@ -7,8 +7,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下： 我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
-\[ \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \] \[ \ &hellip;">
+	<meta name="description" content="复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下： 我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）： \[ \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \] \[ \ &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -18,7 +17,38 @@
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+    });
+</script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 </head>
 
 
@@ -87,7 +117,7 @@
 	<div class="entry-content"><p>复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
 
 <p>我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
-\[  \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \]</p>
+<script type="math/tex"> \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) </script></p>
 
 <p>\[  \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \]</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 函数式编程 | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/han-shu-shi-bian-cheng/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-10-25T10:54:31+02:00</updated>
+  <updated>2014-11-24T09:36:54+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -60,7 +60,7 @@
     <content type="html"><![CDATA[<p>复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
 
 <p>我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
-\[  \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) \]</p>
+<script type="math/tex"> \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) </script></p>
 
 <p>\[  \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \]</p>
 
