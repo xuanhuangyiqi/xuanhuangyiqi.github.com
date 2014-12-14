@@ -7,7 +7,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="本学期有一门叫做“Fondation of Data Science”的课，打着Data Science的幌子来讲数据库，让我完全对7所的理论课兴趣大减。究其原因，大概是它的某些先修课程我之前没学过，所以学起来吃力。 尽管如此，其中的很多观点还是值得借鉴和思考的。现在回想本科比较重要的课， &hellip;">
+	<meta name="description" content="列举几个关于德国教育的私吐槽。之前在知乎上评论或者发表过一些对于德国大学教育的看法，从始至终，无论对方如何恶言相对，我都保持和善和尽量谦虚的态度和他讨论，但最后发现，真正得到对方的认可，不是通过你的讨论态度、不是你的论点、不是你说话的逻辑，重要的是你有多了不起的经历。只要有这些经历， &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -113,6 +113,46 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/">
+		
+			关于德国教育的私吐槽</a>
+	</h2>
+	<div class="entry-content">
+		<p>列举几个关于德国教育的私吐槽。之前在知乎上评论或者发表过一些对于德国大学教育的看法，从始至终，无论对方如何恶言相对，我都保持和善和尽量谦虚的态度和他讨论，但最后发现，真正得到对方的认可，不是通过你的讨论态度、不是你的论点、不是你说话的逻辑，重要的是你有多了不起的经历。只要有这些经历，对方就会认为自己没资格继续否定你，否则，你的所有观点都是逻辑混乱。大概经历了几次，也就不再会去知乎参与德国或者德国大学相关的问题了。</p>
+
+<p>不过最近的一些学习体验还是让我想对德国大学或者教育发表一些看法。当然我不是最有资格发表评论的，经历也肯定比不上很多人。但是因为从未在公开场合看到完全符合我的认识的想法或观点，所以我很希望能把我的认识在这个相对隐私的地方表达出来，以免招来不必要的非议。</p>
+
+
+		
+		<a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/" class="more-link">Read on &rarr;</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-14T13:07:06+01:00" pubdate data-updated="true">Dec 14<span>th</span>, 2014</time></div>
+	<div class="tags">
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -493,68 +533,6 @@
 
 
 	<a class='category' href='/blog/categories/lambda/'>lambda</a>, <a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/06/24/encrypt-from-dream/">
-		
-			从一个梦中得到的关于生活中的加密方法</a>
-	</h2>
-	<div class="entry-content">
-		<p>前天做了一个梦：在火车上，列车员来查票，给她看了我的车票之后，他让我在上面写一个密码，来证明这张票是我的。</p>
-
-<p>在德国，买火车票的时候，有些车票并不是实名，所以要在车票上签名才能使用。因为德国上火车不需要检票，只需要上车之后列车员查票，并且一般不要求同时出示对应证件。而签名，似乎只是为了表示确认车票的使用者，而不能随便更改。这种措施显然没有什么意义，任何倒票、冒名用票的手段都不能被防止。</p>
-
-<p>显然倒票只能从购票的时候控制，所以不做讨论。我们下面来说下__如何防止偷票坐车__。</p>
-
-<ul>
-  <li>按照现有签名的办法，那么在检票员查票时应该同时查车票和有效证件，然后保证车票签名和证件姓名一致，证件照片和持票人本人一致，从而证明票人一致。但是因为增加了“证件”从而可能会引发一些问题，比如恰好偷票人和购票人姓名一样（当然可以通过增加生日来区分），比如伪造有效证件，或者忘记携带身份证，身份证被偷……</li>
-</ul>
-
-<p>下面提一下我在梦中的做法，也就是计算机加密算法的基础————大数分解：</p>
-
-<ul>
-  <li>
-    <p>首先想两个大质数，然后它们的乘积写到车票上，显然这个大数与两个质数唯一对应。查票人只要检查持票人能否写出两个质数，乘积为车票上的数即可。对于非法持有人，理论上是不能通过车票上的大数直接得到两个质因数的。</p>
-  </li>
-  <li>
-    <p>显然上面的方法要求持票人记住两个大质数，难以实现。所以完全可以换成两个普通的对自己有意义的大数，检票时，只要向检票员证明分解方法和两个数分别对自己的意义。</p>
-  </li>
-</ul>
-
-<p>嗯，这就是我前天做梦的内容。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-24T10:30:05+02:00" pubdate data-updated="true">Jun 24<span>th</span>, 2014</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/jia-mi/'>加密</a>, <a class='category' href='/blog/categories/da-shu-fen-jie/'>大数分解</a>, <a class='category' href='/blog/categories/zhi-shu/'>质数</a>
 
 
 </div>
