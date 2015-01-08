@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-12-14T13:20:14+01:00</updated>
+  <updated>2015-01-08T09:34:50+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -797,108 +797,200 @@ elif i == 2, j == 3 then
 <p>电脑：IP及端口经常变化，而且考虑到服务器的性能，不宜轮询，遂与服务器保持TCP连接，这样服务器同时也能接受http请求（http请求在网络层就是TCP请求）。</p>
 
 <h2 id="section-2">实现</h2>
-<p>使用了python的twisted框架，以下是代码：
-&lt;pre class=&#8221;brush: python; gutter: true&#8221;&gt;#Client</p>
+<p>使用了python的twisted框架，以下是代码：</p>
 
-<p>import os
-import time
-import urllib
-from twisted.internet import reactor
-from twisted.internet.protocol import Factory, Protocol
-from twisted.internet.endpoints import TCP4ClientEndpoint</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Client</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">import</span> <span class="nn">os</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">time</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">urllib</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">twisted.internet.protocol</span> <span class="kn">import</span> <span class="n">Factory</span><span class="p">,</span> <span class="n">Protocol</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">twisted.internet.endpoints</span> <span class="kn">import</span> <span class="n">TCP4ClientEndpoint</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Greeter</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">)</span>
+</span><span class="line">        <span class="k">pass</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">dataReceived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span><span class="line">        <span class="n">msg</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class="line">        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;export G_TITLE=</span><span class="si">%s</span><span class="s">;growl </span><span class="si">%s</span><span class="s">&quot;</span><span class="o">%</span> <span class="p">(</span><span class="s">&quot;From\ Your\ Phone&quot;</span><span class="p">,</span> <span class="n">msg</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">GreeterFactory</span><span class="p">(</span><span class="n">Factory</span><span class="p">):</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">buildProtocol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">Greeter</span><span class="p">()</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">gotProtocol</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+</span><span class="line">    <span class="k">pass</span>
+</span><span class="line">
+</span><span class="line"><span class="n">point</span> <span class="o">=</span> <span class="n">TCP4ClientEndpoint</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="s">&quot;&lt;SERVER&gt;&quot;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">PORT</span><span class="o">&gt;</span><span class="p">)</span>
+</span><span class="line"><span class="n">d</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">GreeterFactory</span><span class="p">())</span>
+</span><span class="line"><span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">gotProtocol</span><span class="p">)</span>
+</span><span class="line"><span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>class Greeter(Protocol):
-    def sendMessage(self, msg):
-        self.transport.write(&quot;%s\n&quot; % msg)
-        pass</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Server</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+</pre></td><td class="code"><pre><code class="python"><span class="line"><span class="kn">from</span> <span class="nn">twisted.internet.protocol</span> <span class="kn">import</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">Factory</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">twisted.internet.endpoints</span> <span class="kn">import</span> <span class="n">TCP4ServerEndpoint</span>
+</span><span class="line"><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">Echo</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">msg</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line">    <span class="k">def</span> <span class="nf">dataReceived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+</span><span class="line">        <span class="c">#self.transport.write(data)</span>
+</span><span class="line">        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;GET&#39;</span><span class="p">):</span>
+</span><span class="line">            <span class="n">msg</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class="line">            <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="mi">6</span><span class="p">:]</span>
+</span><span class="line">            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">protocols</span><span class="p">:</span>
+</span><span class="line">                <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">:</span>
+</span><span class="line">                    <span class="n">x</span><span class="o">.</span><span class="n">sendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">connectionLost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
+</span><span class="line">         <span class="s">&#39;lost&#39;</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="o">.</span><span class="n">protocols</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="k">class</span> <span class="nc">EFactory</span><span class="p">(</span><span class="n">Factory</span><span class="p">):</span>
+</span><span class="line">    <span class="n">protocol</span> <span class="o">=</span> <span class="n">Echo</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">quote</span> <span class="o">=</span> <span class="n">quote</span> <span class="ow">or</span> <span class="s">&#39;An&#39;</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">protocols</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span class="line">    <span class="k">def</span> <span class="nf">buildProtocol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+</span><span class="line">        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protocol</span><span class="p">()</span>
+</span><span class="line">        <span class="n">p</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="bp">self</span>
+</span><span class="line">        <span class="bp">self</span><span class="o">.</span><span class="n">protocols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">p</span>
+</span><span class="line">
+</span><span class="line"><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+</span><span class="line">    <span class="n">endpoint</span> <span class="o">=</span> <span class="n">TCP4ServerEndpoint</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">PORT</span><span class="o">&gt;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">endpoint</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">EFactory</span><span class="p">(</span><span class="s">&quot;Ok&quot;</span><span class="p">))</span>
+</span><span class="line">    <span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<pre><code>def dataReceived(self, msg):
-    msg = urllib.unquote(msg)
-    os.system(&amp;quot;export G_TITLE=%s;growl %s&amp;quot;% (&amp;quot;From\ Your\ Phone&amp;quot;, msg))
-</code></pre>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Android</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">device</span><span class="p">.</span><span class="nx">telephony</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;incomingCall&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">signal</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">notification</span> <span class="o">=</span> <span class="nx">device</span><span class="p">.</span><span class="nx">notifications</span><span class="p">.</span><span class="nx">createNotification</span><span class="p">(</span><span class="s1">&#39;Calling&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">notification</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</span><span class="line">    <span class="nx">device</span><span class="p">.</span><span class="nx">ajax</span><span class="p">(</span>
+</span><span class="line">    <span class="p">{</span>
+</span><span class="line">      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://&lt;SERVER&gt;:&lt;PORT&gt;/?msg=Call%20From:&#39;</span><span class="o">+</span><span class="nx">signal</span><span class="p">.</span><span class="nx">phoneNumber</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+</span><span class="line">      <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">        <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/xml&#39;</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">onSuccess</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">parsedBody</span><span class="p">;</span>
+</span><span class="line">      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">body</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">parsedBody</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">))))</span> <span class="p">{</span>
+</span><span class="line">        <span class="kd">var</span> <span class="nx">error</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">        <span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;invalid body format&#39;</span><span class="p">;</span>
+</span><span class="line">        <span class="nx">error</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="nx">body</span><span class="p">;</span>
+</span><span class="line">          <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;error: &#39;</span><span class="p">,</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;successfully received http response!&#39;</span><span class="p">);</span>
+</span><span class="line">      <span class="nx">notification</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="s1">&#39;successfully received http response!&#39;</span><span class="p">;</span>
+</span><span class="line">      <span class="nx">notification</span><span class="p">.</span><span class="nx">show</span><span class="p">();</span>
+</span><span class="line">    <span class="p">},</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">textStatus</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">error</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class="line">      <span class="nx">error</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="nx">textStatus</span><span class="p">;</span>
+</span><span class="line">      <span class="nx">error</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="p">;</span>
+</span><span class="line">        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;error: &#39;</span><span class="p">,</span><span class="nx">error</span><span class="p">);</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>class GreeterFactory(Factory):
-    def buildProtocol(self, addr):
-        return Greeter()</p>
-
-<p>def gotProtocol(p):
-    pass</p>
-
-<p>point = TCP4ClientEndpoint(reactor, &quot;&lt;SERVER&gt;&quot;, &lt;PORT&gt;)
-d = point.connect(GreeterFactory())
-d.addCallback(gotProtocol)
-reactor.run()&lt;/pre&gt;
-&lt;pre class=&#8221;brush: python; gutter: true&#8221;&gt;#Server</p>
-
-<p>from twisted.internet.protocol import Protocol, Factory
-from twisted.internet.endpoints import TCP4ServerEndpoint
-from twisted.internet import reactor</p>
-
-<p>class Echo(Protocol):
-    def sendMessage(self, msg):
-        self.transport.write(&quot;%s&quot; % msg)</p>
-
-<pre><code>def dataReceived(self, data):
-    #self.transport.write(data)
-    if data.startswith(&amp;#039;GET&amp;#039;):
-        msg = data.split(&amp;#039;\n&amp;#039;)[0].split(&amp;#039; &amp;#039;)[1]
-        msg = msg[6:]
-        for x in self.factory.protocols:
-            if x != self:
-                x.sendMessage(msg)
-def connectionLost(self, reason):
-     &amp;#039;lost&amp;#039;
-    self.factory.protocols.remove(self)
-</code></pre>
-
-<p>class EFactory(Factory):
-    protocol = Echo
-    def <strong>init</strong>(self, quote=None):
-        self.quote = quote or &#8216;An&#8217;
-        self.protocols = []
-    def buildProtocol(self, addr):
-        p = self.protocol()
-        p.factory = self
-        self.protocols.append(p)
-        return p</p>
-
-<p>while True:
-    endpoint = TCP4ServerEndpoint(reactor, &lt;PORT&gt;)
-    endpoint.listen(EFactory(&quot;Ok&quot;))
-    reactor.run()
-     &#8216;stop&#8217;&lt;/pre&gt;
-&lt;pre class=&#8221;brush: javascript; gutter: true&#8221;&gt;//Android
-device.telephony.on(&#8216;incomingCall&#8217;, function (signal) 
-{
-    var notification = device.notifications.createNotification(&#8216;Calling&#8217;);
-    notification.show();
-    device.ajax(
-    {
-      url: &#8216;http://&lt;SERVER&gt;:&lt;PORT&gt;/?msg=Call%20From:&#8217;+signal.phoneNumber,
-      type: &#8216;GET&#8217;,
-      headers: {
-        &#8216;Content-Type&#8217;: &#8216;application/xml&#8217;
-      }
-    },
-    function onSuccess(body, textStatus, response) {
-      var parsedBody;
-      if(!(body &amp;&amp; (parsedBody = JSON.parse(body)))) {
-        var error = {};
-        error.message = &#8216;invalid body format&#8217;;
-        error.content = body;
-          console.error(&#8216;error: &#8216;,error);
-      }
-      console.info(&#8216;successfully received http response!&#8217;);
-      notification.content = &#8216;successfully received http response!&#8217;;
-      notification.show();
-    },
-    function onError(textStatus, response) {
-      var error = {};
-      error.message = textStatus;
-      error.statusCode = response.status;
-        console.error(&#8216;error: &#8216;,error);
-    });
-});&lt;/pre&gt;</p>
 <h2>难点</h2>
 <p>值得一提的是小米的权限管理比较恶心，开始我的来电事件一直没有被捕捉到，就是因为被小米拦截了，并且没有给出任何提示。直到现在短信监听器依然不能用，应该是这部分API被锁在MIUI里面了。所以只是实现了来电提示，而没有短信提示。</p>
 

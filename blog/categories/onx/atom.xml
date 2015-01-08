@@ -4,7 +4,7 @@
   <title><![CDATA[Category: onx | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/onx/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2014-12-14T13:20:14+01:00</updated>
+  <updated>2015-01-08T09:34:50+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -47,8 +47,9 @@
 <p>电脑：IP及端口经常变化，而且考虑到服务器的性能，不宜轮询，遂与服务器保持TCP连接，这样服务器同时也能接受http请求（http请求在网络层就是TCP请求）。</p>
 
 <h2 id="section-2">实现</h2>
-<p>使用了python的twisted框架，以下是代码：
-&lt;pre class="brush: python; gutter: true"&gt;#Client</p>
+<p>使用了python的twisted框架，以下是代码：</p>
+
+<p>``` python Client</p>
 
 <p>import os
 import time
@@ -59,12 +60,12 @@ from twisted.internet.endpoints import TCP4ClientEndpoint</p>
 
 <p>class Greeter(Protocol):
     def sendMessage(self, msg):
-        self.transport.write(&quot;%s\n&quot; % msg)
+        self.transport.write(“%s\n” % msg)
         pass</p>
 
 <pre><code>def dataReceived(self, msg):
     msg = urllib.unquote(msg)
-    os.system(&amp;quot;export G_TITLE=%s;growl %s&amp;quot;% (&amp;quot;From\ Your\ Phone&amp;quot;, msg))
+    os.system("export G_TITLE=%s;growl %s"% ("From\ Your\ Phone", msg))
 </code></pre>
 
 <p>class GreeterFactory(Factory):
@@ -74,11 +75,13 @@ from twisted.internet.endpoints import TCP4ClientEndpoint</p>
 <p>def gotProtocol(p):
     pass</p>
 
-<p>point = TCP4ClientEndpoint(reactor, &quot;&lt;SERVER&gt;&quot;, &lt;PORT&gt;)
+<p>point = TCP4ClientEndpoint(reactor, “<server>", <port>)
 d = point.connect(GreeterFactory())
 d.addCallback(gotProtocol)
-reactor.run()&lt;/pre&gt;
-&lt;pre class="brush: python; gutter: true"&gt;#Server</p>
+reactor.run()
+```</port></server></p>
+
+<p>``` python Server</p>
 
 <p>from twisted.internet.protocol import Protocol, Factory
 from twisted.internet.endpoints import TCP4ServerEndpoint
@@ -86,25 +89,25 @@ from twisted.internet import reactor</p>
 
 <p>class Echo(Protocol):
     def sendMessage(self, msg):
-        self.transport.write(&quot;%s&quot; % msg)</p>
+        self.transport.write(“%s” % msg)</p>
 
 <pre><code>def dataReceived(self, data):
     #self.transport.write(data)
-    if data.startswith(&amp;#039;GET&amp;#039;):
-        msg = data.split(&amp;#039;\n&amp;#039;)[0].split(&amp;#039; &amp;#039;)[1]
+    if data.startswith('GET'):
+        msg = data.split('\n')[0].split(' ')[1]
         msg = msg[6:]
         for x in self.factory.protocols:
             if x != self:
                 x.sendMessage(msg)
 def connectionLost(self, reason):
-     &amp;#039;lost&amp;#039;
+     'lost'
     self.factory.protocols.remove(self)
 </code></pre>
 
 <p>class EFactory(Factory):
     protocol = Echo
     def <strong>init</strong>(self, quote=None):
-        self.quote = quote or 'An'
+        self.quote = quote or ‘An’
         self.protocols = []
     def buildProtocol(self, addr):
         p = self.protocol()
@@ -113,11 +116,13 @@ def connectionLost(self, reason):
         return p</p>
 
 <p>while True:
-    endpoint = TCP4ServerEndpoint(reactor, &lt;PORT&gt;)
-    endpoint.listen(EFactory(&quot;Ok&quot;))
-    reactor.run()
-     'stop'&lt;/pre&gt;
-&lt;pre class="brush: javascript; gutter: true"&gt;//Android
+    endpoint = TCP4ServerEndpoint(reactor, <port>)
+    endpoint.listen(EFactory("Ok"))
+    reactor.run()</port></p>
+
+<p>```</p>
+
+<p><code>javascript Android
 device.telephony.on('incomingCall', function (signal) 
 {
     var notification = device.notifications.createNotification('Calling');
@@ -148,7 +153,9 @@ device.telephony.on('incomingCall', function (signal)
       error.statusCode = response.status;
         console.error('error: ',error);
     });
-});&lt;/pre&gt;</p>
+});
+</code></p>
+
 <h2>难点</h2>
 <p>值得一提的是小米的权限管理比较恶心，开始我的来电事件一直没有被捕捉到，就是因为被小米拦截了，并且没有给出任何提示。直到现在短信监听器依然不能用，应该是这部分API被锁在MIUI里面了。所以只是实现了来电提示，而没有短信提示。</p>
 
