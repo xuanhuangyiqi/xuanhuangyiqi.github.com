@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: shell | Htedsv Backyard]]></title>
+  <link href="http://xuanhuangyiqi.github.io/blog/categories/shell/atom.xml" rel="self"/>
+  <link href="http://xuanhuangyiqi.github.io/"/>
+  <updated>2015-01-17T19:53:00+01:00</updated>
+  <id>http://xuanhuangyiqi.github.io/</id>
+  <author>
+    <name><![CDATA[htedsv]]></name>
+    <email><![CDATA[htedsv@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[对Spotlight的简单扩展]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2015/01/17/spotlight-extension/"/>
+    <updated>2015-01-17T19:34:08+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2015/01/17/spotlight-extension</id>
+    <content type="html"><![CDATA[<p>Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。</p>
+
+<ul>
+  <li>首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。</li>
+</ul>
+
+<p><code>
+#! /bin/sh
+# Filename: isc
+find ~/Desktop/Dropbox/ISC/Exercises/ -name "SC*" -type d | tail -n 1 | xargs open
+</code>
+* 增加执行权限</p>
+
+<p><code>
+&gt; chmod +x isc
+</code></p>
+
+<ul>
+  <li>
+    <p>右击文件修改 -&gt; “Get Info” -&gt; “Open With” -&gt; “iTerm” -&gt; “Change All”</p>
+  </li>
+  <li>
+    <p>在Spotlight中输入文件并执行</p>
+  </li>
+</ul>
+
+<p>不过这种方法只是利用了Shell的扩展性，还是不能做到Alfred那样任意接收参数并且实时返回结果。但是解决一般问题应该是足够了。</p>
+]]></content>
+  </entry>
+  
+</feed>

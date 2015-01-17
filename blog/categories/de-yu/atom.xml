@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 德语 | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/de-yu/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-01-08T09:34:50+01:00</updated>
+  <updated>2015-01-17T19:53:00+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -50,7 +50,7 @@
     <id>http://xuanhuangyiqi.github.io/blog/2014/02/03/godic</id>
     <content type="html"><![CDATA[<p>前两天mac下的德语助手不知怎么变聪明了，发现我没有购买，于是彻底不能用了，断网重装都不能解决，于是果断放弃，当晚写了一个alfred的workflow来代替。缺点就是在线查询确实慢。。。</p>
 
-<p><img src="/images/ScreenShot2014-02-03at9.58.55PM.png"></p>
+<p>{% img /images/ScreenShot2014-02-03at9.58.55PM.png %}</p>
 
 <p>废话不多说，上项目链接：</p>
 

@@ -7,7 +7,10 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="列举几个关于德国教育的私吐槽。之前在知乎上评论或者发表过一些对于德国大学教育的看法，从始至终，无论对方如何恶言相对，我都保持和善和尽量谦虚的态度和他讨论，但最后发现，真正得到对方的认可，不是通过你的讨论态度、不是你的论点、不是你说话的逻辑，重要的是你有多了不起的经历。只要有这些经历， &hellip;">
+	<meta name="description" content="Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。 首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。 1
+2
+3
+#! / &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -113,6 +116,75 @@
 		
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h2 class="title">
+		
+		<a href="/blog/2015/01/17/spotlight-extension/">
+		
+			对Spotlight的简单扩展</a>
+	</h2>
+	<div class="entry-content">
+		<p>Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。</p>
+
+<ul>
+  <li>首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">#! /bin/sh
+</span><span class="line"># Filename: isc
+</span><span class="line">find ~/Desktop/Dropbox/ISC/Exercises/ -name "SC*" -type d | tail -n 1 | xargs open</span></code></pre></td></tr></table></div></figure></notextile></div>
+<ul>
+  <li>增加执行权限</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">&gt; chmod +x isc</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>
+    <p>右击文件修改 -&gt; “Get Info” -&gt; “Open With” -&gt; “iTerm” -&gt; “Change All”</p>
+  </li>
+  <li>
+    <p>在Spotlight中输入文件并执行</p>
+  </li>
+</ul>
+
+<p>不过这种方法只是利用了Shell的扩展性，还是不能做到Alfred那样任意接收参数并且实时返回结果。但是解决一般问题应该是足够了。</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-17T19:34:08+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2015</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/spotlight/'>spotlight</a>
+
+
+</div>
+	
+</div>
+</article>
 
 
     <article class="post">
@@ -482,57 +554,6 @@
 
 
 	<a class='category' href='/blog/categories/ji-jian/'>极简</a>, <a class='category' href='/blog/categories/sheng-huo/'>生活</a>
-
-
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/07/16/lambda/">
-		
-			Lambda</a>
-	</h2>
-	<div class="entry-content">
-		<p>复习无聊，写点东西，想起来昨天“数理逻辑”课上最后一道题有些意思，拿出来分享一下：</p>
-
-<p>我们定义一个运算“◦”，它是一个二元函数。下面我们定3个结构（包括操作域与运算符）：
-<script type="math/tex"> \mathfrak{A}_1 = (\{0, 1\}, ◦), a ◦ b = min(a, b) </script></p>
-
-<p>\[  \mathfrak{A}_2 = (\{0, 1\}, ◦), a ◦ b = max(a, b) \]</p>
-
-<p>\[  \mathfrak{A}_3 = (\{0, 1\}, ◦), a ◦ b = (a+b) mod 2 \]</p>
-
-<p>对于$ i, j \in {1, 2, 3}, i&lt;j $ 给出一个FO范式$\phi$来使得对于任意$i, j$都有$ \mathfrak{A}_i \models \phi $ 但是 $\mathfrak{A}_j \models \urcorner\phi$</p>
-
-
-		
-		<a href="/blog/2014/07/16/lambda/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-16T13:39:35+02:00" pubdate data-updated="true">Jul 16<span>th</span>, 2014</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/lambda/'>lambda</a>, <a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>
 
 
 </div>

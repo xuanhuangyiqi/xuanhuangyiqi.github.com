@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 工具 | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/gong-ju/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-01-08T09:34:50+01:00</updated>
+  <updated>2015-01-17T19:53:00+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -39,7 +39,7 @@
   <p>Scenario 2:出门匆忙，手机忘了带，又不方便回去拿，如何及时知道有谁正在给你打电话?</p>
 </blockquote>
 
-<p><img src="/images/original_ZIeB_7c5500000bcc118d.jpg"></p>
+<p>{% img /images/original_ZIeB_7c5500000bcc118d.jpg %}</p>
 
 <p>于是写了以下脚本来实现推送来电信息到桌面的脚本。
 <!--more--></p>
