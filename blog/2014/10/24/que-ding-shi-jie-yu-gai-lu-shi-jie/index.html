@@ -1,145 +1,121 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>确定世界与概率世界 - Htedsv Backyard</title>
-  <meta name="author" content="htedsv">
+<!DOCTYPE HTML>
 
-  
-  <meta name="description" content="这篇没有涉及具体的理论知识，主要是建立在部分相关经历之上的一些臆想，所以多少会有些民科思维。的确，我在这方面的经验少的可怜。但是相比于能看到我博客的人来说，信息不对称还是非常严重的。从刚入学我就多次表达了我的震惊。我发现计算机科学还有这么大一片领域我几乎一无所知，最可怕的是，我所谓的一些“ &hellip;">
-  
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>确定世界与概率世界 - Htedsv Backyard</title>
+	<meta name="author" content="htedsv">
+
+	
+	<meta name="description" content="确定世界与概率世界 这篇没有涉及具体的理论知识，主要是建立在部分相关经历之上的一些臆想，所以多少会有些民科思维。的确，我在这方面的经验少的可怜。但是相比于能看到我博客的人来说，信息不对称还是非常严重的。从刚入学我就多次表达了我的震惊。我发现计算机科学还有这么大一片领域我几乎一无所知，最可怕的是， &hellip;">
+	
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  <link rel="canonical" href="http://xuanhuangyiqi.github.io/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
-  <!-- font-family: 'Knewave', cursive; -->
-<link href='http://fonts.googleapis.com/css?family=Knewave' rel='stylesheet' type='text/css'>
-<!-- font-family: 'Cantata One', serif; -->
-<link href='http://fonts.googleapis.com/css?family=Cantata+One' rel='stylesheet' type='text/css'>
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            processEscapes: true
-        }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-    all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-    });
-</script>
-
-<script type="text/javascript"
-    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    </script>
+	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://xuanhuangyiqi.github.io/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+  <meta name="google-translate-customization" content="a4f5eb9394563358-7f14fd9f69a53a2a-g4e5762ba5cd78f2b-f"></meta>
+<div id="google_translate_element"></div><script type="text/javascript">
+    function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element');
+      }
+  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          
 
   
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-47274484-1']);
-    _gaq.push(['_trackPageview']);
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-47274484-1']);
+		_gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <h1>
-      <a href="/">Htedsv Backyard</a>
-      
-        <span>Geek Hack Crack</span>
-      
-  </h1>
-</hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-    <li><a href="htedsv@gmail.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:xuanhuangyiqi.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Home</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("xuanhuangyiqi@126.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/htedsv">About</a></li>
+    <li><a href="/resume">Resume</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
 </nav>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">确定世界与概率世界</h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-24T21:45:20+02:00" pubdate data-updated="true">Oct 24<span>th</span>, 2014</time>
-        
-        
-      </p>
-    
-  </header>
-
-
-<div class="entry-content"><p>这篇没有涉及具体的理论知识，主要是建立在部分相关经历之上的一些臆想，所以多少会有些民科思维。的确，我在这方面的经验少的可怜。但是相比于能看到我博客的人来说，信息不对称还是非常严重的。从刚入学我就多次表达了我的震惊。我发现计算机科学还有这么大一片领域我几乎一无所知，最可怕的是，我所谓的一些“基础和见识”可能也就是当地大二学生的水平。经过了一个暑假的沉淀和反思，我对于形式理论的极端态度渐渐冷却，所以，我也希望我能把它放到和其他领域平等的地位上考虑一些它们之间的关系。</p>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:xuanhuangyiqi@126.com" title="Email">Email</a>
+		
+		
+		
+			<a class="google" href="https://plus.google.com/110950069380933156197" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/htedsv" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/xuanhuangyiqi" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">确定世界与概率世界</h1>
+	<div class="entry-content" itemprop="articleBody"><p>这篇没有涉及具体的理论知识，主要是建立在部分相关经历之上的一些臆想，所以多少会有些民科思维。的确，我在这方面的经验少的可怜。但是相比于能看到我博客的人来说，信息不对称还是非常严重的。从刚入学我就多次表达了我的震惊。我发现计算机科学还有这么大一片领域我几乎一无所知，最可怕的是，我所谓的一些“基础和见识”可能也就是当地大二学生的水平。经过了一个暑假的沉淀和反思，我对于形式理论的极端态度渐渐冷却，所以，我也希望我能把它放到和其他领域平等的地位上考虑一些它们之间的关系。</p>
 
 <!--more-->
 <p>如果我们想表达两件事情A和B的必然因果关系，形式方法是A-&gt;B，而概率方法是p(B\|A)=1。这就是两个世界的建立基础。所谓“世界”并不是从学科发展的角度，即，不是按照先学p(A)，然后学p(A,B)最后学条件概率。而是按照世界运转的“元操作”。说到这，可能还是要提一下“世界”的动与静。世界可以是一个生态环境，一个程序中的类，也可以是一个人的个体。而“动”和“静”（或者叫行为与状态），可以类比成“算法”和“数据结构”，“类方法”和“类参数”，“代码”与“数据”。不过要认识、分析和解决计算机科学根本的问题还是要放在最根本的模型上。我说的当然不是图灵机，而是比图灵机更早，而且标定计算机能力疆界的——形式逻辑。</p>
@@ -171,150 +147,45 @@
 <p>如今，“单纯的形式理论”已死，也不会有人太多人研究“真正的智能”。更多的是将其和统计学方法结合，解决生活中具体的问题。相信随着更多复杂的形式理论的引入，我们能在未来构建更加完善的“世界”。</p>
 </div>
 
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">htedsv</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-24T21:45:20+02:00" pubdate data-updated="true">Oct 24<span>th</span>, 2014</time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/bayes/'>Bayes</a>, <a class='category' href='/blog/categories/logic/'>Logic</a>, <a class='category' href='/blog/categories/probablistic/'>Probablistic</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://xuanhuangyiqi.github.io/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/" data-via="htedsv" data-counturl="http://xuanhuangyiqi.github.io/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/" >Tweet</a>
-  
-  
-  
-</div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/" title="Previous Post: 一年咖啡龄感受总结">&laquo; 一年咖啡龄感受总结</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2014/12/01/general-way-to-understand-program/" title="Next Post: 更通用的角度理解程序与数据">更通用的角度理解程序与数据 &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
-  <section>
-    <h1>Comments</h1>
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
     <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
-
+</section>
 </div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
 
-<aside class="sidebar">
-  
-    <section class="first odd">
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/01/17/spotlight-extension/">对Spotlight的简单扩展</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/">关于德国教育的私吐槽</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/01/general-way-to-understand-program/">更通用的角度理解程序与数据</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">确定世界与概率世界</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/">一年咖啡龄感受总结</a>
-      </li>
-    
-  </ul>
-</section>
-
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/xuanhuangyiqi">@xuanhuangyiqi</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'xuanhuangyiqi',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
+    htedsv
 
 
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
 
-<section class="googleplus">
-  <h1>
-    <a href="https://plus.google.com/110950069380933156197?rel=author">
-      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
-      Google+
-    </a>
-  </h1>
-</section>
-
-
-
-  
-</aside>
-
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - htedsv -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/gluttony/object-octopress-theme">Object</a></span>
-</p>
-
-</footer>
-  
 
 <script type="text/javascript">
       var disqus_shortname = 'htedsvbackyard';
@@ -334,21 +205,17 @@
 
 
 
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-47274484-1']);
+		_gaq.push(['_trackPageview']);
 
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 
