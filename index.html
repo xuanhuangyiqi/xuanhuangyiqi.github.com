@@ -1,26 +1,38 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>Htedsv Backyard</title>
-	<meta name="author" content="htedsv">
+  <meta charset="utf-8">
+  <title>Htedsv Backyard</title>
+  <meta name="author" content="htedsv">
 
-	
-	<meta name="description" content="Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。 首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。 1
+  
+  <meta name="description" content="Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。 首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。 1
 2
 3
-#! / &hellip;">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+#! /bin &hellip;">
+  
 
-	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!-- mathjax config similar to math.stackexchange -->
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://xuanhuangyiqi.github.io/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
+  <!-- font-family: 'Knewave', cursive; -->
+<link href='http://fonts.googleapis.com/css?family=Knewave' rel='stylesheet' type='text/css'>
+<!-- font-family: 'Cantata One', serif; -->
+<link href='http://fonts.googleapis.com/css?family=Cantata+One' rel='stylesheet' type='text/css'>
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -50,83 +62,100 @@
 
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47274484-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">Htedsv Backyard</a></h1>
-<nav id="main-nav"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/resume/">Resume</a></li>
-	<li><a href="/you-qu-de-shi-yan/">Projects</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/resume/">Resume</a></li>
-	<li><a href="/you-qu-de-shi-yan/">Projects</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
-			</form>
-		</div>
-	</div>
-</nav>
-<nav id="sub-nav" class="alignright">
-	<div class="social">
-		
-		
-		<a class="google" href="https://plus.google.com/110950069380933156197?rel=author" title="Google+">Google+</a>
-		
-		
-		<a class="twitter" href="http://twitter.com/htedsv" title="Twitter">Twitter</a>
-		
-		
-		<a class="github" href="https://github.com/xuanhuangyiqi" title="GitHub">GitHub</a>
-		
-    
-		
-		
-		
-		
-		
-		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-    
-	</div>
-	<form class="search" action="http://google.com/search" method="get">
-		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:xuanhuangyiqi.github.io">
-	</form>
-</nav>
+<body   >
+  <header role="banner"><hgroup>
+  <h1>
+      <a href="/">Htedsv Backyard</a>
+      
+        <span>Geek Hack Crack</span>
+      
+  </h1>
+</hgroup>
 
 </header>
-	
-		
-	
-	<div id="content" class="inner">
+  <nav role="navigation"><ul class="subscription" data-subscription="rss email">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+    <li><a href="htedsv@gmail.com" rel="subscribe-email" title="subscribe via email">Email</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:xuanhuangyiqi.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/17/spotlight-extension/">对Spotlight的简单扩展</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/01/17/spotlight-extension/">
-		
-			对Spotlight的简单扩展</a>
-	</h2>
-	<div class="entry-content">
-		<p>Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。</p>
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-01-17T19:34:08+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2015</time>
+        
+        
+          | 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/spotlight/'>spotlight</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。</p>
 
 <ul>
   <li>首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。</li>
@@ -155,14 +184,23 @@
 </ul>
 
 <p>不过这种方法只是利用了Shell的扩展性，还是不能做到Alfred那样任意接收参数并且实时返回结果。但是解决一般问题应该是足够了。</p>
+</div>
+  
+  
 
-		
-		
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/">关于德国教育的私吐槽</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -174,39 +212,49 @@
   
 
 
-<time datetime="2015-01-17T19:34:08+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2015</time></div>
-	<div class="tags">
+<time datetime="2014-12-14T13:07:06+01:00" pubdate data-updated="true">Dec 14<span>th</span>, 2014</time>
+        
+        
+          | 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/zhihu/'>zhihu</a>, <a class='category' href='/blog/categories/ya-chen/'>亚琛</a>, <a class='category' href='/blog/categories/de-guo/'>德国</a>
+  
+</span>
 
 
-	<a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/spotlight/'>spotlight</a>
+        
+      </p>
+    
+  </header>
 
 
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/">
-		
-			关于德国教育的私吐槽</a>
-	</h2>
-	<div class="entry-content">
-		<p>列举几个关于德国教育的私吐槽。之前在知乎上评论或者发表过一些对于德国大学教育的看法，从始至终，无论对方如何恶言相对，我都保持和善和尽量谦虚的态度和他讨论，但最后发现，真正得到对方的认可，不是通过你的讨论态度、不是你的论点、不是你说话的逻辑，重要的是你有多了不起的经历。只要有这些经历，对方就会认为自己没资格继续否定你，否则，你的所有观点都是逻辑混乱。大概经历了几次，也就不再会去知乎参与德国或者德国大学相关的问题了。</p>
+  <div class="entry-content"><p>列举几个关于德国教育的私吐槽。之前在知乎上评论或者发表过一些对于德国大学教育的看法，从始至终，无论对方如何恶言相对，我都保持和善和尽量谦虚的态度和他讨论，但最后发现，真正得到对方的认可，不是通过你的讨论态度、不是你的论点、不是你说话的逻辑，重要的是你有多了不起的经历。只要有这些经历，对方就会认为自己没资格继续否定你，否则，你的所有观点都是逻辑混乱。大概经历了几次，也就不再会去知乎参与德国或者德国大学相关的问题了。</p>
 
 <p>不过最近的一些学习体验还是让我想对德国大学或者教育发表一些看法。当然我不是最有资格发表评论的，经历也肯定比不上很多人。但是因为从未在公开场合看到完全符合我的认识的想法或观点，所以我很希望能把我的认识在这个相对隐私的地方表达出来，以免招来不必要的非议。</p>
 
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/">Read on &rarr;</a>
+    </footer>
+  
 
-		
-		<a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/" class="more-link">Read on &rarr;</a>
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/01/general-way-to-understand-program/">更通用的角度理解程序与数据</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -218,34 +266,48 @@
   
 
 
-<time datetime="2014-12-14T13:07:06+01:00" pubdate data-updated="true">Dec 14<span>th</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-12-01T00:22:00+01:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time>
+        
+        
+          | 
 
-</div>
-	
-</div>
-</article>
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/database/'>Database</a>, <a class='category' href='/blog/categories/logic/'>Logic</a>, <a class='category' href='/blog/categories/prolog/'>Prolog</a>, <a class='category' href='/blog/categories/turing-machine/'>Turing Machine</a>
+  
+</span>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/12/01/general-way-to-understand-program/">
-		
-			更通用的角度理解程序与数据</a>
-	</h2>
-	<div class="entry-content">
-		<p>本学期有一门叫做“Fondation of Data Science”的课，打着Data Science的幌子来讲数据库，让我完全对7所的理论课兴趣大减。究其原因，大概是它的某些先修课程我之前没学过，所以学起来吃力。</p>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本学期有一门叫做“Fondation of Data Science”的课，打着Data Science的幌子来讲数据库，让我完全对7所的理论课兴趣大减。究其原因，大概是它的某些先修课程我之前没学过，所以学起来吃力。</p>
 
 <p>尽管如此，其中的很多观点还是值得借鉴和思考的。现在回想本科比较重要的课，大概有这么几门：编译原理、数据库、计算机网络、操作系统。我认为包括美国在内的计算机专业比较强的学校都在教育过程中弱化各个领域的关系。这当然从某些角度来说是有好处的。但是从更抽象、更理论的角度来看，不利于学生对于本质问题的理解。
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/01/general-way-to-understand-program/">Read on &rarr;</a>
+    </footer>
+  
 
-		
-		<a href="/blog/2014/12/01/general-way-to-understand-program/" class="more-link">Read on &rarr;</a>
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">确定世界与概率世界</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -257,33 +319,47 @@
   
 
 
-<time datetime="2014-12-01T00:22:00+01:00" pubdate data-updated="true">Dec 1<span>st</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-10-24T21:45:20+02:00" pubdate data-updated="true">Oct 24<span>th</span>, 2014</time>
+        
+        
+          | 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bayes/'>Bayes</a>, <a class='category' href='/blog/categories/logic/'>Logic</a>, <a class='category' href='/blog/categories/probablistic/'>Probablistic</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这篇没有涉及具体的理论知识，主要是建立在部分相关经历之上的一些臆想，所以多少会有些民科思维。的确，我在这方面的经验少的可怜。但是相比于能看到我博客的人来说，信息不对称还是非常严重的。从刚入学我就多次表达了我的震惊。我发现计算机科学还有这么大一片领域我几乎一无所知，最可怕的是，我所谓的一些“基础和见识”可能也就是当地大二学生的水平。经过了一个暑假的沉淀和反思，我对于形式理论的极端态度渐渐冷却，所以，我也希望我能把它放到和其他领域平等的地位上考虑一些它们之间的关系。</p>
 
 </div>
-	
-</div>
-</article>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">Read on &rarr;</a>
+    </footer>
+  
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">
-		
-			确定世界与概率世界</a>
-	</h2>
-	<div class="entry-content">
-		<p>这篇没有涉及具体的理论知识，主要是建立在部分相关经历之上的一些臆想，所以多少会有些民科思维。的确，我在这方面的经验少的可怜。但是相比于能看到我博客的人来说，信息不对称还是非常严重的。从刚入学我就多次表达了我的震惊。我发现计算机科学还有这么大一片领域我几乎一无所知，最可怕的是，我所谓的一些“基础和见识”可能也就是当地大二学生的水平。经过了一个暑假的沉淀和反思，我对于形式理论的极端态度渐渐冷却，所以，我也希望我能把它放到和其他领域平等的地位上考虑一些它们之间的关系。</p>
-
-
-		
-		<a href="/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/">一年咖啡龄感受总结</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -295,35 +371,49 @@
   
 
 
-<time datetime="2014-10-24T21:45:20+02:00" pubdate data-updated="true">Oct 24<span>th</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-09-23T04:40:00+02:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2014</time>
+        
+        
+          | 
 
-</div>
-	
-</div>
-</article>
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ka-pei/'>咖啡</a>
+  
+</span>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/">
-		
-			一年咖啡龄感受总结</a>
-	</h2>
-	<div class="entry-content">
-		<p>尽管从大三开始就已经开始喝咖啡，不过在国内，更多的还是笼罩在速溶咖啡的阴云之下。速溶咖啡能比较受欢迎，一方面是因为比较好买到的速溶咖啡都比较甜，大众能接受；另一方面也是因为它确实有一定的提神功效。不过后来到了德国，比较甜的速溶不是那么普遍，所以也就趁超市打折买了一个滴漏咖啡壶，从此开始喝起了咖啡粉。</p>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>尽管从大三开始就已经开始喝咖啡，不过在国内，更多的还是笼罩在速溶咖啡的阴云之下。速溶咖啡能比较受欢迎，一方面是因为比较好买到的速溶咖啡都比较甜，大众能接受；另一方面也是因为它确实有一定的提神功效。不过后来到了德国，比较甜的速溶不是那么普遍，所以也就趁超市打折买了一个滴漏咖啡壶，从此开始喝起了咖啡粉。</p>
 
 <p>德国的咖啡粉比较好买到，而且一般一包也就4欧左右，即使每天喝也差不多能喝两个月，比较实惠。</p>
 
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/">Read on &rarr;</a>
+    </footer>
+  
 
-		
-		<a href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/" class="more-link">Read on &rarr;</a>
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/12/automaton-to-regex/">Automaton to Regex</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -335,36 +425,40 @@
   
 
 
-<time datetime="2014-09-23T04:40:00+02:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-09-12T04:12:15+02:00" pubdate data-updated="true">Sep 12<span>th</span>, 2014</time>
+        
+        
+          | 
 
 
-	<a class='category' href='/blog/categories/ka-pei/'>咖啡</a>
+        
+      </p>
+    
+  </header>
 
 
+  <div class="entry-content"><p>前面提过了Angluin学习算法的基本原理和作用，通过不断回答程序提问的句子是否属于该指定语言来生成这门语言对应的最简DFA。然而DFA的表示并不是很直观，也不实用。所以我今天介绍一个方法，把生成的DFA转化成对应的正则表达式。
 </div>
-	
-</div>
-</article>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/12/automaton-to-regex/">Read on &rarr;</a>
+    </footer>
+  
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/09/12/automaton-to-regex/">
-		
-			Automaton to Regex</a>
-	</h2>
-	<div class="entry-content">
-		<p>前面提过了Angluin学习算法的基本原理和作用，通过不断回答程序提问的句子是否属于该指定语言来生成这门语言对应的最简DFA。然而DFA的表示并不是很直观，也不实用。所以我今天介绍一个方法，把生成的DFA转化成对应的正则表达式。
-
-		
-		<a href="/blog/2014/09/12/automaton-to-regex/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/08/kao-shi-zong-jie/">考试总结</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -376,34 +470,48 @@
   
 
 
-<time datetime="2014-09-12T04:12:15+02:00" pubdate data-updated="true">Sep 12<span>th</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-09-08T16:33:34+02:00" pubdate data-updated="true">Sep 8<span>th</span>, 2014</time>
+        
+        
+          | 
 
-</div>
-	
-</div>
-</article>
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/zong-jie/'>总结</a>, <a class='category' href='/blog/categories/kao-shi/'>考试</a>
+  
+</span>
 
 
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/09/08/kao-shi-zong-jie/">
-		
-			考试总结</a>
-	</h2>
-	<div class="entry-content">
-		<p>中秋佳节之际做一些小学生做的事情：考试总结。</p>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>中秋佳节之际做一些小学生做的事情：考试总结。</p>
 
 <p>这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。唯一一门挂掉的MA课是我自认为本科期间做过很多相关工作（包括两次实验室经历和一次实习经历）的“数据挖掘”。通过的3门都是之前接触不多，反而最后能低分飘过。下面总结一下原因：
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/08/kao-shi-zong-jie/">Read on &rarr;</a>
+    </footer>
+  
 
-		
-		<a href="/blog/2014/09/08/kao-shi-zong-jie/" class="more-link">Read on &rarr;</a>
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/">数理逻辑如何改变我的世界</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -415,41 +523,51 @@
   
 
 
-<time datetime="2014-09-08T16:33:34+02:00" pubdate data-updated="true">Sep 8<span>th</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-08-20T18:25:31+02:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time>
+        
+        
+          | 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>, <a class='category' href='/blog/categories/tu-ling-ji/'>图灵机</a>, <a class='category' href='/blog/categories/shu-li-luo-ji/'>数理逻辑</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
+  
+</span>
 
 
-	<a class='category' href='/blog/categories/zong-jie/'>总结</a>, <a class='category' href='/blog/categories/kao-shi/'>考试</a>
+        
+      </p>
+    
+  </header>
 
 
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/">
-		
-			数理逻辑如何改变我的世界</a>
-	</h2>
-	<div class="entry-content">
-		<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
+  <div class="entry-content"><p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
 
 <p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
 
 <p>Master的第一学期学习了数理逻辑之后，我的世界观进一步被摧毁。我在之前从没认真想过“为什么计算机科学可以看做数学的分支？”“计算机科学在过去几十年都有哪些成果？”“为什么说图灵是计算机之父？他的成就都有什么价值？”这类的问题。这些问题似乎成为了计算机科学系统的公理，不需要证明，也无法解释。虽然并不是每个问题都能直接从“数理逻辑”上找到答案，但是很多它却给了我们一个入口，让我们看到计算机科学目前很少被关注的一面。</p>
 
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/">Read on &rarr;</a>
+    </footer>
+  
 
-		
-		<a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" class="more-link">Read on &rarr;</a>
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/08/15/anluin-learning-algorithm/">Angluin-Learning-Algorithm</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -461,39 +579,49 @@
   
 
 
-<time datetime="2014-08-20T18:25:31+02:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-08-15T20:24:10+02:00" pubdate data-updated="true">Aug 15<span>th</span>, 2014</time>
+        
+        
+          | 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/compiler/'>Compiler</a>, <a class='category' href='/blog/categories/dfa/'>DFA</a>, <a class='category' href='/blog/categories/closed/'>closed</a>, <a class='category' href='/blog/categories/consistent/'>consistent</a>, <a class='category' href='/blog/categories/xue-xi-suan-fa/'>学习算法</a>
+  
+</span>
 
 
-	<a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>, <a class='category' href='/blog/categories/tu-ling-ji/'>图灵机</a>, <a class='category' href='/blog/categories/shu-li-luo-ji/'>数理逻辑</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
+        
+      </p>
+    
+  </header>
 
 
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/08/15/anluin-learning-algorithm/">
-		
-			Angluin-Learning-Algorithm</a>
-	</h2>
-	<div class="entry-content">
-		<p>前两天在知乎回答了一个关于<a href="http://www.zhihu.com/question/24824487/answer/29196253">识别某种特定语言的方法</a>，根据这两天0赞同的情况，不禁让我对知户上计算机从业者的基础理论水平深表怀疑，不过当我看到第一名的答案时确实非常激动，因为一下子想起了2年前在知乎实习时为了识别某个语言，发现用正则表达式可能会非常麻烦，于是写了个自动机，当时刚刚从编译课上学了些自动机的原理，并且第一次正式尝试用它来解决实际遇到的问题，自然是非常激动，而第一名的方法也正是通过构造自动机来生成正则表达式。</p>
+  <div class="entry-content"><p>前两天在知乎回答了一个关于<a href="http://www.zhihu.com/question/24824487/answer/29196253">识别某种特定语言的方法</a>，根据这两天0赞同的情况，不禁让我对知户上计算机从业者的基础理论水平深表怀疑，不过当我看到第一名的答案时确实非常激动，因为一下子想起了2年前在知乎实习时为了识别某个语言，发现用正则表达式可能会非常麻烦，于是写了个自动机，当时刚刚从编译课上学了些自动机的原理，并且第一次正式尝试用它来解决实际遇到的问题，自然是非常激动，而第一名的方法也正是通过构造自动机来生成正则表达式。</p>
 
 <p>不过在那之后，“自动机”与“编译”在我脑中基本成为两个非常相似的概念。我因为自动机的神奇而对编译中各种文法以及编译器的实现产生了兴趣。自认为目前做过最NB的一件事也于此相关——在看过龙书第一章，并且学习了推到规则之后，自己动手写了个简单的编译器作为大作业，不过大作业并没有因此得到满分，因为理论的欠缺，我甚至分不清lexical和syntax之间的区别，自认为高明的把词法分析、语法分析写在一起，并且跳过符号表；这些都被老师当成了扣分点。</p>
 
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/15/anluin-learning-algorithm/">Read on &rarr;</a>
+    </footer>
+  
 
-		
-		<a href="/blog/2014/08/15/anluin-learning-algorithm/" class="more-link">Read on &rarr;</a>
-	</div>
 
-
-<div class="meta">
-	<div class="date">
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/">反面看极简生活</a></h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -505,83 +633,130 @@
   
 
 
-<time datetime="2014-08-15T20:24:10+02:00" pubdate data-updated="true">Aug 15<span>th</span>, 2014</time></div>
-	<div class="tags">
+<time datetime="2014-07-30T08:54:47+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+        
+          | 
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-jian/'>极简</a>, <a class='category' href='/blog/categories/sheng-huo/'>生活</a>
+  
+</span>
 
 
-	<a class='category' href='/blog/categories/compiler/'>Compiler</a>, <a class='category' href='/blog/categories/dfa/'>DFA</a>, <a class='category' href='/blog/categories/closed/'>closed</a>, <a class='category' href='/blog/categories/consistent/'>consistent</a>, <a class='category' href='/blog/categories/xue-xi-suan-fa/'>学习算法</a>
+        
+      </p>
+    
+  </header>
 
 
-</div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/">
-		
-			反面看极简生活</a>
-	</h2>
-	<div class="entry-content">
-		<p>这篇来说一下自己对于极简生活的2年多的实践和成果。最重要的不是倡导人去追求极简，而是如何让它改善我们现有的生活。当然我的大部分观点和主流极简主义倡导者是有出入的。</p>
+  <div class="entry-content"><p>这篇来说一下自己对于极简生活的2年多的实践和成果。最重要的不是倡导人去追求极简，而是如何让它改善我们现有的生活。当然我的大部分观点和主流极简主义倡导者是有出入的。</p>
 
 <p>我从两年前的豆瓣上看到“极简”这个词，当时还不太清楚极简代表着什么，指示看到一些优秀的极简风格设计，或者是品牌，比如MUJI，甚是喜欢。于是我决定尝试改善我的生活，让我能在学习工作中更专注于任务本身。最开始的几个主要方面就是删除手机上的多余app，减少生活用品，卖掉不必要的书，减少自己的信息源（比如当时的Google Reader），处理掉不重要不紧急的任务，改掉信息焦虑症。</p>
 
-
-		
-		<a href="/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/">Read on &rarr;</a>
+    </footer>
+  
 
 
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section class="first odd">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/01/17/spotlight-extension/">对Spotlight的简单扩展</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/">关于德国教育的私吐槽</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/01/general-way-to-understand-program/">更通用的角度理解程序与数据</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/24/que-ding-shi-jie-yu-gai-lu-shi-jie/">确定世界与概率世界</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/23/yi-nian-ka-pei-ling-gan-shou-zong-jie/">一年咖啡龄感受总结</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/xuanhuangyiqi">@xuanhuangyiqi</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'xuanhuangyiqi',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/110950069380933156197?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 
   
+</aside>
 
-
-<time datetime="2014-07-30T08:54:47+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ji-jian/'>极简</a>, <a class='category' href='/blog/categories/sheng-huo/'>生活</a>
-
-
-</div>
-	
-</div>
-</article>
-
-<nav id="pagenavi">
-    
-    
-        <a href="/blog/page/2/" class="next">Next</a>
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav>
-</div>
-	<footer id="footer" class="inner">Copyright &copy; 2015
-
-    htedsv
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - htedsv -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> and <a href="https://github.com/gluttony/object-octopress-theme">Object</a></span>
+</p>
 
 </footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
-
+  
 
 <script type="text/javascript">
       var disqus_shortname = 'htedsvbackyard';
@@ -591,24 +766,28 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//go.disqus.com/' + disqus_script;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
 
 
 
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-47274484-1']);
-		_gaq.push(['_trackPageview']);
 
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
 
 
 

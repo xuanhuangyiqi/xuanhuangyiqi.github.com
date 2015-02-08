@@ -4,7 +4,7 @@
   <title><![CDATA[Category: log | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/log/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-01-17T19:53:00+01:00</updated>
+  <updated>2015-02-08T12:06:24+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -22,7 +22,7 @@
 
 <h1 id="crash-log-">Crash Log 是什么？</h1>
 
-<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="{{ site.url }}/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
+<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
 
 <p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
 
@@ -35,9 +35,10 @@
 <p>Symbolicate过程就是把对应的函数栈转化成函数名的过程，我们为了方便，在后面把这个过程叫做<em>解析</em>。这个过程是怎么实现的呢？</p>
 
 <p>首先，无论是在模拟器，还是真机debug一个app的过程中，除了XXX.app之外，还会生成一个XXX.app.dSYM文件（准确地说，这两个都是文件夹），如果你想知道生成的这两个文件路径，可以在terminal下使用mac的内嵌find工具mdfind：
-{% highlight bash %}
-$ mdfind -name “XXX.app”
-{% endhighlight %}
+<div>
+  <pre><code class='bash'>$ mdfind -name “XXX.app”</code></pre>
+</div>
+
 它是Spotlight功能的核心，在你的系统有文件更新时能及时更新索引，因此速度还是很快的，当然它还可以根据其他所引进行搜索。</p>
 
 <p>dSYM文件保存了这个app的符号表，即指令内存地址和源代码的函数名和行数关系。这个文件显然保存了app源码的大量信息，因此是不能随意公布的。当然，只有你本机上包含有app的dSYM文件，其中的指令地址才能被解析成函数名（这句话是不严谨的，我们后面在解释）。</p>
@@ -49,22 +50,25 @@ $ mdfind -name “XXX.app”
 <ul>
   <li>
     <p>atos，用以获取某内存地址所对应的函数名。用法：
-{% highlight bash %}
-$ atos -o /path/to/XXX.app/XXX.app.dSYM/Contents/Resources/DWARF/XXX -arch i386 0x973000
-{% endhighlight %}
+<div>
+  <pre><code class='bash'>$ atos -o /path/to/XXX.app/XXX.app.dSYM/Contents/Resources/DWARF/XXX -arch i386 0x973000</code></pre>
+</div>
+
 这个函数是指定了arch的，即i386，这是模拟器（或者说mac）的处理器arch，对于iOS设备就是armv6／7。如果你指定的arch和app以及dsym文件的arch不对，是会报错的。那么如何知道一个app的arch呢？前面我已经说了最常见的两个，如果你不确定是哪个，就可以用</p>
   </li>
   <li>
     <p>dwarfdump
-{% highlight bash %}
-$ dwarfdump -u ~/Library/Developer/Xcode/iOS\ DeviceSupport/5.0.1\ (9A405)/Symbols/System/Library/Frameworks/UIKit.framework/UIKit
-{% endhighlight %}</p>
+<div>
+  <pre><code class='bash'>$ dwarfdump -u ~/Library/Developer/Xcode/iOS\ DeviceSupport/5.0.1\ (9A405)/Symbols/System/Library/Frameworks/UIKit.framework/UIKit</code></pre>
+</div>
+</p>
   </li>
   <li>
     <p>symbolicatecrash 这是symbolicate过程的核心脚本
-{% highlight bash %}
-$ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash 
-{% endhighlight %}</p>
+<div>
+  <pre><code class='bash'>$ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash</code></pre>
+</div>
+</p>
   </li>
 </ul>
 
