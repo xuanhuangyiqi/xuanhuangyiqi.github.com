@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-02-08T18:25:35+01:00</updated>
+  <updated>2015-03-08T17:18:16+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[从可计算理论到学习理论]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun/"/>
+    <updated>2015-03-07T11:03:37+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun</id>
+    <content type="html"><![CDATA[<p>我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。</p>
+
+<p>可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下，某些问题是否可计算。比如最常见的是停机问题、等价问题：是否存在机械方法能够绝对准确的计算“任何”函数是否停机，判断任意两个图灵机是否等价（“等价”即是否计算相同的函数）。第一个问题的不可判定性随处可以搜到。第二个问题是一个比第一个更难判定的问题，严格来说要构造Reduction：$H \leq Eq$；通俗来理解，就是要说两个图灵机功能能完全相同，必须枚举所有可能输入，并且判断输出，然而输入集合是无限的，所以这一过程不会停止。当然，这一问题用人脑来模拟，在图灵机结构简单的时候是可以完成的，不过我们人脑模拟的过程是带有一定启发性的，即不能严格的归为机械过程。</p>
+
+<p>下面就拿这个Eq问题（判断两个图灵机是否计算同一函数）作为引子，讨论学习理论。</p>
+
+<p>计算理论研究的一般是通用问题的可能性，即在最严格的情况下，某种问题是否可计算。然而更多的时候，我们并不需要那么严格。只要能近似相等就可以了，或者随着学习样本的增加，模型能逐渐逼近真实值。回到$Eq$问题，即“如果我们尝试了“足够多”的输入，两个图灵机都能输出相同的内容，那么就可以说两个图灵机等价了”。以上判定性问题的表述，从可计算性上，等价于“对于一个图灵机$M_1$和一个给定的足够大的输入集，我们可以构造出$M_2$，使得$M_1$和$M_2$对于给定输入能够得到相同输出，也就是说能够构造出一个近似和$M_1$等价的图灵机$M_2$”。</p>
+
+<p>这一问题相关的理论就是“可计算学习理论”，其中一个重要而基础的部分就是研究一个模型是否可以学习。一个模型，或者叫结构可以被学习，当且仅当随着样本的增加，误差能收敛到无限小。形式化的表示即：</p>
+
+<script type="math/tex; mode=display">P(error \ge \epsilon) \le \delta</script>
+
+<p>其中需要注意的是，$\epsilon$是单个样本的误差概率。那么显然式子左边是关于样本集大小N相关的，即符合形式</p>
+
+<script type="math/tex; mode=display">P(error \ge \epsilon) = p^N \le \delta</script>
+
+<p>所以关于它还有另一种表述：对于任意小，且不为0的$\epsilon$和$\delta$。我们都能找到一个N。</p>
+
+<p>那么有些模型就无法被学习，即随着样本增大，误差不会收敛于无穷小。虽然这样的模型很多，不过一个共同点是，可以映射到“从一个无限集合中学习任意多个元素”。当然，对这一问题的严谨而通俗表述可以参见PAC理论。</p>
+
+<p>当然，学习并不都是基于概率，有些结构因为其符合一定的性质，可以直接得到目标解。比如前面写过的<a href="http://blog.htedsv.com/blog/2014/08/15/anluin-learning-algorithm/">Angluin’s Learning Algorithm</a>，就是根据正则语言的一致性学习的。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[对Spotlight的简单扩展]]></title>
@@ -737,67 +767,6 @@ elif i == 2, j == 3 then
 <p><a title="项目" href="https://github.com/xuanhuangyiqi/open-task" target="_blank">项目</a>  <a href="http://task.htedsv.com" target="_blank">效果</a></p>
 
 <p>ps: 想到一个问题，那就是这个东西和blog有什么区别，似乎都可以用题目和内容来解释他的功能，但是对于笔记，内容更多是没有被读者内化的东西，而blog应该是知识外化的过程。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[生命游戏与细胞自动机]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji/"/>
-    <updated>2013-03-10T15:25:03+01:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/03/10/sheng-ming-you-xi-yu-xi-bao-zi-dong-ji</id>
-    <content type="html"><![CDATA[<p>“Cellular Automaton”，ein Interessante Modell, was ist benutzt in viele Felder. Ich kann diesem Konzept nicht deutlich erklaeren, Weil ich nur die Prozess verstehe, keinen weitere Benutzungen. Um mehr Informationen zu erkuendigt werden, suchen Sie es nach Wikipedia.</p>
-
-<p>Aber ich finde ein Phaenomen interessant. “Cellular Automaton” war erhoben durch ein Spiel, “Conways Spiel des Leben”. Die Regel ist sehr einfach verstanden. Und darunter ist die code</p>
-
-<!--more-->
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">import time
-</span><span class="line">from random import random
-</span><span class="line">
-</span><span class="line">SIZE = 20
-</span><span class="line">
-</span><span class="line">matrix = [[int(random()*2) for y in range(SIZE)] for x in range(SIZE)]
-</span><span class="line">
-</span><span class="line">while True:
-</span><span class="line">    for x in matrix:
-</span><span class="line">        for y in x:
-</span><span class="line">            if y: print 1,
-</span><span class="line">            else: print ' ',
-</span><span class="line">        print
-</span><span class="line">    print '\n\n\n\n';
-</span><span class="line">    time.sleep(1)
-</span><span class="line">    matrix = (lambda t:
-</span><span class="line">                [
-</span><span class="line">                    [
-</span><span class="line">                        [0,0,t[x][y],1,1][sum([t[p+x][q+y] for p, q in [(0,1),(1,0),(-1,0),(0,-1)] if (p+x in range(SIZE) and q+y in range(SIZE))])]
-</span><span class="line">                        for y in range(SIZE)
-</span><span class="line">                    ] for x in range(SIZE)
-</span><span class="line">                ]
-</span><span class="line">            )(matrix)</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>我发现这个过程竟然是收敛的，问题来了，如何制定收敛的规则呢？</p>
 ]]></content>
   </entry>
   

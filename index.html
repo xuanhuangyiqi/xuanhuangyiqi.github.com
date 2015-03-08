@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Jan 17th, 2015 Mac, shell, spotlight 对Spotlight的简单扩展 Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。 首先写一个shell文件， &hellip;">
+	<meta name="description" content="Mar 7th, 2015 从可计算理论到学习理论 我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。 可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,7 +26,38 @@
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+	<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
   <meta name="google-translate-customization" content="a4f5eb9394563358-7f14fd9f69a53a2a-g4e5762ba5cd78f2b-f"></meta>
 <div id="google_translate_element"></div><script type="text/javascript">
     function googleTranslateElementInit() {
@@ -115,6 +146,58 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-07T11:03:37+01:00" data-updated="true" itemprop="datePublished">Mar 7<span>th</span>, 2015</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun/" itemprop="url">从可计算理论到学习理论</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。</p>
+
+<p>可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下，某些问题是否可计算。比如最常见的是停机问题、等价问题：是否存在机械方法能够绝对准确的计算“任何”函数是否停机，判断任意两个图灵机是否等价（“等价”即是否计算相同的函数）。第一个问题的不可判定性随处可以搜到。第二个问题是一个比第一个更难判定的问题，严格来说要构造Reduction：$H \leq Eq$；通俗来理解，就是要说两个图灵机功能能完全相同，必须枚举所有可能输入，并且判断输出，然而输入集合是无限的，所以这一过程不会停止。当然，这一问题用人脑来模拟，在图灵机结构简单的时候是可以完成的，不过我们人脑模拟的过程是带有一定启发性的，即不能严格的归为机械过程。</p>
+
+<p>下面就拿这个Eq问题（判断两个图灵机是否计算同一函数）作为引子，讨论学习理论。</p>
+
+<p>计算理论研究的一般是通用问题的可能性，即在最严格的情况下，某种问题是否可计算。然而更多的时候，我们并不需要那么严格。只要能近似相等就可以了，或者随着学习样本的增加，模型能逐渐逼近真实值。回到$Eq$问题，即“如果我们尝试了“足够多”的输入，两个图灵机都能输出相同的内容，那么就可以说两个图灵机等价了”。以上判定性问题的表述，从可计算性上，等价于“对于一个图灵机$M_1$和一个给定的足够大的输入集，我们可以构造出$M_2$，使得$M_1$和$M_2$对于给定输入能够得到相同输出，也就是说能够构造出一个近似和$M_1$等价的图灵机$M_2$”。</p>
+
+<p>这一问题相关的理论就是“可计算学习理论”，其中一个重要而基础的部分就是研究一个模型是否可以学习。一个模型，或者叫结构可以被学习，当且仅当随着样本的增加，误差能收敛到无限小。形式化的表示即：</p>
+
+<script type="math/tex; mode=display">P(error \ge \epsilon) \le \delta</script>
+
+<p>其中需要注意的是，$\epsilon$是单个样本的误差概率。那么显然式子左边是关于样本集大小N相关的，即符合形式</p>
+
+<script type="math/tex; mode=display">P(error \ge \epsilon) = p^N \le \delta</script>
+
+<p>所以关于它还有另一种表述：对于任意小，且不为0的$\epsilon$和$\delta$。我们都能找到一个N。</p>
+
+<p>那么有些模型就无法被学习，即随着样本增大，误差不会收敛于无穷小。虽然这样的模型很多，不过一个共同点是，可以映射到“从一个无限集合中学习任意多个元素”。当然，对这一问题的严谨而通俗表述可以参见PAC理论。</p>
+
+<p>当然，学习并不都是基于概率，有些结构因为其符合一定的性质，可以直接得到目标解。比如前面写过的<a href="http://blog.htedsv.com/blog/2014/08/15/anluin-learning-algorithm/">Angluin’s Learning Algorithm</a>，就是根据正则语言的一致性学习的。</p>
+
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -470,44 +553,6 @@
 
 		
 		<a href="/blog/2014/08/15/anluin-learning-algorithm/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-30T08:54:47+02:00" data-updated="true" itemprop="datePublished">Jul 30<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/ji-jian/'>极简</a>, <a class='category' href='/blog/categories/sheng-huo/'>生活</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/" itemprop="url">反面看极简生活</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>这篇来说一下自己对于极简生活的2年多的实践和成果。最重要的不是倡导人去追求极简，而是如何让它改善我们现有的生活。当然我的大部分观点和主流极简主义倡导者是有出入的。</p>
-
-<p>我从两年前的豆瓣上看到“极简”这个词，当时还不太清楚极简代表着什么，指示看到一些优秀的极简风格设计，或者是品牌，比如MUJI，甚是喜欢。于是我决定尝试改善我的生活，让我能在学习工作中更专注于任务本身。最开始的几个主要方面就是删除手机上的多余app，减少生活用品，卖掉不必要的书，减少自己的信息源（比如当时的Google Reader），处理掉不重要不紧急的任务，改掉信息焦虑症。</p>
-
-
-		
-		<a href="/blog/2014/07/30/fan-mian-kan-ji-jian-sheng-huo/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
