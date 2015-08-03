@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-03-08T17:20:01+01:00</updated>
+  <updated>2015-08-03T09:09:19+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[连续优化(Continuous Optimization)]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2015/08/01/lian-xu-you-hua-continuous-optimization/"/>
+    <updated>2015-08-01T16:36:11+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2015/08/01/lian-xu-you-hua-continuous-optimization</id>
+    <content type="html"><![CDATA[<p>平时和其他专业工科学生提到数学系的时候，大家普遍会表示不屑一顾，因为无论什么专业，多多少少都会学一些数学，其中有些就是数学院开的，然而这比起专门给数学系学生上的课可能就相差很远。这学期的两门数学课：超图论(Hypergraph Theory) 和 优化(Optimization A) 让我感慨颇深，鉴于前者是一门相对高级的课程，能拿出来提炼方法论的东西实在太少了，就随便说一些关于优化的东西。</p>
+
+<p>“优化”这个词在生活中并不少见，甚至在我的本科毕设里面，通篇都是“优化”这两个字，然而数学上提到的优化是有特定含义的。与今天的主题“连续优化”相对应的是“离散优化(discreate optimization)”。尽管两者研究的问题有一定的共同点，比如“duality”，总体而言，还是有不少区别的，比如整数优化（Integer Programming），是要在一定限制条件下给出整数解，显然相比于连续优化更难找到通用做法，所以纯理论的东西也就更少。过段时间再专门写一篇关于离散优化的。</p>
+
+<p>具体来说，连续优化讨论的问题是符合以下形式的一类求解问题:</p>
+
+<script type="math/tex; mode=display"> min \quad f\_0(x) </script>
+
+<script type="math/tex; mode=display"> gd. \quad g\_i(x) \le 0, h\_j(x) = 0 </script>
+
+<p>关于连续优化听的最多的就是“凸优化(Convex Optimization)”。这是优化问题中一类非常优雅的特例。一般连续优化问题会分成有代数解的和只有数值解的；或者分成有限制条件的和没有限制条件的。下面就对着四种情况分别讨论：</p>
+
+<h1 id="section">有代数解+没有限制条件</h1>
+<p>这类问题是最简单的，不过也需要一定的限制条件，即目标函数$f_0(x)$有二阶导数。那么只要找出所有一阶导数为0，二阶导数为半正定的局部最优点，再比较选出全局最优即可。其中“二阶导数半正定”可以理解为，从该点沿任何方向向量移动一个足够小的量都会使函数变大。</p>
+
+<h1 id="section-1">有代数解+有限制条件</h1>
+<p>这类问题在实际应用中是遇到最多的，比如</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[无限计算(Infinite Computation)]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2015/05/26/wu-xian-ji-suan/"/>
+    <updated>2015-05-26T12:22:03+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2015/05/26/wu-xian-ji-suan</id>
+    <content type="html"><![CDATA[<p>这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。</p>
+
+<p>刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。因为任何离散的问题一旦放在“无限”这个限制条件下，就会变得困难加倍，许多针对“有限”问题的解法就变得不那么适用。比如命题逻辑的完备性定理，就是把无限集合的判定性问题转化到任意有限集合上判定，从而使不可解问题变得可解。</p>
+
+<!--more-->
+<p>然而这门课的内容虽然可以推广到任意通用的计算问题，但是所有讨论的对象都是形式语言，或者说大部分都是正则语言，不过这也很符合7所的风格：任何理论计算机讨论的问题都是“语言”的问题。“语言”是计算机理论问题的基本对象，代码、数据从一定程度上说，都是“语言”。然而从“语言”的角度来看待所有计算机问题并不合适，比如把问题看做“语言”并不能助于解决任何算法问题。如果把逻辑、语言、图灵机看成解决问题的一般方法，那么算法就是解决问题的特殊、具体方法。逻辑、图灵机只讨论可能性，而千奇百怪的算法（或者说复杂度理论）才是真正解决问题的具体工具。也正是因为世界上没有一套简单的工具、方法能最优的解决所有问题，才会出现整个科学的繁荣发展。“不用一个工具解决所有问题”这一观念不止在计算机领域，在任何学科都适用。</p>
+
+<p>回到形式方法上，有限正则语言中存在DFA和NFA的等价转换，然而对于无限语言DBA(Definite Buechi Automaton)和NBA(Nondefinite Buechi Automaton)就不是等价，而是层级关系了；而且在DBA之内也有另外的一些层级。相比于有限语言，无限语言的层级要丑陋一些，许多具体问题的处理也要更棘手，比如把NBA可接受的语言转化为NBA。</p>
+
+<p>7所几门课给我带来的另外一个认识就是几种模型的等价性，比如每种语言都会存在某种对应的自动机，复杂一点的会对应Pushdown Automaton, 甚至只能对应图灵机，一阶逻辑，二阶逻辑；甚至还有一些另一个体系下的逻辑：Linear Temporal Logic与之对应。更通用一点，与“有限”或者“无限”语言对应的是判定性函数，甚至是机器学习模型：神经网络、决策树、线性分类器、SVM。</p>
+
+<p>最后一节课，提到了一点不会考，但是很有意思的东西——无限语言在有理数上的对应，再结合前面的二阶逻辑表达式，就是用二阶逻辑表示有理数集合，算是一个打通连续空间和离散空间的实例。在之后就是康托集合，它的存在证明了有理数和实数集合不存在一一对应。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[从可计算理论到学习理论]]></title>
@@ -736,38 +781,6 @@ elif i == 2, j == 3 then
 <p>基于这个事实，我把这些文本分隔成句子，对每个句子中出现的所有名词看成一个个节点，任意两个词之间边权 + 1（初始都是0），之后根据情况定一个阈值，高于阈值的边保留，低的删掉。最后根据每个名词的TF - IDF值从高到低排序，对于某个词x，如果与比它TF - IDF大的词y在一个子图上，那么忽略x，也就是说每个子图最多只输出TF - IDF最大的一个词。</p>
 
 <p>虽然这个理论很站不住脚，不过记得当时效果很好。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[python下的lambda递归包装]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
-    <updated>2013-04-11T11:33:50+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
-    <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
-<!--more-->
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">g = lambda func, *args:  func(func, *args)</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
-
-<p>然后就可以写自递归函数了，例如经典的求阶乘</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">f = lambda self, n: 1 if n == 1 else n*self(self, n-1)
-</span><span class="line">g(f, 10)</span></code></pre></td></tr></table></div></figure></notextile></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[任务+md笔记——一次GTD实践]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian/"/>
-    <updated>2013-04-05T18:32:17+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/05/ren-wu-plus-mdbi-ji-ci-gtdshi-jian</id>
-    <content type="html"><![CDATA[<p>一直没找到特别顺心的GTD工具，大多都是因为不能很好的和其他app配合，另外比较奇怪为什么没有比较完善的开源GTD app,于是自己写一个，重在把任务+笔记结合，并且可以通过Geek Tool和Alfred更新和查看简单任务信息，用vi作笔记，配合起来非常方便。项目中有明确的实施细节和用法。</p>
-
-<p><a title="项目" href="https://github.com/xuanhuangyiqi/open-task" target="_blank">项目</a>  <a href="http://task.htedsv.com" target="_blank">效果</a></p>
-
-<p>ps: 想到一个问题，那就是这个东西和blog有什么区别，似乎都可以用题目和内容来解释他的功能，但是对于笔记，内容更多是没有被读者内化的东西，而blog应该是知识外化的过程。</p>
 ]]></content>
   </entry>
   
