@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Aug 1st, 2015 连续优化(Continuous Optimization) 平时和其他专业工科学生提到数学系的时候，大家普遍会表示不屑一顾，因为无论什么专业，多多少少都会学一些数学，其中有些就是数学院开的，然而这比起专门给数学系学生上的课可能就相差很远。这学期的两门数学课：超图论( &hellip;">
+	<meta name="description" content="May 26th, 2015 无限计算(Infinite Computation) 这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。 刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -146,53 +146,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-08-01T16:36:11+02:00" data-updated="true" itemprop="datePublished">Aug 1<span>st</span>, 2015</time></div>
-		<div class="tags">
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/08/01/lian-xu-you-hua-continuous-optimization/" itemprop="url">连续优化(Continuous Optimization)</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>平时和其他专业工科学生提到数学系的时候，大家普遍会表示不屑一顾，因为无论什么专业，多多少少都会学一些数学，其中有些就是数学院开的，然而这比起专门给数学系学生上的课可能就相差很远。这学期的两门数学课：超图论(Hypergraph Theory) 和 优化(Optimization A) 让我感慨颇深，鉴于前者是一门相对高级的课程，能拿出来提炼方法论的东西实在太少了，就随便说一些关于优化的东西。</p>
-
-<p>“优化”这个词在生活中并不少见，甚至在我的本科毕设里面，通篇都是“优化”这两个字，然而数学上提到的优化是有特定含义的。与今天的主题“连续优化”相对应的是“离散优化(discreate optimization)”。尽管两者研究的问题有一定的共同点，比如“duality”，总体而言，还是有不少区别的，比如整数优化（Integer Programming），是要在一定限制条件下给出整数解，显然相比于连续优化更难找到通用做法，所以纯理论的东西也就更少。过段时间再专门写一篇关于离散优化的。</p>
-
-<p>具体来说，连续优化讨论的问题是符合以下形式的一类求解问题:</p>
-
-<script type="math/tex; mode=display"> min \quad f\_0(x) </script>
-
-<script type="math/tex; mode=display"> gd. \quad g\_i(x) \le 0, h\_j(x) = 0 </script>
-
-<p>关于连续优化听的最多的就是“凸优化(Convex Optimization)”。这是优化问题中一类非常优雅的特例。一般连续优化问题会分成有代数解的和只有数值解的；或者分成有限制条件的和没有限制条件的。下面就对着四种情况分别讨论：</p>
-
-<h1 id="section">有代数解+没有限制条件</h1>
-<p>这类问题是最简单的，不过也需要一定的限制条件，即目标函数$f_0(x)$有二阶导数。那么只要找出所有一阶导数为0，二阶导数为半正定的局部最优点，再比较选出全局最优即可。其中“二阶导数半正定”可以理解为，从该点沿任何方向向量移动一个足够小的量都会使函数变大。</p>
-
-<h1 id="section-1">有代数解+有限制条件</h1>
-<p>这类问题在实际应用中是遇到最多的，比如</p>
-
-		
-		
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -538,6 +491,46 @@
 
 		
 		<a href="/blog/2014/09/08/kao-shi-zong-jie/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-20T18:25:31+02:00" data-updated="true" itemprop="datePublished">Aug 20<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>, <a class='category' href='/blog/categories/tu-ling-ji/'>图灵机</a>, <a class='category' href='/blog/categories/shu-li-luo-ji/'>数理逻辑</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" itemprop="url">数理逻辑如何改变我的世界</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
+
+<p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
+
+<p>Master的第一学期学习了数理逻辑之后，我的世界观进一步被摧毁。我在之前从没认真想过“为什么计算机科学可以看做数学的分支？”“计算机科学在过去几十年都有哪些成果？”“为什么说图灵是计算机之父？他的成就都有什么价值？”这类的问题。这些问题似乎成为了计算机科学系统的公理，不需要证明，也无法解释。虽然并不是每个问题都能直接从“数理逻辑”上找到答案，但是很多它却给了我们一个入口，让我们看到计算机科学目前很少被关注的一面。</p>
+
+
+		
+		<a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

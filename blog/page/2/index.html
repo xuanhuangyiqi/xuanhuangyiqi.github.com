@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Aug 20th, 2014 函数式编程, 图灵机, 数理逻辑, 自动机 数理逻辑如何改变我的世界 在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求 &hellip;">
+	<meta name="description" content="Aug 15th, 2014 Compiler, DFA, closed, consistent, 学习算法 Angluin-Learning-Algorithm 前两天在知乎回答了一个关于识别某种特定语言的方法，根据这两天0赞同的情况，不禁让我对知户上计算机从业者的基础理论水平深表怀疑， &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -146,46 +146,6 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-20T18:25:31+02:00" data-updated="true" itemprop="datePublished">Aug 20<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>, <a class='category' href='/blog/categories/tu-ling-ji/'>图灵机</a>, <a class='category' href='/blog/categories/shu-li-luo-ji/'>数理逻辑</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" itemprop="url">数理逻辑如何改变我的世界</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
-
-<p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
-
-<p>Master的第一学期学习了数理逻辑之后，我的世界观进一步被摧毁。我在之前从没认真想过“为什么计算机科学可以看做数学的分支？”“计算机科学在过去几十年都有哪些成果？”“为什么说图灵是计算机之父？他的成就都有什么价值？”这类的问题。这些问题似乎成为了计算机科学系统的公理，不需要证明，也无法解释。虽然并不是每个问题都能直接从“数理逻辑”上找到答案，但是很多它却给了我们一个入口，让我们看到计算机科学目前很少被关注的一面。</p>
-
-
-		
-		<a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -578,6 +538,41 @@
 
 		
 		<a href="/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-11T11:33:50+02:00" data-updated="true" itemprop="datePublished">Apr 11<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/fp/'>FP</a>, <a class='category' href='/blog/categories/lambda/'>lambda</a>, <a class='category' href='/blog/categories/python/'>python</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/" itemprop="url">Python下的lambda递归包装</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
+
+		
+		<a href="/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
