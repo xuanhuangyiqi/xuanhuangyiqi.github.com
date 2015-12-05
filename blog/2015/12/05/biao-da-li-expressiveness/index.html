@@ -1,0 +1,264 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>表达能力 (Expressiveness) - Htedsv Backyard</title>
+	<meta name="author" content="htedsv">
+
+	
+	<meta name="description" content="表达能力 (Expressiveness) 第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、一阶逻辑之类的， &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+    });
+</script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-47274484-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("xuanhuangyiqi@126.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+
+<nav id="main-nav"><ul class="main">
+    <li><a href="/">Blog</a></li>
+    <li><a href="http://about.me/shashankmehta">About</a></li>
+    <li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:xuanhuangyiqi@126.com" title="Email">Email</a>
+		
+		
+		
+			<a class="google" href="https://plus.google.com/110950069380933156197" rel="author" title="Google+">Google+</a>
+		
+		
+			<a class="twitter" href="http://twitter.com/htedsv" title="Twitter">Twitter</a>
+		
+		
+			<a class="github" href="https://github.com/xuanhuangyiqi" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    	
+    	
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">表达能力 (Expressiveness)</h1>
+	<div class="entry-content" itemprop="articleBody"><p>第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、一阶逻辑之类的，而它又是从能计算的函数的角度来衡量这些模型。不过后来发现“计算能力”这个词多多少少有些歧义，所以就放弃了这个说法。而由于当时接触到的模型多是用于判定的模型，即，接受一个输入，并且唯一的返回“是”或者“否”的模型，所以对于“表达能力”这个说法觉得更加贴切。用自然语言举个例子：“我是个聪明而且友善的人”，这句话是可以用真伪判断正确性的，如果把“而且”及其类似的表达方式从自然语言中删掉，那么我们就没办法表达这句话，或者说后者的表达能力要比原本的表达能力更弱，这样来解释理论中用到的“表达能力”这一概念就更加合理了。</p>
+
+<p>前面提到“计算能力”这一翻译会有歧义就是因为它和“可计算性(Comptability)”一词概念和说法类似，但是定义上又有很大区别。“可计算性”说的是某个集合、类能否用图灵机及其等价模型计算出来，这个问题的回答只有“是”或“否”。所以可计算性只是在以图灵机为分界点的问题上的表达能力的判定。</p>
+
+<!--more-->
+
+<p>另外值得一提的就是判定问题。所有的可计算函数都可以转化为其对应的指示函数(indicator function)，比如$f(x)=y$可以转化为$F(x,y)=1$。而我们说“表达能力”也往往说的是指示函数。这也就是为什么，前面会把自动机、一阶逻辑这种只能返回真假的模型和图灵机相提并论。</p>
+
+<p>从这个角度切入，可以解释一个问题，为什么自动机应用中往往只是作为编译原理中语法分析的最简化模型，或者用于正则表达式，却可以独立作为一个独立的理论计算机的领域。</p>
+
+<h1 id="section">自动机与图灵机</h1>
+
+<p>之前在知乎上回答过两个问题：“自动机的状态能否无限？”以及“图灵机最重要的是状态转移表，纸带无限并不是必要的？”。</p>
+
+<p>首先，从历史发展上来讲，自动机的提出要比图灵机早，然而现在很少有人关注到自动机这个工作方式更简单，结构类似于图灵机的模型，反而把图灵机的提出作为计算机科学的开端。之所以把图灵机作为开端，是因为它是第一个为一阶逻辑明确定义了“机械运动”的模型，而自动机虽然更简单，而且更加容易用机械模拟，但是却只能表示图灵机的有限操作，或者说，自动机的表达能力弱于图灵机。</p>
+
+<p>前面提到的两个问题其实本质是一样的，那么就拿后者为例从表达能力上解释一下：</p>
+
+<p>首先图灵机和自动机其实从操作本质上是一样的：根据当前状态和确定的转移规则，唯一的转化到另一个状态上。区别在于自动机的状态就是定义里明确的状态，而图灵机的状态是“配置(configuration)”:（纸带内容，指针位置，状态）。假设图灵机的纸带长度有限，那么明显纸带内容的可能性和指针位置又是有限的，再加上根据定义，图灵机的状态也是有限的，所以对于每个图灵机的配置，都可以构造一个自动机的状态，那么得到的自动机的状态数是有限的，即对于每个纸带有限的图灵机都有与之等价的自动机，所以图灵机也就不比自动机表达能力更强。进而，图灵机表达能力强大也就在于其纸带的无限长度。</p>
+
+<p>而第一个问题相对不那么好回答就是因为无限这个范围内，又分为可数，不可数，不可数又可以不断继续划分。每种情况几乎都要分别考虑，并不是那么简单。</p>
+
+<h1 id="section-1">表达能力与可分析性</h1>
+
+<p>无论是数理逻辑，还是平时讨论的计算机模型，一个重要的结论是“表达能力越强，可分析性就越差”。比如一阶逻辑里所有问题都是可以判定真伪的，而二阶逻辑就做不到，但从表达能力上来说，二阶逻辑强于一阶。这个结论可以拓展到任何逻辑上以及计算机里面的计算模型。拿形式语言举例子，比如star-free语言的表达能力弱于正则语言，弱于上下文五官语言，然而star-free语言存在于群的等价对应关系，正则语言存在与幺半群的等价关系，即不存在唯一元，唯一元的性质也就不能用了。</p>
+
+<p>当然这个结论方到图灵机上，我们即希望我们发明的模型能尽量丰富的表达我们想要的想法，同时又不得不失去对这个模型的掌控能力，比如我们连一套通用的判断一段程序死机的方法都没有，更别说从理论上判断一段程序有没有bug了。</p>
+
+<p>也正是因为这种无法完美妥协的trade-off，才会让很多表达力更弱的模型在一些领域没有被完全取代。</p>
+
+<h1 id="section-2">参数化机器学习与表达能力</h1>
+
+<p>这里说的机器学习模型都是可以训练出参数的，而非参数方法，比如KNN之类的非参数方法不在讨论之列。从参数学习的角度来看计算模型，我们可以新增一个性质——可学习性。比如自动机和图灵机的状态转移表，都可以看做其不同于其他自动机或者图灵机的参数，SVM的参数就是那个分割面的$w$和$b$。决策树的参数就是一套按顺序执行的判断规则等等。那么这些这些参数都是可学习的吗？显然如果是的话，我们似乎看到了机器学习的一个终极问题——学习一台图灵机。作为最强表达能力的理论模型，如果图灵机的参数可以通过某种算法学得，并且智能的思维可以用任意一个可计算函数表示的话，那么就似乎就抵达了人工智能的终点。</p>
+
+<p>然而，即便是我们把问题简化到一个一定停机的判别图灵机上。问题也是不可解的。当然，首先要合理地定义一下“可学习”，我们就按PAC-learnable的标准来定义，即对于任意误差$\delta$，我们都能找到一个无关于样本分布的训练集大小$N$使得对于任意大于$N$的样本集，我们都能训练出误差小于$\delta$的参数。然而对于一个最经典的PAC不可学习问题：一个可数集合上有限个点，是可以表示成一个图灵机的判别函数的。所以似乎这一构想从最基础的层面就是不可实现的。</p>
+
+<h1 id="section-3">深度学习机器的表达能力</h1>
+
+<p>之前的文章已经提过一些关于深度学习大火的理论层面的原因，但是没有说的很具体。这里再从表达能力的角度稍微说一点。</p>
+
+<p>在上一学期的深度学习的seminar上，我选的题目是“Recurrent Neural Networks and Convolutional Neural Networks”，估计算是最大的一个题目了，因为两个话题随便哪个都能扯出一连串的子问题，最后的结果就是我最终没有切入教授和助教的兴趣点。在slide的结尾，我被要求从某个维度把这两种关系并不大的神经网络联系起来。最后选的就是表达能力上。即，对于结构相同（神经元层数和数量相同，连接数不一定相同）的RNN，普通DNN和CNN，表达能力RNN &gt; DNN &gt; CNN。这个结论非常显然，因为明显它们的参数数量是递减的，而且后一个的参数是前一个的子集。这一结论显然没有什么意义，但是借此引入更多的机器学习模型作为对比，我们可能会有新的认识。比如就拿SVM在图像识别上作对比。在06年Deep Learning大火之前，SVM+kernel是很长时间以来在很多领域都是高效而精巧的方法。所有高维度的分类问题对于任何形状的分割面理论上都能model的出来。然而，这一结论并不正确，在Y. Bengio的On the challenge of learning complex functions中就提到了kernel作为机器学习领域几乎最常用的方法在模拟复杂结构化函数上的局限性。从这个角度来说，非线性kernel作为把任意分割面映射到超平面的方法从表达能力上来说并不完美。同时也是侧面解释了深度学习大火的深层原因——传统模型无法企及的表达能力。</p>
+
+<p>再回到提到的两种最常见的深度模型RNN和CNN，可以说它们都是从不同的角度增强其表达能力。但各自的原因还是要取决于具体的问题，比如CNN是因为local feature，RNN是因为模型或者数据的时序性。</p>
+
+<p>虽然表达力的增强是大势所趋，但并不是在任何情况下都是好的。在机器学习中和它相对的就是泛化能力，具体来说，对于训练100个样本，我们用一个10层的神经网络显然不合适，训练出的参数很容易过拟合，原因无非就是没有做好样本数量和参数的平衡。这也解释了早年间样本数量有限时，神经网络并没有表现的好过其他模型。</p>
+
+<p>说到底，表达能力只是发展的大趋势，平时真正困扰学术界和工业界的往往是表达能力之外的问题，比如泛化问题，比如数据不足充分利用数据的问题。</p>
+
+<p>作为神经网络中表达能力最有趣的问题——神经图灵机，以后有机会再单独说。</p>
+
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner">Copyright &copy; 2015
+
+    htedsv
+
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+		</div>
+	</div>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'htedsvbackyard';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness/';
+        var disqus_url = 'http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-47274484-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

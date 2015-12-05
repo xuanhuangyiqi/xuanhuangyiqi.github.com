@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Aug 15th, 2014 Compiler, DFA, closed, consistent, 学习算法 Angluin-Learning-Algorithm 前两天在知乎回答了一个关于识别某种特定语言的方法，根据这两天0赞同的情况，不禁让我对知户上计算机从业者的基础理论水平深表怀疑， &hellip;">
+	<meta name="description" content="Sep 8th, 2014 总结, 考试 考试总结 中秋佳节之际做一些小学生做的事情：考试总结。 这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,42 +29,34 @@
 	<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+        }
+    });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+    }
     });
 </script>
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-  <meta name="google-translate-customization" content="a4f5eb9394563358-7f14fd9f69a53a2a-g4e5762ba5cd78f2b-f"></meta>
-<div id="google_translate_element"></div><script type="text/javascript">
-    function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element');
-      }
-  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          
 
   
 	<script type="text/javascript">
@@ -100,11 +92,9 @@
 
 <nav id="main-nav"><ul class="main">
     <li><a href="/">Blog</a></li>
-    <li><a href="http://about.me/htedsv">About</a></li>
-    <li><a href="/resume">Resume</a></li>
+    <li><a href="http://about.me/shashankmehta">About</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
-
 </nav>
 <nav id="sub-nav">
 	<div class="social">
@@ -146,6 +136,83 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-08T16:33:34+02:00" data-updated="true" itemprop="datePublished">Sep 8<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/zong-jie/'>总结</a>, <a class='category' href='/blog/categories/kao-shi/'>考试</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/09/08/kao-shi-zong-jie/" itemprop="url">考试总结</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>中秋佳节之际做一些小学生做的事情：考试总结。</p>
+
+<p>这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。唯一一门挂掉的MA课是我自认为本科期间做过很多相关工作（包括两次实验室经历和一次实习经历）的“数据挖掘”。通过的3门都是之前接触不多，反而最后能低分飘过。下面总结一下原因：
+
+		
+		<a href="/blog/2014/09/08/kao-shi-zong-jie/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-20T18:25:31+02:00" data-updated="true" itemprop="datePublished">Aug 20<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>, <a class='category' href='/blog/categories/tu-ling-ji/'>图灵机</a>, <a class='category' href='/blog/categories/shu-li-luo-ji/'>数理逻辑</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
+
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" itemprop="url">数理逻辑如何改变我的世界</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
+
+<p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
+
+<p>Master的第一学期学习了数理逻辑之后，我的世界观进一步被摧毁。我在之前从没认真想过“为什么计算机科学可以看做数学的分支？”“计算机科学在过去几十年都有哪些成果？”“为什么说图灵是计算机之父？他的成就都有什么价值？”这类的问题。这些问题似乎成为了计算机科学系统的公理，不需要证明，也无法解释。虽然并不是每个问题都能直接从“数理逻辑”上找到答案，但是很多它却给了我们一个入口，让我们看到计算机科学目前很少被关注的一面。</p>
+
+
+		
+		<a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -492,87 +559,6 @@
 
 		
 		<a href="/blog/2013/09/02/ios-crack/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-19T15:57:00+02:00" data-updated="true" itemprop="datePublished">Apr 19<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/tfidf/'>TFIDF</a>, <a class='category' href='/blog/categories/feng-ru-bei/'>冯如杯</a>, <a class='category' href='/blog/categories/shu-ju-wa-jue/'>数据挖掘</a>, <a class='category' href='/blog/categories/ju-lei/'>聚类</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/" itemprop="url">一个简单的同义词聚类方法</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>今天忽然想起上次水了一把冯如杯的事。</p>
-
-<p>当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。</p>
-
-<p>当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量，所以此方法推荐给以下情况：</p>
-
-<ul>
-  <li>不想浪费时间搞复杂算法</li>
-  <li>对准确性要求一般</li>
-  <li>样本规模比较小</li>
-</ul>
-
-
-		
-		<a href="/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-11T11:33:50+02:00" data-updated="true" itemprop="datePublished">Apr 11<span>th</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/fp/'>FP</a>, <a class='category' href='/blog/categories/lambda/'>lambda</a>, <a class='category' href='/blog/categories/python/'>python</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/" itemprop="url">Python下的lambda递归包装</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
-
-		
-		<a href="/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

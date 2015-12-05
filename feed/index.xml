@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-09-17T14:23:44+02:00</updated>
+  <updated>2015-12-05T16:25:55+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,117 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[表达能力 (Expressiveness)]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness/"/>
+    <updated>2015-12-05T11:16:24+01:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness</id>
+    <content type="html"><![CDATA[<p>第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、一阶逻辑之类的，而它又是从能计算的函数的角度来衡量这些模型。不过后来发现“计算能力”这个词多多少少有些歧义，所以就放弃了这个说法。而由于当时接触到的模型多是用于判定的模型，即，接受一个输入，并且唯一的返回“是”或者“否”的模型，所以对于“表达能力”这个说法觉得更加贴切。用自然语言举个例子：“我是个聪明而且友善的人”，这句话是可以用真伪判断正确性的，如果把“而且”及其类似的表达方式从自然语言中删掉，那么我们就没办法表达这句话，或者说后者的表达能力要比原本的表达能力更弱，这样来解释理论中用到的“表达能力”这一概念就更加合理了。</p>
+
+<p>前面提到“计算能力”这一翻译会有歧义就是因为它和“可计算性(Comptability)”一词概念和说法类似，但是定义上又有很大区别。“可计算性”说的是某个集合、类能否用图灵机及其等价模型计算出来，这个问题的回答只有“是”或“否”。所以可计算性只是在以图灵机为分界点的问题上的表达能力的判定。</p>
+
+<!--more-->
+
+<p>另外值得一提的就是判定问题。所有的可计算函数都可以转化为其对应的指示函数(indicator function)，比如$f(x)=y$可以转化为$F(x,y)=1$。而我们说“表达能力”也往往说的是指示函数。这也就是为什么，前面会把自动机、一阶逻辑这种只能返回真假的模型和图灵机相提并论。</p>
+
+<p>从这个角度切入，可以解释一个问题，为什么自动机应用中往往只是作为编译原理中语法分析的最简化模型，或者用于正则表达式，却可以独立作为一个独立的理论计算机的领域。</p>
+
+<h1 id="section">自动机与图灵机</h1>
+
+<p>之前在知乎上回答过两个问题：“自动机的状态能否无限？”以及“图灵机最重要的是状态转移表，纸带无限并不是必要的？”。</p>
+
+<p>首先，从历史发展上来讲，自动机的提出要比图灵机早，然而现在很少有人关注到自动机这个工作方式更简单，结构类似于图灵机的模型，反而把图灵机的提出作为计算机科学的开端。之所以把图灵机作为开端，是因为它是第一个为一阶逻辑明确定义了“机械运动”的模型，而自动机虽然更简单，而且更加容易用机械模拟，但是却只能表示图灵机的有限操作，或者说，自动机的表达能力弱于图灵机。</p>
+
+<p>前面提到的两个问题其实本质是一样的，那么就拿后者为例从表达能力上解释一下：</p>
+
+<p>首先图灵机和自动机其实从操作本质上是一样的：根据当前状态和确定的转移规则，唯一的转化到另一个状态上。区别在于自动机的状态就是定义里明确的状态，而图灵机的状态是“配置(configuration)”:（纸带内容，指针位置，状态）。假设图灵机的纸带长度有限，那么明显纸带内容的可能性和指针位置又是有限的，再加上根据定义，图灵机的状态也是有限的，所以对于每个图灵机的配置，都可以构造一个自动机的状态，那么得到的自动机的状态数是有限的，即对于每个纸带有限的图灵机都有与之等价的自动机，所以图灵机也就不比自动机表达能力更强。进而，图灵机表达能力强大也就在于其纸带的无限长度。</p>
+
+<p>而第一个问题相对不那么好回答就是因为无限这个范围内，又分为可数，不可数，不可数又可以不断继续划分。每种情况几乎都要分别考虑，并不是那么简单。</p>
+
+<h1 id="section-1">表达能力与可分析性</h1>
+
+<p>无论是数理逻辑，还是平时讨论的计算机模型，一个重要的结论是“表达能力越强，可分析性就越差”。比如一阶逻辑里所有问题都是可以判定真伪的，而二阶逻辑就做不到，但从表达能力上来说，二阶逻辑强于一阶。这个结论可以拓展到任何逻辑上以及计算机里面的计算模型。拿形式语言举例子，比如star-free语言的表达能力弱于正则语言，弱于上下文五官语言，然而star-free语言存在于群的等价对应关系，正则语言存在与幺半群的等价关系，即不存在唯一元，唯一元的性质也就不能用了。</p>
+
+<p>当然这个结论方到图灵机上，我们即希望我们发明的模型能尽量丰富的表达我们想要的想法，同时又不得不失去对这个模型的掌控能力，比如我们连一套通用的判断一段程序死机的方法都没有，更别说从理论上判断一段程序有没有bug了。</p>
+
+<p>也正是因为这种无法完美妥协的trade-off，才会让很多表达力更弱的模型在一些领域没有被完全取代。</p>
+
+<h1 id="section-2">参数化机器学习与表达能力</h1>
+
+<p>这里说的机器学习模型都是可以训练出参数的，而非参数方法，比如KNN之类的非参数方法不在讨论之列。从参数学习的角度来看计算模型，我们可以新增一个性质——可学习性。比如自动机和图灵机的状态转移表，都可以看做其不同于其他自动机或者图灵机的参数，SVM的参数就是那个分割面的$w$和$b$。决策树的参数就是一套按顺序执行的判断规则等等。那么这些这些参数都是可学习的吗？显然如果是的话，我们似乎看到了机器学习的一个终极问题——学习一台图灵机。作为最强表达能力的理论模型，如果图灵机的参数可以通过某种算法学得，并且智能的思维可以用任意一个可计算函数表示的话，那么就似乎就抵达了人工智能的终点。</p>
+
+<p>然而，即便是我们把问题简化到一个一定停机的判别图灵机上。问题也是不可解的。当然，首先要合理地定义一下“可学习”，我们就按PAC-learnable的标准来定义，即对于任意误差$\delta$，我们都能找到一个无关于样本分布的训练集大小$N$使得对于任意大于$N$的样本集，我们都能训练出误差小于$\delta$的参数。然而对于一个最经典的PAC不可学习问题：一个可数集合上有限个点，是可以表示成一个图灵机的判别函数的。所以似乎这一构想从最基础的层面就是不可实现的。</p>
+
+<h1 id="section-3">深度学习机器的表达能力</h1>
+
+<p>之前的文章已经提过一些关于深度学习大火的理论层面的原因，但是没有说的很具体。这里再从表达能力的角度稍微说一点。</p>
+
+<p>在上一学期的深度学习的seminar上，我选的题目是“Recurrent Neural Networks and Convolutional Neural Networks”，估计算是最大的一个题目了，因为两个话题随便哪个都能扯出一连串的子问题，最后的结果就是我最终没有切入教授和助教的兴趣点。在slide的结尾，我被要求从某个维度把这两种关系并不大的神经网络联系起来。最后选的就是表达能力上。即，对于结构相同（神经元层数和数量相同，连接数不一定相同）的RNN，普通DNN和CNN，表达能力RNN &gt; DNN &gt; CNN。这个结论非常显然，因为明显它们的参数数量是递减的，而且后一个的参数是前一个的子集。这一结论显然没有什么意义，但是借此引入更多的机器学习模型作为对比，我们可能会有新的认识。比如就拿SVM在图像识别上作对比。在06年Deep Learning大火之前，SVM+kernel是很长时间以来在很多领域都是高效而精巧的方法。所有高维度的分类问题对于任何形状的分割面理论上都能model的出来。然而，这一结论并不正确，在Y. Bengio的On the challenge of learning complex functions中就提到了kernel作为机器学习领域几乎最常用的方法在模拟复杂结构化函数上的局限性。从这个角度来说，非线性kernel作为把任意分割面映射到超平面的方法从表达能力上来说并不完美。同时也是侧面解释了深度学习大火的深层原因——传统模型无法企及的表达能力。</p>
+
+<p>再回到提到的两种最常见的深度模型RNN和CNN，可以说它们都是从不同的角度增强其表达能力。但各自的原因还是要取决于具体的问题，比如CNN是因为local feature，RNN是因为模型或者数据的时序性。</p>
+
+<p>虽然表达力的增强是大势所趋，但并不是在任何情况下都是好的。在机器学习中和它相对的就是泛化能力，具体来说，对于训练100个样本，我们用一个10层的神经网络显然不合适，训练出的参数很容易过拟合，原因无非就是没有做好样本数量和参数的平衡。这也解释了早年间样本数量有限时，神经网络并没有表现的好过其他模型。</p>
+
+<p>说到底，表达能力只是发展的大趋势，平时真正困扰学术界和工业界的往往是表达能力之外的问题，比如泛化问题，比如数据不足充分利用数据的问题。</p>
+
+<p>作为神经网络中表达能力最有趣的问题——神经图灵机，以后有机会再单独说。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[算法问题的标准型]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2015/10/16/wen-ti-luo-ji-suan-fa/"/>
+    <updated>2015-10-16T20:02:30+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2015/10/16/wen-ti-luo-ji-suan-fa</id>
+    <content type="html"><![CDATA[<p>几乎每个学计算机的学生都会在很早的时候就接触到“算法”这个概念，然而大家对于“算法”的理解往往是一套解决某个特定问题的“做法”。而“做法”一词又可以描述成几个连续、嵌套的步骤，最后又可以转化成指令式代码，包括顺序、循环、选择结构。</p>
+
+<p>在之后接触到函数式编程，我们对于“算法”的理解又变得更宽泛一些。函数式编程中的算法更像是直接描述问题本身，而不是一个一个的步骤。比如用Haskell实现快排算法，思路和细节问题都要比指令式编程简单得多：每一次用filter过滤出比标准元素大的集合和小的集合，然后分别递归。正因为函数式编程这样的特点，很多人介绍函数式编程的时候，都会提到“学函数式编程不用学算法，因为函数式编程本身就是在描述问题”。当我以这句话作为学习的目标学完 Funcitonal Programming 这门课之后（以及后面学的Logic Programming）之后，发现这么句话有很强的误导性，虽说函数式编程只是简单的描述问题，但是必须按照函数式编程（以及逻辑式编程）自己的方式来实现，这这就有涉及到“转化成本”的问题，对于很多10行就能搞定的指令式程序换成函数式程序有时会长很多倍，另一方面算法的优势在于可优化性，也就是说，只要算法学的足够好，任何程序都能在足够短的时间内运行完。</p>
+
+<!-- more -->
+
+<p>有点扯远了，好吧，下面切入正题。也就是如何看待计算机科学中几乎最重要的概念——算法。尽管按照前面关于算法的说法也没有任何问题，但作为一门科学的重要组成部分，算法显得太过零散，没有什么结构，框架。比如同样叫算法，机器学习中的学习算法（比如EM）和图论中的最短路径算法就没有办法找到一个一般形式同时概括他们。另一个更具体的例子就是ACM竞赛，从初中开始为了比赛，就多多少少接触了一些算法竞赛书或者在线教程。最常见的一类就是把教程分为几个章节：一章讲朴素、贪心方法；一章讲图论算法；一章讲动态规划等等。然而章节之间其实没有任何联系，唯一能把它们联系起来的线索就是——它们都是方便考察，变形灵活的计算机算法。或者说，它们是计算机科学中所有的算法在“容易考察”这个维度上的一个投影，并且再根据主题进行归类。如果学生只通过这个没有太大价值的维度了解计算机科学显然是片面的。</p>
+
+<p>回到问题本身，也就是在我自学优化课的时候想到的，对于一般意义上的算法，是否有一种方法把他们统一起来？当然有。在机器学习中这个概念叫做「目标函数」，在连续优化中叫做标准形式。</p>
+
+<p>更一般一点，对于所有确定性算法，或者叫做有明确目标的算法，都可以分成最优化某函数的，和构造可行解的。再把他们统一起来，结论就是，所有确定性算法都可以用优化中的 standard form 来表示，即：</p>
+
+<script type="math/tex; mode=display"> \min_x f(x) </script>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+    \text{subject to:} &g_i(x) \le 0 \\
+    &h_j(x) = 0
+\end{align*}
+ %]]&gt;</script>
+
+<p>更一般一点，我们可以把$h_j(x)$省去，构造可行解的问题就可以表示成没有$f(x)$而只有$g_i(x)$。
+其中$x$是算法要求的输入，$f$是要优化的函数，拿背包问题为例：</p>
+
+<script type="math/tex; mode=display"> \min_x \sum x_i w_i </script>
+
+<script type="math/tex; mode=display"> \text{subject to:} \sum x_i v_i - V \le 0 </script>
+
+<p>其中x_i是0或1，分别表示每个物品是否被选。仔细一想，发现还是有问题，$x_i$的值域(只能取0或1)并没有反映在限制条件中，这就要引出优化问题中比较麻烦的一类问题——整数规划，也就是限制解集必须是整数，只不过这里不展开解释。</p>
+
+<p>另外想到的一个典型的例子是<a href="http://research.microsoft.com/pubs/69644/tr-98-14.pdf">SMO(Sequential Minimal Optimization)</a>算法，学过SVM(Support Vector Machine)的人基本都知道，SVM做二分类时从定义类间距最大化为目标函数，再到借助 Lagrange Duality 把问题转换到求解支持向量上面，SMO算法就是在每次迭代时，通过限制条件来找到最好的两个$a_i$ $a_j$来使目标函数最小，直到整个$a$向量收敛至最优。</p>
+
+<script type="math/tex; mode=display"> \min_a \Phi(a) = \min_a {1 \over 2} \sum_{i=1}^N \sum_{j=1}^N y_i y_j (x_i \cdot x_j) a_i a_j - \sum_{i=1}^N a_i </script>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  \text{subject to: } & a_i \ge 0 \\
+  & \sum_{i=1}^N y_i a_i = 0
+\end{align*}
+ %]]&gt;</script>
+
+<p>前面从Optimization的角度来看待算法，任何问题都可以转化成一个优化函数的标准型，而事实上，在一些学校数学系的学生不会和计算机系的学生一起上算法课，他们会上一门“Discreate Optimization”来同时涵盖算法和可计算、复杂度理论。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[无限计算(Infinite Computation)]]></title>
@@ -705,76 +816,6 @@ elif i == 2, j == 3 then
 <h1 id="section-1">解析过程</h1>
 <p>在执行解析的过程中，首先从dSYM文件中找到app编译时所调用的动态库的名称、UUID、arch。然后利用mac自带的mdfind功能在全局搜索是否存在对应的库，只有完全匹配才可以解析。目前遇到的问题是如果使用模拟器制造crash，那么crash文件底层库的内容不会被解析出来，已经判断出是因为Xcode.app文件下的arch为i386的Framework的UUID与app的dSYM的不符。具体原因需要进一步了解。而真机测试时调用的库文件在另外的文件夹，似乎不会出现类似的问题。</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[一个简单的同义词聚类方法]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa/"/>
-    <updated>2013-04-19T15:57:00+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/19/yi-ge-jian-dan-de-tong-yi-ci-ju-lei-fang-fa</id>
-    <content type="html"><![CDATA[<p>今天忽然想起上次水了一把冯如杯的事。</p>
-
-<p>当时的东西简单说是要做一个从文本提取关键词的东西。攒了一些文本之后用TF-IDF计算了下每个词的重要性。但是发现一个问题：很多文章的重要词汇都是同义词，比如“北京” “首都”之类的。</p>
-
-<p>当时还不会LDA啥的高级方法，也不知道怎么生成词的特征向量，所以此方法推荐给以下情况：</p>
-
-<ul>
-  <li>不想浪费时间搞复杂算法</li>
-  <li>对准确性要求一般</li>
-  <li>样本规模比较小</li>
-</ul>
-
-<!--more-->
-
-<p>首先我们基于一个事实：一句话会在几个实体之间建立联系，比如</p>
-
-<blockquote>
-  <p>苹果是一种水果。 </p>
-</blockquote>
-
-<blockquote>
-  <p>小学生每天要去学校上学。</p>
-</blockquote>
-
-<p>这种关系不一定是具体的关系，也有可能是脑中抽象的关系，比如</p>
-
-<blockquote>
-  <p>我今天下午在咖啡厅用笔记本上网</p>
-</blockquote>
-
-<p>咖啡厅和笔记本之间其实没有表面联系，但是却在我们脑中有一个比较强的抽象关联，想到咖啡厅，我们容易想到自己在咖啡厅用笔记本上网。即使是否定某种关联的句子也肯定是我们容易想到一起的某些东西，比如：</p>
-
-<blockquote>
-  <p>地球不是绕着太阳转的。</p>
-</blockquote>
-
-<blockquote>
-  <p>天狗吃月是骗小孩子的。</p>
-</blockquote>
-
-<p>基于这个事实，我把这些文本分隔成句子，对每个句子中出现的所有名词看成一个个节点，任意两个词之间边权 + 1（初始都是0），之后根据情况定一个阈值，高于阈值的边保留，低的删掉。最后根据每个名词的TF - IDF值从高到低排序，对于某个词x，如果与比它TF - IDF大的词y在一个子图上，那么忽略x，也就是说每个子图最多只输出TF - IDF最大的一个词。</p>
-
-<p>虽然这个理论很站不住脚，不过记得当时效果很好。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[python下的lambda递归包装]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang/"/>
-    <updated>2013-04-11T11:33:50+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/04/11/pythonxia-de-lambdadi-gui-bao-zhuang</id>
-    <content type="html"><![CDATA[<p>一直觉得python是一个c语系向lisp语系的妥协（比如行内for/if），这也把python的语法搞得复杂了许多，不过函数式思想渗透的依然不够彻底，主要表现在lambda函数不能进行递归调用（当然lisp也是不支持直接调用的），这样限制python下的lambda成为了一个鸡肋的语法糖，我在<a href="http://htedsv.com:8880/?id=3">笔记</a>的意义中也提到了。其实解决起来倒也简单——加一个包装，比如我定义为函数<code>g(func, args)</code>
-<!--more-->
-&lt;div class=&#8217;bogus-wrapper&#8217;&gt;<notextile><figure class="code">&lt;div class=&#8221;highlight&#8221;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#8221;gutter&#8221;&gt;&lt;pre class=&#8221;line-numbers&#8221;&gt;<span class="line-number">1</span>
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#8217;code&#8217;&gt;&lt;pre&gt;<code class=""><span class="line">g = lambda func, *args:  func(func, *args)</span></code>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</figure></notextile>&lt;/div&gt;</p>
-
-<p>然后就可以写自递归函数了，例如经典的求阶乘</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">f = lambda self, n: 1 if n == 1 else n*self(self, n-1)
-</span><span class="line">g(f, 10)</span></code></pre></td></tr></table></div></figure></notextile></div>
 ]]></content>
   </entry>
   

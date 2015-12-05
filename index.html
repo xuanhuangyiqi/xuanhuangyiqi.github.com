@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="May 26th, 2015 无限计算(Infinite Computation) 这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。 刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。 &hellip;">
+	<meta name="description" content="Dec 5th, 2015 表达能力 (Expressiveness) 第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,42 +29,34 @@
 	<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+        }
+    });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+        tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
     });
 </script>
 
 <script type="text/x-mathjax-config">
     MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+    }
     });
 </script>
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-
-  <meta name="google-translate-customization" content="a4f5eb9394563358-7f14fd9f69a53a2a-g4e5762ba5cd78f2b-f"></meta>
-<div id="google_translate_element"></div><script type="text/javascript">
-    function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'zh-CN', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element');
-      }
-  </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          
 
   
 	<script type="text/javascript">
@@ -100,11 +92,9 @@
 
 <nav id="main-nav"><ul class="main">
     <li><a href="/">Blog</a></li>
-    <li><a href="http://about.me/htedsv">About</a></li>
-    <li><a href="/resume">Resume</a></li>
+    <li><a href="http://about.me/shashankmehta">About</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
-
 </nav>
 <nav id="sub-nav">
 	<div class="social">
@@ -146,6 +136,74 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-12-05T11:16:24+01:00" data-updated="true" itemprop="datePublished">Dec 5<span>th</span>, 2015</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/12/05/biao-da-li-expressiveness/" itemprop="url">表达能力 (Expressiveness)</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、一阶逻辑之类的，而它又是从能计算的函数的角度来衡量这些模型。不过后来发现“计算能力”这个词多多少少有些歧义，所以就放弃了这个说法。而由于当时接触到的模型多是用于判定的模型，即，接受一个输入，并且唯一的返回“是”或者“否”的模型，所以对于“表达能力”这个说法觉得更加贴切。用自然语言举个例子：“我是个聪明而且友善的人”，这句话是可以用真伪判断正确性的，如果把“而且”及其类似的表达方式从自然语言中删掉，那么我们就没办法表达这句话，或者说后者的表达能力要比原本的表达能力更弱，这样来解释理论中用到的“表达能力”这一概念就更加合理了。</p>
+
+<p>前面提到“计算能力”这一翻译会有歧义就是因为它和“可计算性(Comptability)”一词概念和说法类似，但是定义上又有很大区别。“可计算性”说的是某个集合、类能否用图灵机及其等价模型计算出来，这个问题的回答只有“是”或“否”。所以可计算性只是在以图灵机为分界点的问题上的表达能力的判定。</p>
+
+
+		
+		<a href="/blog/2015/12/05/biao-da-li-expressiveness/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-16T20:02:30+02:00" data-updated="true" itemprop="datePublished">Oct 16<span>th</span>, 2015</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/10/16/wen-ti-luo-ji-suan-fa/" itemprop="url">算法问题的标准型</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>几乎每个学计算机的学生都会在很早的时候就接触到“算法”这个概念，然而大家对于“算法”的理解往往是一套解决某个特定问题的“做法”。而“做法”一词又可以描述成几个连续、嵌套的步骤，最后又可以转化成指令式代码，包括顺序、循环、选择结构。</p>
+
+<p>在之后接触到函数式编程，我们对于“算法”的理解又变得更宽泛一些。函数式编程中的算法更像是直接描述问题本身，而不是一个一个的步骤。比如用Haskell实现快排算法，思路和细节问题都要比指令式编程简单得多：每一次用filter过滤出比标准元素大的集合和小的集合，然后分别递归。正因为函数式编程这样的特点，很多人介绍函数式编程的时候，都会提到“学函数式编程不用学算法，因为函数式编程本身就是在描述问题”。当我以这句话作为学习的目标学完 Funcitonal Programming 这门课之后（以及后面学的Logic Programming）之后，发现这么句话有很强的误导性，虽说函数式编程只是简单的描述问题，但是必须按照函数式编程（以及逻辑式编程）自己的方式来实现，这这就有涉及到“转化成本”的问题，对于很多10行就能搞定的指令式程序换成函数式程序有时会长很多倍，另一方面算法的优势在于可优化性，也就是说，只要算法学的足够好，任何程序都能在足够短的时间内运行完。</p>
+
+
+		
+		<a href="/blog/2015/10/16/wen-ti-luo-ji-suan-fa/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -454,83 +512,6 @@
 
 		
 		<a href="/blog/2014/09/12/automaton-to-regex/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-08T16:33:34+02:00" data-updated="true" itemprop="datePublished">Sep 8<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/zong-jie/'>总结</a>, <a class='category' href='/blog/categories/kao-shi/'>考试</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/09/08/kao-shi-zong-jie/" itemprop="url">考试总结</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>中秋佳节之际做一些小学生做的事情：考试总结。</p>
-
-<p>这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。唯一一门挂掉的MA课是我自认为本科期间做过很多相关工作（包括两次实验室经历和一次实习经历）的“数据挖掘”。通过的3门都是之前接触不多，反而最后能低分飘过。下面总结一下原因：
-
-		
-		<a href="/blog/2014/09/08/kao-shi-zong-jie/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-08-20T18:25:31+02:00" data-updated="true" itemprop="datePublished">Aug 20<span>th</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/han-shu-shi-bian-cheng/'>函数式编程</a>, <a class='category' href='/blog/categories/tu-ling-ji/'>图灵机</a>, <a class='category' href='/blog/categories/shu-li-luo-ji/'>数理逻辑</a>, <a class='category' href='/blog/categories/zi-dong-ji/'>自动机</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" itemprop="url">数理逻辑如何改变我的世界</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>在大二上学期，我自认为对程序员的工作有了足够的了解——无非就是学语言，学库，即使是涉及到其他专业领域，也只要掌握最基本的概念，然后调用对应的库就可以了。于是“程序员”这个概念更多的是对经验的要求——对各种库的用法掌握、编码风格的统一等等。与之相对应的就是我自认为之后的所有课程就是背概念，因为计算机科学的基本轮廓都是围绕着编程的。</p>
-
-<p>不过当我真正学习编译、操作系统以及自己后来看一些工业界用机器学习解决实际问题的文章的时候，忽然发现，我才刚刚了解计算机科学是在做什么。</p>
-
-<p>Master的第一学期学习了数理逻辑之后，我的世界观进一步被摧毁。我在之前从没认真想过“为什么计算机科学可以看做数学的分支？”“计算机科学在过去几十年都有哪些成果？”“为什么说图灵是计算机之父？他的成就都有什么价值？”这类的问题。这些问题似乎成为了计算机科学系统的公理，不需要证明，也无法解释。虽然并不是每个问题都能直接从“数理逻辑”上找到答案，但是很多它却给了我们一个入口，让我们看到计算机科学目前很少被关注的一面。</p>
-
-
-		
-		<a href="/blog/2014/08/20/how-mathematische-logik-changes-my-world/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
