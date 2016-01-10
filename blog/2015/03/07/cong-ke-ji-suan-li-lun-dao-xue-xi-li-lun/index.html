@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>从可计算理论到学习理论 - Htedsv Backyard</title>
+	<title>From computability to learnability - Htedsv Backyard</title>
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="从可计算理论到学习理论 我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。 可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下，某些问题是否可计算。 &hellip;">
+	<meta name="description" content="From Computability to Learnability I have said many times before, computational theory is the root of computer science, it is also the reason of the &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,9 +26,7 @@
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
+	<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -56,7 +54,7 @@
 
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </script>
 
   
 	<script type="text/javascript">
@@ -93,6 +91,7 @@
 <nav id="main-nav"><ul class="main">
     <li><a href="/">Blog</a></li>
     <li><a href="http://about.me/htedsv">About</a></li>
+    <li><a href="/you-qu-de-shi-yan">Projects</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
@@ -136,29 +135,32 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">从可计算理论到学习理论</h1>
-	<div class="entry-content" itemprop="articleBody"><p>我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。</p>
+	<h1 class="title" itemprop="name">From Computability to Learnability</h1>
+	<div class="entry-content" itemprop="articleBody"><p>I have said many times before, computational theory is the root of computer science, it is also the reason of the difference between mathematics and computer science. On the border of computer science and mathematics, the one side of computer science is computational theory, the other side of mathematics is mathematical logic.</p>
 
-<p>可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下，某些问题是否可计算。比如最常见的是停机问题、等价问题：是否存在机械方法能够绝对准确的计算“任何”函数是否停机，判断任意两个图灵机是否等价（“等价”即是否计算相同的函数）。第一个问题的不可判定性随处可以搜到。第二个问题是一个比第一个更难判定的问题，严格来说要构造Reduction：$H \leq Eq$；通俗来理解，就是要说两个图灵机功能能完全相同，必须枚举所有可能输入，并且判断输出，然而输入集合是无限的，所以这一过程不会停止。当然，这一问题用人脑来模拟，在图灵机结构简单的时候是可以完成的，不过我们人脑模拟的过程是带有一定启发性的，即不能严格的归为机械过程。</p>
+<p>Computational theory mostly focused on very specific issues - the “generality”, without any conditionality, some questions are whether or not computable. Two of most common examples are the halting problem and equivalence problem: Is there a mechanical method can accurately determine whetehr an function can stop and it is determined whether two turing machines are equivalent (“equivalent” is, whether they are  calculating the same function). The answer and proof of the first question can be found anywhere: undecidable. The second question is more difficult to determine, strictly speaking, we should construct a reduction: $H \leq Eq$. An easy way to understand it is that to say the turing machines calculating the same function, we must enumerate all possible inputs, and determines whether the output is the same or not, however the input set is infinite, so the process does not stop. Since the determining process of the previous two questions by our brains is somehow heuristic, which implies, the strategy is not possible to apply to turing machines, and can not strictly concluded as mechanical process. </p>
 
 <!--more-->
-<p>下面就拿这个Eq问题（判断两个图灵机是否计算同一函数）作为引子，讨论学习理论。</p>
 
-<p>计算理论研究的一般是通用问题的可能性，即在最严格的情况下，某种问题是否可计算。然而更多的时候，我们并不需要那么严格。只要能近似相等就可以了，或者随着学习样本的增加，模型能逐渐逼近真实值。回到$Eq$问题，即“如果我们尝试了“足够多”的输入，两个图灵机都能输出相同的内容，那么就可以说两个图灵机等价了”。以上判定性问题的表述，从可计算性上，等价于“对于一个图灵机$M_1$和一个给定的足够大的输入集，我们可以构造出$M_2$，使得$M_1$和$M_2$对于给定输入能够得到相同输出，也就是说能够构造出一个近似和$M_1$等价的图灵机$M_2$”。</p>
+<p>In the folloing, we take the $Eq$ problem as an intruduction to discuss computational learning theory.</p>
 
-<p>这一问题相关的理论就是“可计算学习理论”，其中一个重要而基础的部分就是研究一个模型是否可以学习。一个模型，或者叫结构可以被学习，当且仅当随着样本的增加，误差能收敛到无限小。形式化的表示即：</p>
+<p>Computational theory discuss the prossibilities of some general solutions. Namely whether a problem is computable in most general case. While in most cases, we don’t require the solution to be so strict in all cases. It’s enough if it can approximate to the correct solution with arbitrary small error rate. Or with the growth of the “learning materials”, the results can approximate to our expected solution. Back to the $Eq$ problem, if we have already tested a very large input set, and two turing machines $M<em>1$ and $M</em>2$give the same results. Then we would like to say, the two turing machines are equivalent. </p>
+
+<p>To formulate the problem in another way: <em>For any turing machine $M_1$, where the transition table is unknown. We construct another turing machine $M_2$, such that for any given input set they perform in the same way.</em> Then we can say we can learn $M_1$. </p>
+
+<p>The related theoy to this issue is “computational learning theory”, they focus on whether for a unknown function such a leaning algorithm exists or not. To say a problem is learnable if with increasing number of samples, the error rate goes infinitely close to zero. A formal descriptioon is:</p>
 
 <script type="math/tex; mode=display">P(error \ge \epsilon) \le \delta</script>
 
-<p>其中需要注意的是，$\epsilon$是单个样本的误差概率。那么显然式子左边是关于样本集大小N相关的，即符合形式</p>
+<p>Note that, $\epsilon$ is the error rate of one sample. Obviously the left part is dependent on $N$, </p>
 
 <script type="math/tex; mode=display">P(error \ge \epsilon) = p^N \le \delta</script>
 
-<p>所以关于它还有另一种表述：对于任意小，且不为0的$\epsilon$和$\delta$。我们都能找到一个N。</p>
+<p>There is another equivalent formulation: for any positive error rate $\epsilon$和$\delta$, whether there exists a $N$.</p>
 
-<p>那么有些模型就无法被学习，即随着样本增大，误差不会收敛于无穷小。虽然这样的模型很多，不过一个共同点是，可以映射到“从一个无限集合中学习任意多个元素”。当然，对这一问题的严谨而通俗表述可以参见PAC理论。</p>
+<p>Of course, not all models are learnable. The most classical example is “learn a finite set”, and all unlearnable question can be reduced to the example. More details of the theory can be found in PAC theory. </p>
 
-<p>当然，学习并不都是基于概率，有些结构因为其符合一定的性质，可以直接得到目标解。比如前面写过的<a href="http://blog.htedsv.com/blog/2014/08/15/anluin-learning-algorithm/">Angluin’s Learning Algorithm</a>，就是根据正则语言的一致性学习的。</p>
+<p>Not all the learning are based on probability, some simple models can be directed learnt to the objective form. For example the previously mentioned <a href="http://blog.htedsv.com/blog/2014/08/15/anluin-learning-algorithm/">Angluin’s Learning Algorithm</a>，which is based on the consistance, of the current example and previous examples.</p>
 
 </div>
 
@@ -185,7 +187,7 @@
 </section>
 </div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     htedsv
 

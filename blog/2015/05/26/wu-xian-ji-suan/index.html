@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>无限计算(Infinite Computation) - Htedsv Backyard</title>
+	<title>Infinite Computation - Htedsv Backyard</title>
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="无限计算(Infinite Computation) 这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。 刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。因为任何离散的问题一旦放在“无限” &hellip;">
+	<meta name="description" content="Infinite Computation This is a course from last semester, to advantage of the holidays, I’ll write a short summary. Although it doesn’t &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,9 +26,7 @@
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
+	<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -56,7 +54,7 @@
 
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </script>
 
   
 	<script type="text/javascript">
@@ -93,6 +91,7 @@
 <nav id="main-nav"><ul class="main">
     <li><a href="/">Blog</a></li>
     <li><a href="http://about.me/htedsv">About</a></li>
+    <li><a href="/you-qu-de-shi-yan">Projects</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
@@ -136,19 +135,21 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">无限计算(Infinite Computation)</h1>
-	<div class="entry-content" itemprop="articleBody"><p>这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。</p>
+	<h1 class="title" itemprop="name">Infinite Computation</h1>
+	<div class="entry-content" itemprop="articleBody"><p>This is a course from last semester, to advantage of the holidays, I’ll write a short summary. Although it doesn’t revolutionize my world view like computability theory and mathematical logic, but as a relatively basic theoretical course, it did inspire me a lot.</p>
 
-<p>刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。因为任何离散的问题一旦放在“无限”这个限制条件下，就会变得困难加倍，许多针对“有限”问题的解法就变得不那么适用。比如命题逻辑的完备性定理，就是把无限集合的判定性问题转化到任意有限集合上判定，从而使不可解问题变得可解。</p>
+<p>I choose the course at the beginning, partly because it is the offered by mathematical logic institut, partly because the name seems bluffing. Because any discrete problems once placed under the assumption of “infinite”, it will become much more difficult, most of the solutions for the “infinite” problem becomes less applicable. For example, determining a complementary set of a regular language is trivial. But to construct the complementary set of infite regular language becomes sophiscated.</p>
+
+<p>The relationship between “finite” and “infinite” is not only opposite. In some scenarios, they are equivalent. completeness theorem of propositional logic, which is to build the equivalence of infinite set to an arbitrary finite set for determination, so that the unsolvable problem becomes solvable. </p>
 
 <!--more-->
-<p>然而这门课的内容虽然可以推广到任意通用的计算问题，但是所有讨论的对象都是形式语言，或者说大部分都是正则语言，不过这也很符合7所的风格：任何理论计算机讨论的问题都是“语言”的问题。“语言”是计算机理论问题的基本对象，代码、数据从一定程度上说，都是“语言”。然而从“语言”的角度来看待所有计算机问题并不合适，比如把问题看做“语言”并不能助于解决任何算法问题。如果把逻辑、语言、图灵机看成解决问题的一般方法，那么算法就是解决问题的特殊、具体方法。逻辑、图灵机只讨论可能性，而千奇百怪的算法（或者说复杂度理论）才是真正解决问题的具体工具。也正是因为世界上没有一套简单的工具、方法能最优的解决所有问题，才会出现整个科学的繁荣发展。“不用一个工具解决所有问题”这一观念不止在计算机领域，在任何学科都适用。</p>
+<p>However, although the contents of the course can be extended to any general computing problems, the objects discussed in the course are formal language, the most is regular languages, indeed it is very consistent with the style of mathematical logic institut: Any terms in theoretical computer science are the term “formal language”. “Language” is the fundamental targets of theoretical problems, code, data, to some degree, are all “languages”. However, the perspective of “language” is not suitable for all computer problems, the problems seen as the “language” does not help solve any algorithmic problems. If the logic, the language, the turing machines as a general approach to solve the problem, then the algorithm is the special and specfic method solve the problems. Logic, turing machine only focus on the possibility, while the algorithms (and complexity theory) is the only tools to the problem in an efficient way. Exactly because the problems in the world is not possible to be solved by a general tool, even more methods appear to lead to the scientific prosperity. “Do not use one tool to solve all the problems” not in the computer science, but are applicable also in any discipline.</p>
 
-<p>回到形式方法上，有限正则语言中存在DFA和NFA的等价转换，然而对于无限语言DBA(Definite Buechi Automaton)和NBA(Nondefinite Buechi Automaton)就不是等价，而是层级关系了；而且在DBA之内也有另外的一些层级。相比于有限语言，无限语言的层级要丑陋一些，许多具体问题的处理也要更棘手，比如把NBA可接受的语言转化为NBA。</p>
+<p>Back to the formal methods, there is an equivalent transformation of finite regular language between DFA and NFA, but for infinite languages, DBA (Definite Buechi Automaton) and NBA (Nondefinite Buechi Automaton) is not equivalent, but they are in the hierarchical relationship; and within DBA, there are also a number of additional levels. Compared to the finite languages, the language level of an finite number is more ugly, but also to deal with a number of specific issues is more difficult, such as transformation of the NBA acceptable language into DBA.</p>
 
-<p>7所几门课给我带来的另外一个认识就是几种模型的等价性，比如每种语言都会存在某种对应的自动机，复杂一点的会对应Pushdown Automaton, 甚至只能对应图灵机，一阶逻辑，二阶逻辑；甚至还有一些另一个体系下的逻辑：Linear Temporal Logic与之对应。更通用一点，与“有限”或者“无限”语言对应的是判定性函数，甚至是机器学习模型：神经网络、决策树、线性分类器、SVM。</p>
+<p>The courses offered by mathematical logic institut brought me another understanding, which is the equivalence between several models, also the existence of the correspondence of each language to some kinds of automata. Some complex languages would correspond to Pushdown Automaton, even correspond to a turing machine, first-order logic, second-order logic; even some logic under another system: Linear Temporal Logic. From a more general point, “finite” or “infinite” language corresponds to the determination problem of the function, and even machine learning models: neural networks, decision trees, linear classifiers, SVM.</p>
 
-<p>最后一节课，提到了一点不会考，但是很有意思的东西——无限语言在有理数上的对应，再结合前面的二阶逻辑表达式，就是用二阶逻辑表示有理数集合，算是一个打通连续空间和离散空间的实例。在之后就是康托集合，它的存在证明了有理数和实数集合不存在一一对应。</p>
+<p>In the last lesson, one thing is mentioned is very interesting - correspondence between infinite languages and the rational numbers, which is also a connection between continuous space and discrete space - Cantor Set. its existence proved the correspondence between rational and real numbers does not exist.</p>
 </div>
 
 </article>
@@ -174,7 +175,7 @@
 </section>
 </div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     htedsv
 

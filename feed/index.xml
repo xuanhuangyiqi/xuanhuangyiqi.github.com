@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2015-12-05T16:29:51+01:00</updated>
+  <updated>2016-01-10T17:05:31+01:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -14,79 +14,80 @@
 
   
   <entry>
-    <title type="html"><![CDATA[表达能力 (Expressiveness)]]></title>
+    <title type="html"><![CDATA[Expressiveness]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness/"/>
     <updated>2015-12-05T11:16:24+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2015/12/05/biao-da-li-expressiveness</id>
-    <content type="html"><![CDATA[<p>第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、一阶逻辑之类的，而它又是从能计算的函数的角度来衡量这些模型。不过后来发现“计算能力”这个词多多少少有些歧义，所以就放弃了这个说法。而由于当时接触到的模型多是用于判定的模型，即，接受一个输入，并且唯一的返回“是”或者“否”的模型，所以对于“表达能力”这个说法觉得更加贴切。用自然语言举个例子：“我是个聪明而且友善的人”，这句话是可以用真伪判断正确性的，如果把“而且”及其类似的表达方式从自然语言中删掉，那么我们就没办法表达这句话，或者说后者的表达能力要比原本的表达能力更弱，这样来解释理论中用到的“表达能力”这一概念就更加合理了。</p>
+    <content type="html"><![CDATA[<p>The first formal contact to the concept “expressive” is in the course “Fondation of Data Science”, after that I prefer to use the words “Computational Power” to understand it, because at that time, I was more familiar with computational models, such as automata, turing machines, first-order logic etc. Also it measures the models from the perspective of computational functions. But later I found the phrase “computational power” is the word and somewhat ambiguous, so I gave up this saying. Due to the fact that, the models I was familiar with are mostly for the determination, that is, to accept one input and only returns a “yes” or “no” model, so for the “expressiveness” is more appropriate. Let’s look at a example of natural language: “I am a smart and friendly person”, this sentence can be used to judge the authenticity of the right, if the “and” and similar expressions deleted from natural language, then there is no way to express this sentence, or that the original expression expressiveness weaker than the latter, so that the theory used to explain the “expressiveness” of the concept is more reasonable.</p>
 
-<p>前面提到“计算能力”这一翻译会有歧义就是因为它和“可计算性(Comptability)”一词概念和说法类似，但是定义上又有很大区别。“可计算性”说的是某个集合、类能否用图灵机及其等价模型计算出来，这个问题的回答只有“是”或“否”。所以可计算性只是在以图灵机为分界点的问题上的表达能力的判定。</p>
+<p>As mentioned above, this translation “computing capabilities” is ambiguous because it’s similar to “computability”, but there are big differences from their definitions. “Computability” is a set of classes can be calculated using a turing machine or its equivalent models, the answer to this question is only “yes” or “no.” So computability is a judgement which takes turing machines as a tool. However expressiveness is more likely to be a contionous measurement.</p>
 
 <!--more-->
 
-<p>另外值得一提的就是判定问题。所有的可计算函数都可以转化为其对应的指示函数(indicator function)，比如$f(x)=y$可以转化为$F(x,y)=1$。而我们说“表达能力”也往往说的是指示函数。这也就是为什么，前面会把自动机、一阶逻辑这种只能返回真假的模型和图灵机相提并论。</p>
+<p>Also another thing that is worth mentioning is the decision problem. All computable functions can be converted to its corresponding indicator function. For example, $f(x) = y$ can be converted into $F(x, y) = 1$. And we say “expressiveness”, while we are really talking about the “expressiveness” of an indicator function. This is why, I compared automata, first-order logic, which can only return true and false, with turing machines, which seems more flexible. All these models are comparable if we only consider their equivalent indicator functions.</p>
 
-<p>从这个角度切入，可以解释一个问题，为什么自动机应用中往往只是作为编译原理中语法分析的最简化模型，或者用于正则表达式，却可以独立作为一个独立的理论计算机的领域。</p>
+<p>From this point of view, we can answer a question, why the automata are often used as the simplest model in compiler theory of syntax analysis, or for regular expressions, however they act as a research field of theoretical computer science.</p>
 
-<h1 id="section">自动机与图灵机</h1>
+<h1 id="automaton-and-turing-machine">Automaton and Turing Machine</h1>
 
-<p>之前在知乎上回答过两个问题：“自动机的状态能否无限？”以及“图灵机最重要的是状态转移表，纸带无限并不是必要的？”。</p>
+<p>I have ever answered the two questions at Zhihu: “Can an automaton have infinite states?” And “The most important component to a turing machine is the state transition table, is the unlimited tape also necessary?.”</p>
 
-<p>首先，从历史发展上来讲，自动机的提出要比图灵机早，然而现在很少有人关注到自动机这个工作方式更简单，结构类似于图灵机的模型，反而把图灵机的提出作为计算机科学的开端。之所以把图灵机作为开端，是因为它是第一个为一阶逻辑明确定义了“机械运动”的模型，而自动机虽然更简单，而且更加容易用机械模拟，但是却只能表示图灵机的有限操作，或者说，自动机的表达能力弱于图灵机。</p>
+<p>First of all, in terms of the historical development, automaton was developed earlier than the turing machines, but now even nobody pays attention to the automata, which has a simpler structure than a turing machine. Instead, Turing machine was proposed as the beginning of computer science. The reason is, because turing machine is the first implementation of “mechanical movement” of first logic, and the automaton though more a simple and easier simulation, but can only represent limited ability, compared to turing machine, or to say the automaton is weaker than Turing machines.</p>
 
-<p>前面提到的两个问题其实本质是一样的，那么就拿后者为例从表达能力上解释一下：</p>
+<p>In fact, the two issues mentioned above are essentially the same, we took the latter as an example to explain from the ability to express it:</p>
 
-<p>首先图灵机和自动机其实从操作本质上是一样的：根据当前状态和确定的转移规则，唯一的转化到另一个状态上。区别在于自动机的状态就是定义里明确的状态，而图灵机的状态是“配置(configuration)”:（纸带内容，指针位置，状态）。假设图灵机的纸带长度有限，那么明显纸带内容的可能性和指针位置又是有限的，再加上根据定义，图灵机的状态也是有限的，所以对于每个图灵机的配置，都可以构造一个自动机的状态，那么得到的自动机的状态数是有限的，即对于每个纸带有限的图灵机都有与之等价的自动机，所以图灵机也就不比自动机表达能力更强。进而，图灵机表达能力强大也就在于其纸带的无限长度。</p>
+<p>First turing machines and automaton actually from operations is essentially the same: According to the current state and determine the transition rules, only transformed into another state. The difference is that state machine is a clear definition of the state, and the state of the turing machine is “Configuration”: (tape contents, the pointer position, status). Suppose the turing machines only have finte tapes, then the possibility of tape and the pointer positions are limited, also for the definition of turing machine, the states is limited as well, so for every turing machine’s configuration, we can construct an automaton such that, the number of states of the automaton is finte, and behaves equivalent to the turing machine, so turing machine is no more expressive than automata. Furthermore, the power of turing machines lies in the infinite taps.</p>
 
-<p>而第一个问题相对不那么好回答就是因为无限这个范围内，又分为可数，不可数，不可数又可以不断继续划分。每种情况几乎都要分别考虑，并不是那么简单。</p>
+<p>The first question to answer is relatively not trivial, because within “infinite”, it could be divided into countable, uncountable, uncountable and can continue to continue to divide. Almost have to consider each case separately, it is not so simple.</p>
 
-<h1 id="section-1">表达能力与可分析性</h1>
+<h1 id="expressiveness-and-analyzability">Expressiveness and Analyzability</h1>
 
-<p>无论是数理逻辑，还是平时讨论的计算机模型，一个重要的结论是“表达能力越强，可分析性就越差”。比如一阶逻辑里所有问题都是可以判定真伪的，而二阶逻辑就做不到，但从表达能力上来说，二阶逻辑强于一阶。这个结论可以拓展到任何逻辑上以及计算机里面的计算模型。拿形式语言举例子，比如star-free语言的表达能力弱于正则语言，弱于上下文五官语言，然而star-free语言存在于群的等价对应关系，正则语言存在与幺半群的等价关系，即不存在唯一元，唯一元的性质也就不能用了。</p>
+<p>No matter for mathematical logic, or computer models that are usually discussed, an important conclusion is that “the stronger is the expressiveness, the weaker is the analyzability.” For example, given the facts, all expressions of first-order logic is decidable, while second-order logic is not. On the other hand, the expressions of the second-order logic are stronger than the first-order logic. This conclusion can be extended to any logical and computational models. To take formal languages as an example, the expressiveness of star-free languages is weaker than it of regular languages, and the latter is weaker than context-free languages, but thefact is star-free languages are equivalent to groups, regular languages are equivalent to semigroups. As we know, semigroups has less constraints than groups, also they are less analyzable.</p>
 
-<p>当然这个结论方到图灵机上，我们即希望我们发明的模型能尽量丰富的表达我们想要的想法，同时又不得不失去对这个模型的掌控能力，比如我们连一套通用的判断一段程序死机的方法都没有，更别说从理论上判断一段程序有没有bug了。</p>
+<p>Of course, this conclusion is true for turing machines, on the one hand, we hope to invent a model can express a wealth of ideas, on the other hand, we have to lose the contronl of the model. we even can not propose a general method to test whether a program can stop or not in theory, let alone to judge whether a program has bugs.</p>
 
-<p>也正是因为这种无法完美妥协的trade-off，才会让很多表达力更弱的模型在一些领域没有被完全取代。</p>
+<p>It is also because of this trade-off, a lot of weaker expressive models survive and not been completely replaced in some areas.</p>
 
-<h1 id="section-2">参数化机器学习与表达能力</h1>
+<h1 id="parametric-machine-learning-and-expressiveness">Parametric machine learning and expressiveness</h1>
 
-<p>这里说的机器学习模型都是可以训练出参数的，而非参数方法，比如KNN之类的非参数方法不在讨论之列。从参数学习的角度来看计算模型，我们可以新增一个性质——可学习性。比如自动机和图灵机的状态转移表，都可以看做其不同于其他自动机或者图灵机的参数，SVM的参数就是那个分割面的$w$和$b$。决策树的参数就是一套按顺序执行的判断规则等等。那么这些这些参数都是可学习的吗？显然如果是的话，我们似乎看到了机器学习的一个终极问题——学习一台图灵机。作为最强表达能力的理论模型，如果图灵机的参数可以通过某种算法学得，并且智能的思维可以用任意一个可计算函数表示的话，那么就似乎就抵达了人工智能的终点。</p>
+<p>Here that we focus on the parametric machine learning models, which implies parameters can all be estimated from machine learning models. Nonparametric methods such as KNN are not discussed. from the point of view of whether the parameters of a machine learning problem can be learned, we can add a property: “learnability”. Such as state transition tables of automata and turing machines, which can be seen as different from the other parameters, the parameters of SVM is the dividing plane of $w$ and $b$, the parameters of a decision tree is the sequence of rules, and so on. Can these parameters be learnt? Obviously, if it is, we seem to see an foundamental problem of machine learning - learning a turing machine. As the theoretical model with the strongest expressiveness, if the argument turing machine can be learned by some algorithms, and intelligent thinking can be represented by an arbitrary computable function, then it seems to have arrived at the end of artificial intelligence.</p>
 
-<p>然而，即便是我们把问题简化到一个一定停机的判别图灵机上。问题也是不可解的。当然，首先要合理地定义一下“可学习”，我们就按PAC-learnable的标准来定义，即对于任意误差$\delta$，我们都能找到一个无关于样本分布的训练集大小$N$使得对于任意大于$N$的样本集，我们都能训练出误差小于$\delta$的参数。然而对于一个最经典的PAC不可学习问题：一个可数集合上有限个点，是可以表示成一个图灵机的判别函数的。所以似乎这一构想从最基础的层面就是不可实现的。</p>
+<p>However, even if we simplify the problem down to a certain terminating turing machine, the problem is still unsolvable. In order to explain, of course, we must first define a reasonable “learnability”, we define it with the criteria PAC-learnable. For any small error $ \delta &gt; 0 $, we can find out a training set size $ N $ such that For any sample set with greater than $ N $ samples, we can garantee that the error is less than $ \delta $ parameters. However, for one of the most classic PAC unlearnable problem: a countable set on a finite number of points can be expressed as a discriminant function of a turing machine. It implies, this class of turing machines are not learnable. As a result, It seems this idea from the most basic level is unachievable.</p>
 
-<h1 id="section-3">深度学习机器的表达能力</h1>
+<h1 id="the-expressiveness-of-deep-learning">The expressiveness of deep learning</h1>
 
-<p>之前的文章已经提过一些关于深度学习大火的理论层面的原因，但是没有说的很具体。这里再从表达能力的角度稍微说一点。</p>
+<p>Previous articles have mentioned some of the theoretical reasons of success of deep learning, but did not discussed very specificly. Here again we talk slightly in terms of expressiveness of deep learning.</p>
 
-<p>在上一学期的深度学习的seminar上，我选的题目是“Recurrent Neural Networks and Convolutional Neural Networks”，估计算是最大的一个题目了，因为两个话题随便哪个都能扯出一连串的子问题，最后的结果就是我最终没有切入教授和助教的兴趣点。在slide的结尾，我被要求从某个维度把这两种关系并不大的神经网络联系起来。最后选的就是表达能力上。即，对于结构相同（神经元层数和数量相同，连接数不一定相同）的RNN，普通DNN和CNN，表达能力RNN &gt; DNN &gt; CNN。这个结论非常显然，因为明显它们的参数数量是递减的，而且后一个的参数是前一个的子集。这一结论显然没有什么意义，但是借此引入更多的机器学习模型作为对比，我们可能会有新的认识。比如就拿SVM在图像识别上作对比。在06年Deep Learning大火之前，SVM+kernel是很长时间以来在很多领域都是高效而精巧的方法。所有高维度的分类问题对于任何形状的分割面理论上都能model的出来。然而，这一结论并不正确，在Y. Bengio的On the challenge of learning complex functions中就提到了kernel作为机器学习领域几乎最常用的方法在模拟复杂结构化函数上的局限性。从这个角度来说，非线性kernel作为把任意分割面映射到超平面的方法从表达能力上来说并不完美。同时也是侧面解释了深度学习大火的深层原因——传统模型无法企及的表达能力。</p>
+<p>In the seminar depth learning in last semester, I chose the topic “Recurrent Neural Networks and Convolutional Neural Networks”, which is regarded as one of the largest estimate subject, because two topics can be easily extented to a series of sub-problems, and finally the result is that I didn’t catch the professor’s interest points. At the end of the slides, I was asked to present the relationship between the two neural networks from any perspectives, even though they are not really linked to each other. Finally I chose the option: the ability to express. That is, with the same structures (the same number of layers and the same number of neurons, connections are not necessarily the same), RNN, ordinary DNN and CNN, have the expresiveness RNN &gt; DNN &gt; CNN. This conclusion is very obvious, because they are decreasing with the number of parameters, and the parameters of the latter is is a subset of the former. However this conclusion obviously does not make sense, but to introduce more machine learning model as comparisons, we may have a new understanding. </p>
 
-<p>再回到提到的两种最常见的深度模型RNN和CNN，可以说它们都是从不同的角度增强其表达能力。但各自的原因还是要取决于具体的问题，比如CNN是因为local feature，RNN是因为模型或者数据的时序性。</p>
+<p>To take SVM as an example for comparison on image recognition, before Deep Learning became ad-hoc in 2006, SVM + kernel was an efficient and sophisticated methods for a very long time in many areas. All high-dimensional classification problems can be mapped to a linear seperation problem if there is a suitable kernel method. However, this conclusion is not totally correct, in “<a href="http://www.iro.umontreal.ca/~lisa/pointeurs/PBR_chapter.pdf">On the challenge of learning complex functions</a>” of Y. Bengio, it mentions the kernel as machine learning almost the most common method has limitations in the simulation of complex structured functions. From this perspective, the non-linear kernel as the surface is mapped to an arbitrary dividing hyperplane method from the expressiveness is not perfect. From another side, it also explained the underlying reason of the success of deep learning - traditional models can not have the expressiveness.</p>
 
-<p>虽然表达力的增强是大势所趋，但并不是在任何情况下都是好的。在机器学习中和它相对的就是泛化能力，具体来说，对于训练100个样本，我们用一个10层的神经网络显然不合适，训练出的参数很容易过拟合，原因无非就是没有做好样本数量和参数的平衡。这也解释了早年间样本数量有限时，神经网络并没有表现的好过其他模型。</p>
+<p>Go back to the two common deep neural networks RNN and CNN, we can say they are enhancing their expressiveness from different ways. The reason differs with the specific issues, such as CNN is extracting local feature hierachically, RNN is handling time-dependence.</p>
 
-<p>说到底，表达能力只是发展的大趋势，平时真正困扰学术界和工业界的往往是表达能力之外的问题，比如泛化问题，比如数据不足充分利用数据的问题。</p>
+<p>Although the enhanced expressiveness of is the trend, but not true for any cases. In machine learning, standing on its opposite position is generalization. In particular, for training of 100 samples, we use a 10-layer neural network is clearly inappropriate, the resulting parameters are very likely to be over-fitting, the reason is the inbalance between the number of samples and parameters. It also explains why in early years when number of samples is limited, neural networks didn’t perform very well.</p>
 
-<p>作为神经网络中表达能力最有趣的问题——神经图灵机，以后有机会再单独说。</p>
+<p>After all, the big trend is the development of expressiveness. But the issues which really bothered academia and industry are often beyond the expressiveness, such as generalization problems, and lack of adequate data.</p>
 
+<p>As neural networks ability to express the most interesting question - neural turing machines, we will discuss in detailes in the future.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[算法问题的标准型]]></title>
+    <title type="html"><![CDATA[Standard form of algorithmic problems]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2015/10/16/wen-ti-luo-ji-suan-fa/"/>
     <updated>2015-10-16T20:02:30+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2015/10/16/wen-ti-luo-ji-suan-fa</id>
-    <content type="html"><![CDATA[<p>几乎每个学计算机的学生都会在很早的时候就接触到“算法”这个概念，然而大家对于“算法”的理解往往是一套解决某个特定问题的“做法”。而“做法”一词又可以描述成几个连续、嵌套的步骤，最后又可以转化成指令式代码，包括顺序、循环、选择结构。</p>
+    <content type="html"><![CDATA[<p>Almost every student, who studies computer science at an early age are exposed to “algorithm” concept, but everyone often regards “algorithm” to solve a specific problem in a sequence of operations. The “operations” are always in the term can be described as several consecutive nested steps, and finally can be converted into a command-style code, including sequential, looping, selecting  structures.</p>
 
-<p>在之后接触到函数式编程，我们对于“算法”的理解又变得更宽泛一些。函数式编程中的算法更像是直接描述问题本身，而不是一个一个的步骤。比如用Haskell实现快排算法，思路和细节问题都要比指令式编程简单得多：每一次用filter过滤出比标准元素大的集合和小的集合，然后分别递归。正因为函数式编程这样的特点，很多人介绍函数式编程的时候，都会提到“学函数式编程不用学算法，因为函数式编程本身就是在描述问题”。当我以这句话作为学习的目标学完 Funcitonal Programming 这门课之后（以及后面学的Logic Programming）之后，发现这么句话有很强的误导性，虽说函数式编程只是简单的描述问题，但是必须按照函数式编程（以及逻辑式编程）自己的方式来实现，这这就有涉及到“转化成本”的问题，对于很多10行就能搞定的指令式程序换成函数式程序有时会长很多倍，另一方面算法的优势在于可优化性，也就是说，只要算法学的足够好，任何程序都能在足够短的时间内运行完。</p>
+<p>After exposure to functional programming, the “algorithm” has become a broader understanding. Functional programming algorithm is more like a direct description of the problem itself, rather than one by one step. For example, in Haskell algorithm to achieve quick sort, ideas and details is much simpler than imperative programming: in each step, filter out the elements that are larger and smaller than as the standard, send them to the recursion, and concate their results. Because of this characteristic of functional programming, when many people introduce functional programming, they always referred to “learn functional programming without learning algorithm because functional programming itself is the description of the problem.” After I was taking the words as a goal, and finished learning the course Funcitonal Programming (and Logic Programming later), and found such a sentence has a strong misleading. Although functional programming is simply a description of the problem, but You must be in accordance with functional programming (and logic programming) in their own way to achieve this. There is a problem which relates to “conversion cost”, for many algorithms which are able to be achieved within 10 lines of code, may cost a very long time and code to be translated into functional programs. On the other hand the advantage of the “algorithm” is that they can optimize the performance, that is, as long as you learn algorithm very well, any programs can be completed within a short enough time to run.</p>
 
 <!-- more -->
 
-<p>有点扯远了，好吧，下面切入正题。也就是如何看待计算机科学中几乎最重要的概念——算法。尽管按照前面关于算法的说法也没有任何问题，但作为一门科学的重要组成部分，算法显得太过零散，没有什么结构，框架。比如同样叫算法，机器学习中的学习算法（比如EM）和图论中的最短路径算法就没有办法找到一个一般形式同时概括他们。另一个更具体的例子就是ACM竞赛，从初中开始为了比赛，就多多少少接触了一些算法竞赛书或者在线教程。最常见的一类就是把教程分为几个章节：一章讲朴素、贪心方法；一章讲图论算法；一章讲动态规划等等。然而章节之间其实没有任何联系，唯一能把它们联系起来的线索就是——它们都是方便考察，变形灵活的计算机算法。或者说，它们是计算机科学中所有的算法在“容易考察”这个维度上的一个投影，并且再根据主题进行归类。如果学生只通过这个没有太大价值的维度了解计算机科学显然是片面的。</p>
+<p>To come back to our topic – That is how to treat almost the most important concept of computer science - algorithm. Although the way of understanding “algorithm” in the previous statement is nothing wrong, but as an important part of science, algorithm seems too fragmented, it has no structure, framework. Such as the same called algorithms, for machine learning learning algorithms (such as EM) and  shortest path algorithm in graph theory, there is no way to find a general form simultaneously to summarize them. Another more specific example is the algorithms in ACM/ICPC contest, from junior high school students to the programmers, they more or less contact with some books or online tutorials to introducing algorithm contests. The most common point is they are divided into several sections: a section roughly speaking about greedy method; a section about graph algorithms; and a section about dynamic programming, and so on. But in fact there is no link between the chapters, the only clue can link them is - they are easy to study even without any research background, and flexible computer algorithms. Or that they are simple algorithms in computer science projected to the dimension “complexity to study” , and then classified by subjects. If the student only learn algorithms from this perspective is clearly one-sided.</p>
 
-<p>回到问题本身，也就是在我自学优化课的时候想到的，对于一般意义上的算法，是否有一种方法把他们统一起来？当然有。在机器学习中这个概念叫做「目标函数」，在连续优化中叫做标准形式。</p>
+<p>Back to the question itself, which when I was thinking in the course of optimization, is there a way to unite all the algorithms in the general sense? Of course. In machine learning the concept is called “objective function”, in continuous optimization it’s called the standard form .</p>
 
-<p>更一般一点，对于所有确定性算法，或者叫做有明确目标的算法，都可以分成最优化某函数的，和构造可行解的。再把他们统一起来，结论就是，所有确定性算法都可以用优化中的 standard form 来表示，即：</p>
+<p>From a more general point, for all deterministic algorithm, or algorithms, called a clear objective, can be divided into the “optimization of certain functions”, and “check the the feasible solutions”. Then they can be again united, the result is that all deterministic algorithms can be described in a standard form of optimization problems to indicate that:</p>
 
 <script type="math/tex; mode=display"> \min_x f(x) </script>
 
@@ -98,16 +99,16 @@
 \end{align*}
  %]]&gt;</script>
 
-<p>更一般一点，我们可以把$h_j(x)$省去，构造可行解的问题就可以表示成没有$f(x)$而只有$g_i(x)$。
-其中$x$是算法要求的输入，$f$是要优化的函数，拿背包问题为例：</p>
+<p>More generally，we ignore $h_j(x)$, the problems of finding feasiable solutions can  be described as standard forms without $f(x)$.
+While $x$ is the input，$f$ is the to be optimized function. To take backpack problem as an example:</p>
 
 <script type="math/tex; mode=display"> \min_x \sum x_i w_i </script>
 
 <script type="math/tex; mode=display"> \text{subject to:} \sum x_i v_i - V \le 0 </script>
 
-<p>其中x_i是0或1，分别表示每个物品是否被选。仔细一想，发现还是有问题，$x_i$的值域(只能取0或1)并没有反映在限制条件中，这就要引出优化问题中比较麻烦的一类问题——整数规划，也就是限制解集必须是整数，只不过这里不展开解释。</p>
+<p>x_i equals 0 or 1, indicates being chosen or not. After thinking again, we find there is still another problem: the domain $x_i$ only contains 0 and 1, which is not observed in the standard form, it will lead to a more complex problems - integer programming. It’s too complicated to be explained in this ariticle. </p>
 
-<p>另外想到的一个典型的例子是<a href="http://research.microsoft.com/pubs/69644/tr-98-14.pdf">SMO(Sequential Minimal Optimization)</a>算法，学过SVM(Support Vector Machine)的人基本都知道，SVM做二分类时从定义类间距最大化为目标函数，再到借助 Lagrange Duality 把问题转换到求解支持向量上面，SMO算法就是在每次迭代时，通过限制条件来找到最好的两个$a_i$ $a_j$来使目标函数最小，直到整个$a$向量收敛至最优。</p>
+<p>Another example of optimization algorhtim to solve problems in standard form that I can think of is <a href="http://research.microsoft.com/pubs/69644/tr-98-14.pdf">SMO(Sequential Minimal Optimization)</a> algorithm, The people who have already studied SVM(Support Vector Machine), knows that, the goal of SVM is maximizing the distance between paralleled straigt lines，Then with the help of Lagrange Duality we can transfer the problem to solving the support vectors，the basic idea of SMO is iteratively select $a_i$ $a_j$ under the constraints to minimize the objective funciton，until the vector $a$ approaximates to the optimal.</p>
 
 <script type="math/tex; mode=display"> \min_a \Phi(a) = \min_a {1 \over 2} \sum_{i=1}^N \sum_{j=1}^N y_i y_j (x_i \cdot x_j) a_i a_j - \sum_{i=1}^N a_i </script>
 
@@ -119,71 +120,76 @@
 \end{align*}
  %]]&gt;</script>
 
-<p>前面从Optimization的角度来看待算法，任何问题都可以转化成一个优化函数的标准型，而事实上，在一些学校数学系的学生不会和计算机系的学生一起上算法课，他们会上一门“Discreate Optimization”来同时涵盖算法和可计算、复杂度理论。</p>
+<p>From the point of view of Optimization to understand algorithms is that every problem to be solved by algorithms can be described in a standard form, which in fact, in some universities, the matimatical students study algorithms from the lecture “algorithms” with computer science students, but from the course “discreate optimization”, which both covers algorithms and computability and complexity theory. </p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[无限计算(Infinite Computation)]]></title>
+    <title type="html"><![CDATA[Infinite Computation]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2015/05/26/wu-xian-ji-suan/"/>
     <updated>2015-05-26T12:22:03+02:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2015/05/26/wu-xian-ji-suan</id>
-    <content type="html"><![CDATA[<p>这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。</p>
+    <content type="html"><![CDATA[<p>This is a course from last semester, to advantage of the holidays, I’ll write a short summary. Although it doesn’t revolutionize my world view like computability theory and mathematical logic, but as a relatively basic theoretical course, it did inspire me a lot.</p>
 
-<p>刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。因为任何离散的问题一旦放在“无限”这个限制条件下，就会变得困难加倍，许多针对“有限”问题的解法就变得不那么适用。比如命题逻辑的完备性定理，就是把无限集合的判定性问题转化到任意有限集合上判定，从而使不可解问题变得可解。</p>
+<p>I choose the course at the beginning, partly because it is the offered by mathematical logic institut, partly because the name seems bluffing. Because any discrete problems once placed under the assumption of “infinite”, it will become much more difficult, most of the solutions for the “infinite” problem becomes less applicable. For example, determining a complementary set of a regular language is trivial. But to construct the complementary set of infite regular language becomes sophiscated.</p>
+
+<p>The relationship between “finite” and “infinite” is not only opposite. In some scenarios, they are equivalent. completeness theorem of propositional logic, which is to build the equivalence of infinite set to an arbitrary finite set for determination, so that the unsolvable problem becomes solvable. </p>
 
 <!--more-->
-<p>然而这门课的内容虽然可以推广到任意通用的计算问题，但是所有讨论的对象都是形式语言，或者说大部分都是正则语言，不过这也很符合7所的风格：任何理论计算机讨论的问题都是“语言”的问题。“语言”是计算机理论问题的基本对象，代码、数据从一定程度上说，都是“语言”。然而从“语言”的角度来看待所有计算机问题并不合适，比如把问题看做“语言”并不能助于解决任何算法问题。如果把逻辑、语言、图灵机看成解决问题的一般方法，那么算法就是解决问题的特殊、具体方法。逻辑、图灵机只讨论可能性，而千奇百怪的算法（或者说复杂度理论）才是真正解决问题的具体工具。也正是因为世界上没有一套简单的工具、方法能最优的解决所有问题，才会出现整个科学的繁荣发展。“不用一个工具解决所有问题”这一观念不止在计算机领域，在任何学科都适用。</p>
+<p>However, although the contents of the course can be extended to any general computing problems, the objects discussed in the course are formal language, the most is regular languages, indeed it is very consistent with the style of mathematical logic institut: Any terms in theoretical computer science are the term “formal language”. “Language” is the fundamental targets of theoretical problems, code, data, to some degree, are all “languages”. However, the perspective of “language” is not suitable for all computer problems, the problems seen as the “language” does not help solve any algorithmic problems. If the logic, the language, the turing machines as a general approach to solve the problem, then the algorithm is the special and specfic method solve the problems. Logic, turing machine only focus on the possibility, while the algorithms (and complexity theory) is the only tools to the problem in an efficient way. Exactly because the problems in the world is not possible to be solved by a general tool, even more methods appear to lead to the scientific prosperity. “Do not use one tool to solve all the problems” not in the computer science, but are applicable also in any discipline.</p>
 
-<p>回到形式方法上，有限正则语言中存在DFA和NFA的等价转换，然而对于无限语言DBA(Definite Buechi Automaton)和NBA(Nondefinite Buechi Automaton)就不是等价，而是层级关系了；而且在DBA之内也有另外的一些层级。相比于有限语言，无限语言的层级要丑陋一些，许多具体问题的处理也要更棘手，比如把NBA可接受的语言转化为NBA。</p>
+<p>Back to the formal methods, there is an equivalent transformation of finite regular language between DFA and NFA, but for infinite languages, DBA (Definite Buechi Automaton) and NBA (Nondefinite Buechi Automaton) is not equivalent, but they are in the hierarchical relationship; and within DBA, there are also a number of additional levels. Compared to the finite languages, the language level of an finite number is more ugly, but also to deal with a number of specific issues is more difficult, such as transformation of the NBA acceptable language into DBA.</p>
 
-<p>7所几门课给我带来的另外一个认识就是几种模型的等价性，比如每种语言都会存在某种对应的自动机，复杂一点的会对应Pushdown Automaton, 甚至只能对应图灵机，一阶逻辑，二阶逻辑；甚至还有一些另一个体系下的逻辑：Linear Temporal Logic与之对应。更通用一点，与“有限”或者“无限”语言对应的是判定性函数，甚至是机器学习模型：神经网络、决策树、线性分类器、SVM。</p>
+<p>The courses offered by mathematical logic institut brought me another understanding, which is the equivalence between several models, also the existence of the correspondence of each language to some kinds of automata. Some complex languages would correspond to Pushdown Automaton, even correspond to a turing machine, first-order logic, second-order logic; even some logic under another system: Linear Temporal Logic. From a more general point, “finite” or “infinite” language corresponds to the determination problem of the function, and even machine learning models: neural networks, decision trees, linear classifiers, SVM.</p>
 
-<p>最后一节课，提到了一点不会考，但是很有意思的东西——无限语言在有理数上的对应，再结合前面的二阶逻辑表达式，就是用二阶逻辑表示有理数集合，算是一个打通连续空间和离散空间的实例。在之后就是康托集合，它的存在证明了有理数和实数集合不存在一一对应。</p>
+<p>In the last lesson, one thing is mentioned is very interesting - correspondence between infinite languages and the rational numbers, which is also a connection between continuous space and discrete space - Cantor Set. its existence proved the correspondence between rational and real numbers does not exist.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[从可计算理论到学习理论]]></title>
+    <title type="html"><![CDATA[From computability to learnability]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun/"/>
     <updated>2015-03-07T11:03:37+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun</id>
-    <content type="html"><![CDATA[<p>我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。</p>
+    <content type="html"><![CDATA[<p>I have said many times before, computational theory is the root of computer science, it is also the reason of the difference between mathematics and computer science. On the border of computer science and mathematics, the one side of computer science is computational theory, the other side of mathematics is mathematical logic.</p>
 
-<p>可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下，某些问题是否可计算。比如最常见的是停机问题、等价问题：是否存在机械方法能够绝对准确的计算“任何”函数是否停机，判断任意两个图灵机是否等价（“等价”即是否计算相同的函数）。第一个问题的不可判定性随处可以搜到。第二个问题是一个比第一个更难判定的问题，严格来说要构造Reduction：$H \leq Eq$；通俗来理解，就是要说两个图灵机功能能完全相同，必须枚举所有可能输入，并且判断输出，然而输入集合是无限的，所以这一过程不会停止。当然，这一问题用人脑来模拟，在图灵机结构简单的时候是可以完成的，不过我们人脑模拟的过程是带有一定启发性的，即不能严格的归为机械过程。</p>
+<p>Computational theory mostly focused on very specific issues - the “generality”, without any conditionality, some questions are whether or not computable. Two of most common examples are the halting problem and equivalence problem: Is there a mechanical method can accurately determine whetehr an function can stop and it is determined whether two turing machines are equivalent (“equivalent” is, whether they are  calculating the same function). The answer and proof of the first question can be found anywhere: undecidable. The second question is more difficult to determine, strictly speaking, we should construct a reduction: $H \leq Eq$. An easy way to understand it is that to say the turing machines calculating the same function, we must enumerate all possible inputs, and determines whether the output is the same or not, however the input set is infinite, so the process does not stop. Since the determining process of the previous two questions by our brains is somehow heuristic, which implies, the strategy is not possible to apply to turing machines, and can not strictly concluded as mechanical process. </p>
 
 <!--more-->
-<p>下面就拿这个Eq问题（判断两个图灵机是否计算同一函数）作为引子，讨论学习理论。</p>
 
-<p>计算理论研究的一般是通用问题的可能性，即在最严格的情况下，某种问题是否可计算。然而更多的时候，我们并不需要那么严格。只要能近似相等就可以了，或者随着学习样本的增加，模型能逐渐逼近真实值。回到$Eq$问题，即“如果我们尝试了“足够多”的输入，两个图灵机都能输出相同的内容，那么就可以说两个图灵机等价了”。以上判定性问题的表述，从可计算性上，等价于“对于一个图灵机$M_1$和一个给定的足够大的输入集，我们可以构造出$M_2$，使得$M_1$和$M_2$对于给定输入能够得到相同输出，也就是说能够构造出一个近似和$M_1$等价的图灵机$M_2$”。</p>
+<p>In the folloing, we take the $Eq$ problem as an intruduction to discuss computational learning theory.</p>
 
-<p>这一问题相关的理论就是“可计算学习理论”，其中一个重要而基础的部分就是研究一个模型是否可以学习。一个模型，或者叫结构可以被学习，当且仅当随着样本的增加，误差能收敛到无限小。形式化的表示即：</p>
+<p>Computational theory discuss the prossibilities of some general solutions. Namely whether a problem is computable in most general case. While in most cases, we don’t require the solution to be so strict in all cases. It’s enough if it can approximate to the correct solution with arbitrary small error rate. Or with the growth of the “learning materials”, the results can approximate to our expected solution. Back to the $Eq$ problem, if we have already tested a very large input set, and two turing machines $M<em>1$ and $M</em>2$give the same results. Then we would like to say, the two turing machines are equivalent. </p>
+
+<p>To formulate the problem in another way: <em>For any turing machine $M_1$, where the transition table is unknown. We construct another turing machine $M_2$, such that for any given input set they perform in the same way.</em> Then we can say we can learn $M_1$. </p>
+
+<p>The related theoy to this issue is “computational learning theory”, they focus on whether for a unknown function such a leaning algorithm exists or not. To say a problem is learnable if with increasing number of samples, the error rate goes infinitely close to zero. A formal descriptioon is:</p>
 
 <script type="math/tex; mode=display">P(error \ge \epsilon) \le \delta</script>
 
-<p>其中需要注意的是，$\epsilon$是单个样本的误差概率。那么显然式子左边是关于样本集大小N相关的，即符合形式</p>
+<p>Note that, $\epsilon$ is the error rate of one sample. Obviously the left part is dependent on $N$, </p>
 
 <script type="math/tex; mode=display">P(error \ge \epsilon) = p^N \le \delta</script>
 
-<p>所以关于它还有另一种表述：对于任意小，且不为0的$\epsilon$和$\delta$。我们都能找到一个N。</p>
+<p>There is another equivalent formulation: for any positive error rate $\epsilon$和$\delta$, whether there exists a $N$.</p>
 
-<p>那么有些模型就无法被学习，即随着样本增大，误差不会收敛于无穷小。虽然这样的模型很多，不过一个共同点是，可以映射到“从一个无限集合中学习任意多个元素”。当然，对这一问题的严谨而通俗表述可以参见PAC理论。</p>
+<p>Of course, not all models are learnable. The most classical example is “learn a finite set”, and all unlearnable question can be reduced to the example. More details of the theory can be found in PAC theory. </p>
 
-<p>当然，学习并不都是基于概率，有些结构因为其符合一定的性质，可以直接得到目标解。比如前面写过的<a href="http://blog.htedsv.com/blog/2014/08/15/anluin-learning-algorithm/">Angluin’s Learning Algorithm</a>，就是根据正则语言的一致性学习的。</p>
+<p>Not all the learning are based on probability, some simple models can be directed learnt to the objective form. For example the previously mentioned <a href="http://blog.htedsv.com/blog/2014/08/15/anluin-learning-algorithm/">Angluin’s Learning Algorithm</a>，which is based on the consistance, of the current example and previous examples.</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[对Spotlight的简单扩展]]></title>
+    <title type="html"><![CDATA[An extension to Spotlight]]></title>
     <link href="http://xuanhuangyiqi.github.io/blog/2015/01/17/spotlight-extension/"/>
     <updated>2015-01-17T19:34:08+01:00</updated>
     <id>http://xuanhuangyiqi.github.io/blog/2015/01/17/spotlight-extension</id>
-    <content type="html"><![CDATA[<p>Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。</p>
+    <content type="html"><![CDATA[<p>The current version of spotlight of MacOS is the better than any other versions in the past, however it’s not comparable to Alfred. To day I came up with an extension to Spotlight. </p>
 
 <ul>
-  <li>首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。</li>
+  <li>First write a Shell file, no matter where it is. For example in the following example, open the newest folder which contains the lastest homework.</li>
 </ul>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -193,7 +199,7 @@
 </span><span class="line"># Filename: isc
 </span><span class="line">find ~/Desktop/Dropbox/ISC/Exercises/ -name "SC*" -type d | tail -n 1 | xargs open</span></code></pre></td></tr></table></div></figure></notextile></div>
 <ul>
-  <li>增加执行权限</li>
+  <li>change permission</li>
 </ul>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -201,14 +207,14 @@
 
 <ul>
   <li>
-    <p>右击文件修改 -&gt; “Get Info” -&gt; “Open With” -&gt; “iTerm” -&gt; “Change All”</p>
+    <p>right click of the file -&gt; “Get Info” -&gt; “Open With” -&gt; “iTerm” -&gt; “Change All”</p>
   </li>
   <li>
-    <p>在Spotlight中输入文件并执行</p>
+    <p>search in spotlight and execute</p>
   </li>
 </ul>
 
-<p>不过这种方法只是利用了Shell的扩展性，还是不能做到Alfred那样任意接收参数并且实时返回结果。但是解决一般问题应该是足够了。</p>
+<p>It’s only a simple extension with the shell, but it’s still not so flexible which accepts arguments from input and give output in realtime. </p>
 ]]></content>
   </entry>
   

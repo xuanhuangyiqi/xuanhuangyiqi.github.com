@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>算法问题的标准型 - Htedsv Backyard</title>
+	<title>Standard form of algorithmic problems - Htedsv Backyard</title>
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="算法问题的标准型 几乎每个学计算机的学生都会在很早的时候就接触到“算法”这个概念，然而大家对于“算法”的理解往往是一套解决某个特定问题的“做法”。而“做法”一词又可以描述成几个连续、嵌套的步骤，最后又可以转化成指令式代码，包括顺序、循环、选择结构。 在之后接触到函数式编程，我们对于“算法” &hellip;">
+	<meta name="description" content="Standard Form of Algorithmic Problems Almost every student, who studies computer science at an early age are exposed to “algorithm” concept, but &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,9 +26,7 @@
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
+	<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -56,7 +54,7 @@
 
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </script>
 
   
 	<script type="text/javascript">
@@ -93,6 +91,7 @@
 <nav id="main-nav"><ul class="main">
     <li><a href="/">Blog</a></li>
     <li><a href="http://about.me/htedsv">About</a></li>
+    <li><a href="/you-qu-de-shi-yan">Projects</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
@@ -136,18 +135,18 @@
 			
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<h1 class="title" itemprop="name">算法问题的标准型</h1>
-	<div class="entry-content" itemprop="articleBody"><p>几乎每个学计算机的学生都会在很早的时候就接触到“算法”这个概念，然而大家对于“算法”的理解往往是一套解决某个特定问题的“做法”。而“做法”一词又可以描述成几个连续、嵌套的步骤，最后又可以转化成指令式代码，包括顺序、循环、选择结构。</p>
+	<h1 class="title" itemprop="name">Standard Form of Algorithmic Problems</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Almost every student, who studies computer science at an early age are exposed to “algorithm” concept, but everyone often regards “algorithm” to solve a specific problem in a sequence of operations. The “operations” are always in the term can be described as several consecutive nested steps, and finally can be converted into a command-style code, including sequential, looping, selecting  structures.</p>
 
-<p>在之后接触到函数式编程，我们对于“算法”的理解又变得更宽泛一些。函数式编程中的算法更像是直接描述问题本身，而不是一个一个的步骤。比如用Haskell实现快排算法，思路和细节问题都要比指令式编程简单得多：每一次用filter过滤出比标准元素大的集合和小的集合，然后分别递归。正因为函数式编程这样的特点，很多人介绍函数式编程的时候，都会提到“学函数式编程不用学算法，因为函数式编程本身就是在描述问题”。当我以这句话作为学习的目标学完 Funcitonal Programming 这门课之后（以及后面学的Logic Programming）之后，发现这么句话有很强的误导性，虽说函数式编程只是简单的描述问题，但是必须按照函数式编程（以及逻辑式编程）自己的方式来实现，这这就有涉及到“转化成本”的问题，对于很多10行就能搞定的指令式程序换成函数式程序有时会长很多倍，另一方面算法的优势在于可优化性，也就是说，只要算法学的足够好，任何程序都能在足够短的时间内运行完。</p>
+<p>After exposure to functional programming, the “algorithm” has become a broader understanding. Functional programming algorithm is more like a direct description of the problem itself, rather than one by one step. For example, in Haskell algorithm to achieve quick sort, ideas and details is much simpler than imperative programming: in each step, filter out the elements that are larger and smaller than as the standard, send them to the recursion, and concate their results. Because of this characteristic of functional programming, when many people introduce functional programming, they always referred to “learn functional programming without learning algorithm because functional programming itself is the description of the problem.” After I was taking the words as a goal, and finished learning the course Funcitonal Programming (and Logic Programming later), and found such a sentence has a strong misleading. Although functional programming is simply a description of the problem, but You must be in accordance with functional programming (and logic programming) in their own way to achieve this. There is a problem which relates to “conversion cost”, for many algorithms which are able to be achieved within 10 lines of code, may cost a very long time and code to be translated into functional programs. On the other hand the advantage of the “algorithm” is that they can optimize the performance, that is, as long as you learn algorithm very well, any programs can be completed within a short enough time to run.</p>
 
 <!-- more -->
 
-<p>有点扯远了，好吧，下面切入正题。也就是如何看待计算机科学中几乎最重要的概念——算法。尽管按照前面关于算法的说法也没有任何问题，但作为一门科学的重要组成部分，算法显得太过零散，没有什么结构，框架。比如同样叫算法，机器学习中的学习算法（比如EM）和图论中的最短路径算法就没有办法找到一个一般形式同时概括他们。另一个更具体的例子就是ACM竞赛，从初中开始为了比赛，就多多少少接触了一些算法竞赛书或者在线教程。最常见的一类就是把教程分为几个章节：一章讲朴素、贪心方法；一章讲图论算法；一章讲动态规划等等。然而章节之间其实没有任何联系，唯一能把它们联系起来的线索就是——它们都是方便考察，变形灵活的计算机算法。或者说，它们是计算机科学中所有的算法在“容易考察”这个维度上的一个投影，并且再根据主题进行归类。如果学生只通过这个没有太大价值的维度了解计算机科学显然是片面的。</p>
+<p>To come back to our topic – That is how to treat almost the most important concept of computer science - algorithm. Although the way of understanding “algorithm” in the previous statement is nothing wrong, but as an important part of science, algorithm seems too fragmented, it has no structure, framework. Such as the same called algorithms, for machine learning learning algorithms (such as EM) and  shortest path algorithm in graph theory, there is no way to find a general form simultaneously to summarize them. Another more specific example is the algorithms in ACM/ICPC contest, from junior high school students to the programmers, they more or less contact with some books or online tutorials to introducing algorithm contests. The most common point is they are divided into several sections: a section roughly speaking about greedy method; a section about graph algorithms; and a section about dynamic programming, and so on. But in fact there is no link between the chapters, the only clue can link them is - they are easy to study even without any research background, and flexible computer algorithms. Or that they are simple algorithms in computer science projected to the dimension “complexity to study” , and then classified by subjects. If the student only learn algorithms from this perspective is clearly one-sided.</p>
 
-<p>回到问题本身，也就是在我自学优化课的时候想到的，对于一般意义上的算法，是否有一种方法把他们统一起来？当然有。在机器学习中这个概念叫做「目标函数」，在连续优化中叫做标准形式。</p>
+<p>Back to the question itself, which when I was thinking in the course of optimization, is there a way to unite all the algorithms in the general sense? Of course. In machine learning the concept is called “objective function”, in continuous optimization it’s called the standard form .</p>
 
-<p>更一般一点，对于所有确定性算法，或者叫做有明确目标的算法，都可以分成最优化某函数的，和构造可行解的。再把他们统一起来，结论就是，所有确定性算法都可以用优化中的 standard form 来表示，即：</p>
+<p>From a more general point, for all deterministic algorithm, or algorithms, called a clear objective, can be divided into the “optimization of certain functions”, and “check the the feasible solutions”. Then they can be again united, the result is that all deterministic algorithms can be described in a standard form of optimization problems to indicate that:</p>
 
 <script type="math/tex; mode=display"> \min_x f(x) </script>
 
@@ -159,16 +158,16 @@
 \end{align*}
  %]]></script>
 
-<p>更一般一点，我们可以把$h_j(x)$省去，构造可行解的问题就可以表示成没有$f(x)$而只有$g_i(x)$。
-其中$x$是算法要求的输入，$f$是要优化的函数，拿背包问题为例：</p>
+<p>More generally，we ignore $h_j(x)$, the problems of finding feasiable solutions can  be described as standard forms without $f(x)$.
+While $x$ is the input，$f$ is the to be optimized function. To take backpack problem as an example:</p>
 
 <script type="math/tex; mode=display"> \min_x \sum x_i w_i </script>
 
 <script type="math/tex; mode=display"> \text{subject to:} \sum x_i v_i - V \le 0 </script>
 
-<p>其中x_i是0或1，分别表示每个物品是否被选。仔细一想，发现还是有问题，$x_i$的值域(只能取0或1)并没有反映在限制条件中，这就要引出优化问题中比较麻烦的一类问题——整数规划，也就是限制解集必须是整数，只不过这里不展开解释。</p>
+<p>x_i equals 0 or 1, indicates being chosen or not. After thinking again, we find there is still another problem: the domain $x_i$ only contains 0 and 1, which is not observed in the standard form, it will lead to a more complex problems - integer programming. It’s too complicated to be explained in this ariticle. </p>
 
-<p>另外想到的一个典型的例子是<a href="http://research.microsoft.com/pubs/69644/tr-98-14.pdf">SMO(Sequential Minimal Optimization)</a>算法，学过SVM(Support Vector Machine)的人基本都知道，SVM做二分类时从定义类间距最大化为目标函数，再到借助 Lagrange Duality 把问题转换到求解支持向量上面，SMO算法就是在每次迭代时，通过限制条件来找到最好的两个$a_i$ $a_j$来使目标函数最小，直到整个$a$向量收敛至最优。</p>
+<p>Another example of optimization algorhtim to solve problems in standard form that I can think of is <a href="http://research.microsoft.com/pubs/69644/tr-98-14.pdf">SMO(Sequential Minimal Optimization)</a> algorithm, The people who have already studied SVM(Support Vector Machine), knows that, the goal of SVM is maximizing the distance between paralleled straigt lines，Then with the help of Lagrange Duality we can transfer the problem to solving the support vectors，the basic idea of SMO is iteratively select $a_i$ $a_j$ under the constraints to minimize the objective funciton，until the vector $a$ approaximates to the optimal.</p>
 
 <script type="math/tex; mode=display"> \min_a \Phi(a) = \min_a {1 \over 2} \sum_{i=1}^N \sum_{j=1}^N y_i y_j (x_i \cdot x_j) a_i a_j - \sum_{i=1}^N a_i </script>
 
@@ -180,7 +179,7 @@
 \end{align*}
  %]]></script>
 
-<p>前面从Optimization的角度来看待算法，任何问题都可以转化成一个优化函数的标准型，而事实上，在一些学校数学系的学生不会和计算机系的学生一起上算法课，他们会上一门“Discreate Optimization”来同时涵盖算法和可计算、复杂度理论。</p>
+<p>From the point of view of Optimization to understand algorithms is that every problem to be solved by algorithms can be described in a standard form, which in fact, in some universities, the matimatical students study algorithms from the lecture “algorithms” with computer science students, but from the course “discreate optimization”, which both covers algorithms and computability and complexity theory. </p>
 
 </div>
 
@@ -207,7 +206,7 @@
 </section>
 </div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     htedsv
 

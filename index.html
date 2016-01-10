@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Dec 5th, 2015 表达能力 (Expressiveness) 第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、 &hellip;">
+	<meta name="description" content="Dec 5th, 2015 Expressiveness The first formal contact to the concept “expressive” is in the course “Fondation of Data Science”, after that I prefer &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,9 +26,7 @@
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
+	<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -56,7 +54,7 @@
 
 <script type="text/javascript"
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </script>
 
   
 	<script type="text/javascript">
@@ -93,6 +91,7 @@
 <nav id="main-nav"><ul class="main">
     <li><a href="/">Blog</a></li>
     <li><a href="http://about.me/htedsv">About</a></li>
+    <li><a href="/you-qu-de-shi-yan">Projects</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
@@ -159,11 +158,11 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/12/05/biao-da-li-expressiveness/" itemprop="url">表达能力 (Expressiveness)</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/12/05/biao-da-li-expressiveness/" itemprop="url">Expressiveness</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>第一次正式接触“表达力(Expressiveness)”这个概念是在Fondation of Data Science这门课上，当时我更喜欢用“计算能力”这个词来翻译它，因为当时接触到的更多的是计算模型，比如自动机、图灵机、一阶逻辑之类的，而它又是从能计算的函数的角度来衡量这些模型。不过后来发现“计算能力”这个词多多少少有些歧义，所以就放弃了这个说法。而由于当时接触到的模型多是用于判定的模型，即，接受一个输入，并且唯一的返回“是”或者“否”的模型，所以对于“表达能力”这个说法觉得更加贴切。用自然语言举个例子：“我是个聪明而且友善的人”，这句话是可以用真伪判断正确性的，如果把“而且”及其类似的表达方式从自然语言中删掉，那么我们就没办法表达这句话，或者说后者的表达能力要比原本的表达能力更弱，这样来解释理论中用到的“表达能力”这一概念就更加合理了。</p>
+		<p>The first formal contact to the concept “expressive” is in the course “Fondation of Data Science”, after that I prefer to use the words “Computational Power” to understand it, because at that time, I was more familiar with computational models, such as automata, turing machines, first-order logic etc. Also it measures the models from the perspective of computational functions. But later I found the phrase “computational power” is the word and somewhat ambiguous, so I gave up this saying. Due to the fact that, the models I was familiar with are mostly for the determination, that is, to accept one input and only returns a “yes” or “no” model, so for the “expressiveness” is more appropriate. Let’s look at a example of natural language: “I am a smart and friendly person”, this sentence can be used to judge the authenticity of the right, if the “and” and similar expressions deleted from natural language, then there is no way to express this sentence, or that the original expression expressiveness weaker than the latter, so that the theory used to explain the “expressiveness” of the concept is more reasonable.</p>
 
-<p>前面提到“计算能力”这一翻译会有歧义就是因为它和“可计算性(Comptability)”一词概念和说法类似，但是定义上又有很大区别。“可计算性”说的是某个集合、类能否用图灵机及其等价模型计算出来，这个问题的回答只有“是”或“否”。所以可计算性只是在以图灵机为分界点的问题上的表达能力的判定。</p>
+<p>As mentioned above, this translation “computing capabilities” is ambiguous because it’s similar to “computability”, but there are big differences from their definitions. “Computability” is a set of classes can be calculated using a turing machine or its equivalent models, the answer to this question is only “yes” or “no.” So computability is a judgement which takes turing machines as a tool. However expressiveness is more likely to be a contionous measurement.</p>
 
 
 		
@@ -193,11 +192,11 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/10/16/wen-ti-luo-ji-suan-fa/" itemprop="url">算法问题的标准型</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/10/16/wen-ti-luo-ji-suan-fa/" itemprop="url">Standard Form of Algorithmic Problems</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>几乎每个学计算机的学生都会在很早的时候就接触到“算法”这个概念，然而大家对于“算法”的理解往往是一套解决某个特定问题的“做法”。而“做法”一词又可以描述成几个连续、嵌套的步骤，最后又可以转化成指令式代码，包括顺序、循环、选择结构。</p>
+		<p>Almost every student, who studies computer science at an early age are exposed to “algorithm” concept, but everyone often regards “algorithm” to solve a specific problem in a sequence of operations. The “operations” are always in the term can be described as several consecutive nested steps, and finally can be converted into a command-style code, including sequential, looping, selecting  structures.</p>
 
-<p>在之后接触到函数式编程，我们对于“算法”的理解又变得更宽泛一些。函数式编程中的算法更像是直接描述问题本身，而不是一个一个的步骤。比如用Haskell实现快排算法，思路和细节问题都要比指令式编程简单得多：每一次用filter过滤出比标准元素大的集合和小的集合，然后分别递归。正因为函数式编程这样的特点，很多人介绍函数式编程的时候，都会提到“学函数式编程不用学算法，因为函数式编程本身就是在描述问题”。当我以这句话作为学习的目标学完 Funcitonal Programming 这门课之后（以及后面学的Logic Programming）之后，发现这么句话有很强的误导性，虽说函数式编程只是简单的描述问题，但是必须按照函数式编程（以及逻辑式编程）自己的方式来实现，这这就有涉及到“转化成本”的问题，对于很多10行就能搞定的指令式程序换成函数式程序有时会长很多倍，另一方面算法的优势在于可优化性，也就是说，只要算法学的足够好，任何程序都能在足够短的时间内运行完。</p>
+<p>After exposure to functional programming, the “algorithm” has become a broader understanding. Functional programming algorithm is more like a direct description of the problem itself, rather than one by one step. For example, in Haskell algorithm to achieve quick sort, ideas and details is much simpler than imperative programming: in each step, filter out the elements that are larger and smaller than as the standard, send them to the recursion, and concate their results. Because of this characteristic of functional programming, when many people introduce functional programming, they always referred to “learn functional programming without learning algorithm because functional programming itself is the description of the problem.” After I was taking the words as a goal, and finished learning the course Funcitonal Programming (and Logic Programming later), and found such a sentence has a strong misleading. Although functional programming is simply a description of the problem, but You must be in accordance with functional programming (and logic programming) in their own way to achieve this. There is a problem which relates to “conversion cost”, for many algorithms which are able to be achieved within 10 lines of code, may cost a very long time and code to be translated into functional programs. On the other hand the advantage of the “algorithm” is that they can optimize the performance, that is, as long as you learn algorithm very well, any programs can be completed within a short enough time to run.</p>
 
 
 		
@@ -227,11 +226,13 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/05/26/wu-xian-ji-suan/" itemprop="url">无限计算(Infinite Computation)</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/05/26/wu-xian-ji-suan/" itemprop="url">Infinite Computation</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>这是一门上学期的课，趁着假期总结一下。虽然没有可计算理论和数理逻辑那样颠覆三观，但是作为一门相对基础的理论课，还是能给我不少启示的。</p>
+		<p>This is a course from last semester, to advantage of the holidays, I’ll write a short summary. Although it doesn’t revolutionize my world view like computability theory and mathematical logic, but as a relatively basic theoretical course, it did inspire me a lot.</p>
 
-<p>刚开始选这门课一方面是因为它是逻辑所开的，一方面是因为这个名字比较唬人。因为任何离散的问题一旦放在“无限”这个限制条件下，就会变得困难加倍，许多针对“有限”问题的解法就变得不那么适用。比如命题逻辑的完备性定理，就是把无限集合的判定性问题转化到任意有限集合上判定，从而使不可解问题变得可解。</p>
+<p>I choose the course at the beginning, partly because it is the offered by mathematical logic institut, partly because the name seems bluffing. Because any discrete problems once placed under the assumption of “infinite”, it will become much more difficult, most of the solutions for the “infinite” problem becomes less applicable. For example, determining a complementary set of a regular language is trivial. But to construct the complementary set of infite regular language becomes sophiscated.</p>
+
+<p>The relationship between “finite” and “infinite” is not only opposite. In some scenarios, they are equivalent. completeness theorem of propositional logic, which is to build the equivalence of infinite set to an arbitrary finite set for determination, so that the unsolvable problem becomes solvable. </p>
 
 
 		
@@ -261,11 +262,11 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun/" itemprop="url">从可计算理论到学习理论</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/03/07/cong-ke-ji-suan-li-lun-dao-xue-xi-li-lun/" itemprop="url">From Computability to Learnability</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>我曾经多次表示过，计算理论是计算机科学的根，也是计算机科学有别于数学的原因。在计算机科学与数学的边界上，计算机科学这边是可计算理论，数学那边是数理逻辑。</p>
+		<p>I have said many times before, computational theory is the root of computer science, it is also the reason of the difference between mathematics and computer science. On the border of computer science and mathematics, the one side of computer science is computational theory, the other side of mathematics is mathematical logic.</p>
 
-<p>可计算理论讨论最多的具体问题的共同特点是“绝对性”，即没有任何条件限制的情况下，某些问题是否可计算。比如最常见的是停机问题、等价问题：是否存在机械方法能够绝对准确的计算“任何”函数是否停机，判断任意两个图灵机是否等价（“等价”即是否计算相同的函数）。第一个问题的不可判定性随处可以搜到。第二个问题是一个比第一个更难判定的问题，严格来说要构造Reduction：$H \leq Eq$；通俗来理解，就是要说两个图灵机功能能完全相同，必须枚举所有可能输入，并且判断输出，然而输入集合是无限的，所以这一过程不会停止。当然，这一问题用人脑来模拟，在图灵机结构简单的时候是可以完成的，不过我们人脑模拟的过程是带有一定启发性的，即不能严格的归为机械过程。</p>
+<p>Computational theory mostly focused on very specific issues - the “generality”, without any conditionality, some questions are whether or not computable. Two of most common examples are the halting problem and equivalence problem: Is there a mechanical method can accurately determine whetehr an function can stop and it is determined whether two turing machines are equivalent (“equivalent” is, whether they are  calculating the same function). The answer and proof of the first question can be found anywhere: undecidable. The second question is more difficult to determine, strictly speaking, we should construct a reduction: $H \leq Eq$. An easy way to understand it is that to say the turing machines calculating the same function, we must enumerate all possible inputs, and determines whether the output is the same or not, however the input set is infinite, so the process does not stop. Since the determining process of the previous two questions by our brains is somehow heuristic, which implies, the strategy is not possible to apply to turing machines, and can not strictly concluded as mechanical process. </p>
 
 
 		
@@ -299,12 +300,12 @@
 </div>
 		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/01/17/spotlight-extension/" itemprop="url">对Spotlight的简单扩展</a></h1>
+	<h1 class="title" itemprop="name"><a href="/blog/2015/01/17/spotlight-extension/" itemprop="url">An Extension to Spotlight</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>Mac下现有的Spotlight虽然比起前几个版本要好用很多，但是扩展性上还是没办法和Alfred相比。今天忽然想到一个做法对Spotlight做小小的扩展。</p>
+		<p>The current version of spotlight of MacOS is the better than any other versions in the past, however it’s not comparable to Alfred. To day I came up with an extension to Spotlight. </p>
 
 <ul>
-  <li>首先写一个shell文件，随便放到哪里。比如如下，打开某项作业文件夹中最新建立的文件夹（表示最新的一次作业）。</li>
+  <li>First write a Shell file, no matter where it is. For example in the following example, open the newest folder which contains the lastest homework.</li>
 </ul>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -314,7 +315,7 @@
 </span><span class="line"># Filename: isc
 </span><span class="line">find ~/Desktop/Dropbox/ISC/Exercises/ -name "SC*" -type d | tail -n 1 | xargs open</span></code></pre></td></tr></table></div></figure></notextile></div>
 <ul>
-  <li>增加执行权限</li>
+  <li>change permission</li>
 </ul>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -322,14 +323,14 @@
 
 <ul>
   <li>
-    <p>右击文件修改 -&gt; “Get Info” -&gt; “Open With” -&gt; “iTerm” -&gt; “Change All”</p>
+    <p>right click of the file -&gt; “Get Info” -&gt; “Open With” -&gt; “iTerm” -&gt; “Change All”</p>
   </li>
   <li>
-    <p>在Spotlight中输入文件并执行</p>
+    <p>search in spotlight and execute</p>
   </li>
 </ul>
 
-<p>不过这种方法只是利用了Shell的扩展性，还是不能做到Alfred那样任意接收参数并且实时返回结果。但是解决一般问题应该是足够了。</p>
+<p>It’s only a simple extension with the shell, but it’s still not so flexible which accepts arguments from input and give output in realtime. </p>
 
 		
 		
@@ -526,7 +527,7 @@
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
 			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2015
+			<footer id="footer" class="inner">Copyright &copy; 2016
 
     htedsv
 
