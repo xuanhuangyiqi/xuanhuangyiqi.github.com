@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Sep 8th, 2014 总结, 考试 考试总结 中秋佳节之际做一些小学生做的事情：考试总结。 这学期总体来说收获很大，但是和成果并不匹配，也就是说成绩很不理想，或者说和我之前的经验恰恰相反，唯一一门考试资格都没有获得的课是我本科算上加分之后拿到满分的“编译原理”，而且两次课程内容基本一致。 &hellip;">
+	<meta name="description" content="Sep 12th, 2014 Automaton to Regex 前面提过了Angluin学习算法的基本原理和作用，通过不断回答程序提问的句子是否属于该指定语言来生成这门语言对应的最简DFA。然而DFA的表示并不是很直观，也不实用。所以我今天介绍一个方法，把生成的DFA转化成对应的正则表达式 &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +92,7 @@
     <li><a href="/">Blog</a></li>
     <li><a href="http://about.me/htedsv">About</a></li>
     <li><a href="/you-qu-de-shi-yan">Projects</a></li>
+    <li><a href="/dailystatistics">Statistics</a></li>
     <li><a href="/blog/archives">Archives</a></li>
 </ul>
 
@@ -136,6 +137,37 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-12T04:12:15+02:00" data-updated="true" itemprop="datePublished">Sep 12<span>th</span>, 2014</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2014/09/12/automaton-to-regex/" itemprop="url">Automaton to Regex</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>前面提过了Angluin学习算法的基本原理和作用，通过不断回答程序提问的句子是否属于该指定语言来生成这门语言对应的最简DFA。然而DFA的表示并不是很直观，也不实用。所以我今天介绍一个方法，把生成的DFA转化成对应的正则表达式。
+
+		
+		<a href="/blog/2014/09/12/automaton-to-regex/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -515,50 +547,6 @@
 
 		
 		<a href="/blog/2013/09/28/ru-he-du-lun-wen/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-02T13:30:03+02:00" data-updated="true" itemprop="datePublished">Sep 2<span>nd</span>, 2013</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/crash/'>crash</a>, <a class='category' href='/blog/categories/ios/'>iOS</a>, <a class='category' href='/blog/categories/log/'>log</a>, <a class='category' href='/blog/categories/symbolicate/'>symbolicate</a>, <a class='category' href='/blog/categories/diao-yan/'>调研</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2013/09/02/ios-crack/" itemprop="url">iOS Crash Logs 基本调研</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
-
-<h1 id="crash-log-">Crash Log 是什么？</h1>
-
-<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
-
-<p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
-
-<p>另外，看到下面各个Thread的函数堆栈中，能看到每行最右面有错误发生的<em>函数名</em>和对应的<em>行数</em>，如果你自己尝试做这个试验就会发现开始<em>函数</em>的位置是一个16位内存地址，过了一会才会自动被Xcode转换成函数名。</p>
-
-
-		
-		<a href="/blog/2013/09/02/ios-crack/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

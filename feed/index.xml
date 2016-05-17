@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/feed" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2016-01-16T16:22:55+01:00</updated>
+  <updated>2016-05-18T00:49:24+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Theoretical view of Regularization]]></title>
+    <link href="http://xuanhuangyiqi.github.io/blog/2016/03/27/theoretical-view-of-regularization/"/>
+    <updated>2016-03-27T16:53:56+02:00</updated>
+    <id>http://xuanhuangyiqi.github.io/blog/2016/03/27/theoretical-view-of-regularization</id>
+    <content type="html"><![CDATA[<p>Around two weeks ago, I attended a job interview, which is ML-related. During the interview, I was asked to explain SVM and regulizers. When I said the classical SVM didn’t involve empirical risk term in its objective functions, the interviewer was shocked. This experience inspired me to write this blog to summarize the some of the aspects of regularization techniques.</p>
+
+<h1 id="introduction-to-regularizaiton">Introduction to regularizaiton</h1>
+<p>In many introduction courses of machine learning, it’s always referred that regularization terms are considered in order to avoid overfitting problem. The most common way is to write objective function as follows:</p>
+
+<script type="math/tex; mode=display"> f(\theta) = R_{emp}(X, \theta) + R_{structural}(\theta) </script>
+
+<p>Intuitively, the risk (or called “error”) of a model come from two parts, the empirical risk is a measure of how different is the behaviours of the parameters and real data set, the structural risk is caused by the model itself. The structural risk is relatively difficult to understand. It’s mainly due to the high capability of the model. The capability or so called complexity is the main topic of <em>statistical learning theory</em>. Roughly speaking, <strong>we don’t want our model to be too capable</strong>, or not fit the current data-set very well. The reason can be explained from two aspects: </p>
+
+<ul>
+  <li><em>Deviation of the training-set and real data distribution</em>. Because of the limited size of training set, we can not find any possible data point from hypothesis space in the training set. More specificly, if the estimated parameters are too complex, the unlabeled data points (maybe in the test-set) may differ much from its real output. </li>
+  <li><em>Existing noise in data-set</em>. Data are not always clean, the existances noise and outliers requires the model not to fit noisy data very well.</li>
+</ul>
+
+<p>While the measures of empirical risk and structural risk are independent, we often use a trade-off parameter to combine them together as:</p>
+
+<script type="math/tex; mode=display"> \hat{\theta} = argmin_{\theta} R_{emp}(X, \theta) + C \cdot R_{structural}(\theta) </script>
+
+<h1 id="svm-as-regularizer">SVM as Regularizer</h1>
+
+<p>In most practical machine learning books, SVM is described as a very common classifier. Even everyone can write down the objective function as a combination of the two risks. But only a few people know how it comes to the current form.</p>
+
+<p>As we talked in the last paragrah, regulizer aims to reduce high complexity of the model (we will discuss the <em>complexity</em> later on). Usually the regularizer term is auxiliary in the objective function. But for SVM, regularizer is the only term that matters. The empirical risk term is dispensable to deal with noise.</p>
+
+<p>The origion SVM didn’t take noise into account, the only goal was to maximize the distance of  two parallel hyper-planes. As we know, if they are separable, the hyperplane definitely exist, so the empirical loss is 0. The only goal is to minimize the structural risk under the restriction that each training sample is correctly classified. In terms of <strong>Structural Risk Minimization</strong>, you can refer to <a href="http://www.svms.org/srm/">SRM</a>. The original goal to maximize the distance between $y=w^Tx + b + 1$ and $y=w^Tx + b - 1$ under the restriction that every point is correctly classified is formulated as follows:</p>
+
+<script type="math/tex; mode=display"> \min_w w^T w </script>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+ \begin{align*}
+\text{subject to:} & (w^Tx_i+b+1)y_i \ge 0 \quad & \forall i: positive\\
+& (w^Tx_i+b-1)y_i \ge 0 \quad & \forall i: negative
+\end{align*} %]]&gt;</script>
+
+<p>In order to tolerate noises, we add empirical terms to allow some points to appear between hyperplanes.</p>
+
+<h1 id="choice-of-regularizer">Choice of Regularizer</h1>
+
+<p>In many examples explaining <em>underfit</em>, <em>fit</em>, <em>overfit</em> we have seen how regularizer helps solve a optimal regression problem. But for classification problems, there are no general principle in terms of definition of regularization terms. For the existing regularization terms, we seldom see how each theoretically minimize the structural risk. For example, the objective function of decision tree problem involves the regularizer as the number of nodes in the tree, the more are the nodes $n$, the large is the penality. Obviously there are more alternatives. We can also use $e^n$. For both cases, we can find out a suitable trade-off parameter $C$ to balance the two risks. But ideally, which means all error come from noise, the best $C$ is independent on the traning set. However, the best $C$ must be different if we change the penality from $n$ to $e^n$. </p>
+
+<p>The next question is whether there is alternative to combine the two risks instead of the summarization. Maybe product?</p>
+
+<p>But the most annoying question is $L_1$ or $ L_2 $. In most cases we use $L_2$ to penalize outliers, but why we use $L_1$ in SVM to tolerate noise?</p>
+
+<p>The answer to the previous questions can be concluded that <strong>it’s not necessary to be theoretically accurate</strong>. Machine learning is an engineering anyway.</p>
+
+<h1 id="overfitting">Overfitting?</h1>
+
+<p>A question that I have been ever asked is like “If you see overfitting with the current parameters, how to change your trade-off parameter”. I was therefore confused: is overfitting observable? Ideally it is definitely right theoretically if the objective function with respect to complexity of the model is convex. The convexity implies, there is a optimal complexity that minimizes the global error. Practically it’s sometimes wrong. To take SVM as an example, if we see higher test error rate than training error rate, there may be due to the overfitting. Now if we reduce the value of $C$ (reduce the weight of the tolerance), the distance between the two hyperplanes would absolutely be increased. But how about the discriminate boundary? It all depends on the distribution of the noises around the hyperplanes. Therefore, whether the generality of the model increases is still unknown. </p>
+
+<h1 id="modern-regularizer">Modern Regularizer</h1>
+
+<h1 id="dropout">Dropout</h1>
+<p>In the most of traditional statistical models, regulizer normally acts as an additional term in the objective function. But in order to tacle the side effect of the most popular and effective learning machine – Deep Neural Networks, new kinds of regularizer should be proposed. As mentioned in the paper [1], the most popular regulizer <em>Dropout</em>, is a variation of model averaging. Comparing to averaging serveral independent neural networks, Dropout is much easier to implement. Due the the popularity of Dropout, we don’t need to explain it in details.</p>
+
+<h1 id="l2-normalization">L2 normalization</h1>
+<p>One of the simplest way to apply L2 constraint is adding penalty as the L2 norm of the weight vectors at each layer, but instead, the second strategy is limiting the upper bound of the L2 norm of the weight vector of each layer. Each time when the constraint is violated, the vector is re-normalized.</p>
+
+<p>[1] Hinton, Geoffrey E., et al. “Improving neural networks by preventing co-adaptation of feature detectors.” arXiv preprint arXiv:1207.0580 (2012).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Expressiveness]]></title>
@@ -750,82 +817,6 @@ elif i == 2, j == 3 then
 <p>否则，在第二步，在参考书目中发现共同的引用和重复的作者姓名。这些是这个领域的关键论文和研究员。下载这些关键论文并且把它们放一边。然后去这些关键研究员的网站去看看他们最近在哪里发表。这会帮你识别这个领域的顶级会议，因为最好的研究员经常在顶级会议上发表。</p>
 
 <p>第三步就是去这些顶级会议的网站，看看最近的进程。一个快速的浏览将帮助你经常了解最近高质量的相关工作。这些论文，还有你刚才放一边的东西，组成了你调研的第一个版本，完成这些论文的第二个阶段，如果他们都引用了一篇你之前没发现的论文，把它添加进来并且读完它，增量是必须的。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iOS Crash Logs 基本调研]]></title>
-    <link href="http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack/"/>
-    <updated>2013-09-02T13:30:03+02:00</updated>
-    <id>http://xuanhuangyiqi.github.io/blog/2013/09/02/ios-crack</id>
-    <content type="html"><![CDATA[<p>1个月的实习马上就要结束，本文主要介绍我在实习期间主要调研内容——iOS app崩溃时的Crash Log分析与总结。</p>
-
-<h1 id="crash-log-">Crash Log 是什么？</h1>
-
-<p>首先需要介绍下Crash Log的基本信息，在大家在使用iOS app时有时候会因为各种原因而自动退出，比如系统内存不足，比如程序本身的bug，比如越狱造成的系统不稳定。总之，凡是app的自动退出都会对应的生成一个log文件，记录系统崩溃时的系统信息和崩溃栈。如下是一个crash log的样子: <a href="http://xuanhuangyiqi.github.io/assets/Bildschirmfoto2013-09-02um2.25.41PM.png">Crash Log example</a>。</p>
-
-<p>从图中可一看到，每一次崩溃发生时，会有一个Crash Log存储在iOS设备中，并且在连接Xcode时转移到mac上。</p>
-
-<p>另外，看到下面各个Thread的函数堆栈中，能看到每行最右面有错误发生的<em>函数名</em>和对应的<em>行数</em>，如果你自己尝试做这个试验就会发现开始<em>函数</em>的位置是一个16位内存地址，过了一会才会自动被Xcode转换成函数名。</p>
-
-<!--more-->
-
-<h1 id="symbolicate">Symbolicate</h1>
-
-<p>Symbolicate过程就是把对应的函数栈转化成函数名的过程，我们为了方便，在后面把这个过程叫做<em>解析</em>。这个过程是怎么实现的呢？</p>
-
-<p>首先，无论是在模拟器，还是真机debug一个app的过程中，除了XXX.app之外，还会生成一个XXX.app.dSYM文件（准确地说，这两个都是文件夹），如果你想知道生成的这两个文件路径，可以在terminal下使用mac的内嵌find工具mdfind：</p>
-<div>
-  <pre><code class="bash">$ mdfind -name &quot;XXX.app&quot;</code></pre>
-</div>
-
-<p>它是Spotlight功能的核心，在你的系统有文件更新时能及时更新索引，因此速度还是很快的，当然它还可以根据其他所引进行搜索。</p>
-
-<p>dSYM文件保存了这个app的符号表，即指令内存地址和源代码的函数名和行数关系。这个文件显然保存了app源码的大量信息，因此是不能随意公布的。当然，只有你本机上包含有app的dSYM文件，其中的指令地址才能被解析成函数名（这句话是不严谨的，我们后面在解释）。</p>
-
-<h1 id="xcode-">Xcode 解析工具</h1>
-
-<p>解析的工作分为很多步，我们来介绍几个Xcode自带的相关小工具：</p>
-
-<ul>
-  <li>atos，用以获取某内存地址所对应的函数名。用法：</li>
-</ul>
-<div>
-  <pre><code class="bash">$ atos -o /path/to/XXX.app/XXX.app.dSYM/Contents/Resources/DWARF/XXX -arch i386 0x973000</code></pre>
-</div>
-
-<p>这个函数是指定了arch的，即i386，这是模拟器（或者说mac）的处理器arch，对于iOS设备就是armv6／7。如果你指定的arch和app以及dsym文件的arch不对，是会报错的。那么如何知道一个app的arch呢？前面我已经说了最常见的两个，如果你不确定是哪个，就可以用</p>
-
-<ul>
-  <li>dwarfdump</li>
-</ul>
-<div>
-  <pre><code class="bash">$ dwarfdump -u ~/Library/Developer/Xcode/iOS\ DeviceSupport/5.0.1\ \(9A405\)/Symbols/System/Library/Frameworks/UIKit.framework/UIKit</code></pre>
-</div>
-
-<ul>
-  <li>symbolicatecrash 这是symbolicate过程的核心脚本</li>
-</ul>
-<div>
-  <pre><code class="bash">$ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/PrivateFrameworks/DTDeviceKit.framework/Versions/A/Resources/symbolicatecrash</code></pre>
-</div>
-
-<h1 id="section">动态库与静态库</h1>
-
-<p>在学习C语言的时候，我们就应该接触过这两种库，静态库是在编译时把其中涉及到的指令一起放入最终生成的app，动态库则是在运行时动态查找库的。在iOS开发中，动态库的常见形式是dylib或者Framework。</p>
-
-<p>无论是app还是Framework，在生成的时候都是有特定的arch的，这是可以用dwarfdump命令可以查到。但是app会把符号表放到单独的dSYM文件中，库文件的符号表会在自己内部。这就是我现在不能理解的问题，只要有足够多种类的语句，是可以通过外部app的调用把库的每条语句解析出来的。这是不是一种不安全的设计？</p>
-
-<h1 id="crash-log">现有Crash Log服务</h1>
-<ul>
-  <li>QuincyApp 主要用于app发行前的crash管理</li>
-  <li>Crashlytics 界面友好</li>
-  <li>Crittercism 统计内容详细</li>
-</ul>
-
-<h1 id="section-1">解析过程</h1>
-<p>在执行解析的过程中，首先从dSYM文件中找到app编译时所调用的动态库的名称、UUID、arch。然后利用mac自带的mdfind功能在全局搜索是否存在对应的库，只有完全匹配才可以解析。目前遇到的问题是如果使用模拟器制造crash，那么crash文件底层库的内容不会被解析出来，已经判断出是因为Xcode.app文件下的arch为i386的Framework的UUID与app的dSYM的不符。具体原因需要进一步了解。而真机测试时调用的库文件在另外的文件夹，似乎不会出现类似的问题。</p>
-
 ]]></content>
   </entry>
   
