@@ -4,7 +4,7 @@
   <title><![CDATA[Category: SVM | Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/blog/categories/svm/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2016-05-21T19:35:15+02:00</updated>
+  <updated>2016-09-15T20:00:49+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -34,7 +34,8 @@
 
 <p>While the measures of empirical risk and structural risk are independent, we often use a trade-off parameter to combine them together as:</p>
 
-<script type="math/tex; mode=display"> \hat{\theta} = argmin_{\theta} R_{emp}(X, \theta) + C \cdot R_{structural}(\theta) </script>
+<p><script type="math/tex"> \hat{\theta} = argmin_{\theta} R_{emp}(X, \theta) + C \cdot R_{structural}(\theta) </script>
+<!--more --></p>
 
 <h1 id="svm-as-regularizer">SVM as Regularizer</h1>
 
