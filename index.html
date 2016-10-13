@@ -9,7 +9,7 @@
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Aug 9th, 2016 回顾在亚琛的两年半（一） 躺在床上翻来覆去睡不着，过去两年的很多场景慢慢浮现在眼前，想到毕设进入尾声，在德国的日子也不多了，就翻身起来写点什么记录一下，就像本科毕业时的大学总结一样。 在来德国之前，听到朋友最多的言论就是『为什么要去德国上学？』即使是3年后即将毕业的我 &hellip;">
+	<meta name="description" content="Oct 13th, 2016 Paralleling Read_csv in Pandas Recently I started to participated in Kaggle competitions. The most shocking experience is the &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -138,6 +138,49 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-10-13T10:34:52+02:00" data-updated="true" itemprop="datePublished">Oct 13<span>th</span>, 2016</time></div>
+		<div class="tags">
+
+</div>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2016/10/13/paralleling-read-csv-in-pandas/" itemprop="url">Paralleling Read_csv in Pandas</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Recently I started to participated in Kaggle competitions. The most shocking experience is the significant influence of “feature engineering”. By going through the tutorials of Kaggle competition for Pythoner, a package called “pandas” attracted my attention. I found nearly all tutorials and exploratory analysis scripts use this package for data analysis. It saves pretty much time for matrix operation.</p>
+
+<p>After diving into real competitions, I realize the bottleneck of pandas. We divide the process of estimating the parameters into the following phases:</p>
+
+<ul>
+  <li>Reading data from disk</li>
+  <li>Preprocessing</li>
+  <li>Exploratory analysis</li>
+  <li>Feature mapping</li>
+  <li>training and validating</li>
+</ul>
+
+<p>From the view of performance, the most critical part is reading data from disk. Because all the other parts are executed in memory, while reading data is from the disk. Thus paralleling the reading can lead to a significant performance improvement.
+
+		
+		<a href="/blog/2016/10/13/paralleling-read-csv-in-pandas/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -497,44 +540,6 @@
 
 		
 		<a href="/blog/2014/12/14/guan-yu-de-guo-jiao-yu-de-si-tu-cao/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-01T00:22:00+01:00" data-updated="true" itemprop="datePublished">Dec 1<span>st</span>, 2014</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/database/'>Database</a>, <a class='category' href='/blog/categories/logic/'>Logic</a>, <a class='category' href='/blog/categories/prolog/'>Prolog</a>, <a class='category' href='/blog/categories/turing-machine/'>Turing Machine</a>
-
-
-</div>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2014/12/01/general-way-to-understand-program/" itemprop="url">A General Perspective to Understand Code and Data</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>In this semester, there was course called “Foundation of Data Science”, which is in terms of database but pretends to be related to “Data Science”. The reason for my difficulty understanding it is probably that some prerequisite I never learned before.</p>
-
-<p>Nevertheless, many of the views in the course are worth learning and thinking. Looking back to the courses in my bachelors, which contains Compiler Theory, Database Theory, Computer Network, Operating Systems. As I know, the top universities in america are trying to weaken the connection between different domains. Of course it has benefits in some respects. However from the point of an abstract and theoretical view, it does not help the students understand the essential question.</p>
-
-
-		
-		<a href="/blog/2014/12/01/general-way-to-understand-program/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

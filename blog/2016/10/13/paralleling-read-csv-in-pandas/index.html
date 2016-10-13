@@ -5,11 +5,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Category: Mac - Htedsv Backyard</title>
+	<title>Paralleling read_csv in Pandas - Htedsv Backyard</title>
 	<meta name="author" content="htedsv">
 
 	
-	<meta name="description" content="Category: Mac">
+	<meta name="description" content="Paralleling Read_csv in Pandas Recently I started to participated in Kaggle competitions. The most shocking experience is the significant influence &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Htedsv Backyard" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://xuanhuangyiqi.github.ioblog/categories/mac/">
+	<link rel="canonical" href="http://xuanhuangyiqi.github.io/blog/2016/10/13/paralleling-read-csv-in-pandas/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -136,30 +136,86 @@
 				
 			
 			<div class="mid-col-container">
-				<div id="content" class="inner">
-	
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Paralleling Read_csv in Pandas</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Recently I started to participated in Kaggle competitions. The most shocking experience is the significant influence of “feature engineering”. By going through the tutorials of Kaggle competition for Pythoner, a package called “pandas” attracted my attention. I found nearly all tutorials and exploratory analysis scripts use this package for data analysis. It saves pretty much time for matrix operation.</p>
 
+<p>After diving into real competitions, I realize the bottleneck of pandas. We divide the process of estimating the parameters into the following phases:</p>
 
-	
-	
-	<section class="archives"><h1 class="year">2015</h1>
+<ul>
+  <li>Reading data from disk</li>
+  <li>Preprocessing</li>
+  <li>Exploratory analysis</li>
+  <li>Feature mapping</li>
+  <li>training and validating</li>
+</ul>
 
-<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<span class="date"><time datetime="2015-01-17T19:34:08+01:00" itemprop="datePublished">Jan 17</time></span>
-		<br>
-		<span class="tags">
+<p>From the view of performance, the most critical part is reading data from disk. Because all the other parts are executed in memory, while reading data is from the disk. Thus paralleling the reading can lead to a significant performance improvement.
+<!--more-->
+<strong>Approach 1 (wrong):</strong> paralleling <em>read_csv</em> of a large csv file by <em>chuncksize</em> parameter:</p>
 
+<p>This approach is already introduced in (http://gouthamanbalaraman.com/blog/distributed-processing-pandas.html). The basic idea is to read chunks from a large csv file asynchronously, and append new DataFrames to the main DataFrame. If you know how the <em>apply_async</em> works, you will know the code is wrong, because in the appending function is executed before the processing function is done.</p>
 
-	<a class='category' href='/blog/categories/mac/'>Mac</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/spotlight/'>spotlight</a>
+<p>The code is wrong. If we fix the bug by merging all chunks after all are read, the code is correct, but nothing is paralleled actually, because the most critical part (reading csv file) is not really parallelized.</p>
 
+<p><strong>Approach 2:</strong> split the large csv file and parallel the reading</p>
 
-</span>
-	    
-	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2015/01/17/spotlight-extension/">An extension to Spotlight</a></h1>
+<p>The second idea is to split the csv files into smaller ones and read them individually, finally merge the DataFrames.</p>
+
+<ol>
+  <li>
+    <p>split the csv file:
+We first use the tool <code>csv-split</code> to split our csv file:</p>
+
+    <p>git clone https://github.com/PerformanceHorizonGroup/csv-split.git</p>
+  </li>
+</ol>
+
+<p>Here we take the <code>clicks_train.csv</code> of the <a href="https://www.kaggle.com/c/outbrain-click-prediction">dataset</a> as an example. We run the command to split the file into small pieces:</p>
+
+<pre><code>csv-split -d1 --num-rows 1000000 clicks_train.csv clicks_train/
+</code></pre>
+
+<ol>
+  <li>compare the reading speed</li>
+</ol>
+
+<p>The traditional <em>read_csv</em>:</p>
+
+<p><img src="/images/read_csv.png" /></p>
+
+<p>Parallel <em>read_csv</em></p>
+
+<p><img src="/images/read_parallel.png" /></p>
+
+<p>As we can see, the reading speed increases a lot. As we know, the transfer speed from disk to memory is limited, but why the parallelization helps so much?</p>
+
+<p>The transfer speed is limited, the runtime for each process is not fixed. The multiprocessing library for python creates many processes while reading the csv file, which occupies more CPU time on reading the file. So more time is spent on disk I/O, it finally increases the efficiency.</p>
+
+<p>However note that not the more are the small pieces, the better is the performance, the best balance point varies among machines. In my experiments, the number of processes is set to 5.  </p>
+</div>
+
 </article>
 
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner">Copyright &copy; 2016
@@ -183,7 +239,10 @@ Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Sha
       var disqus_shortname = 'htedsvbackyard';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://xuanhuangyiqi.github.io/blog/2016/10/13/paralleling-read-csv-in-pandas/';
+        var disqus_url = 'http://xuanhuangyiqi.github.io/blog/2016/10/13/paralleling-read-csv-in-pandas/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
