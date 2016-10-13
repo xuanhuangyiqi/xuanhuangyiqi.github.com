@@ -4,7 +4,7 @@
   <title><![CDATA[Htedsv Backyard]]></title>
   <link href="http://xuanhuangyiqi.github.io/atom.xml" rel="self"/>
   <link href="http://xuanhuangyiqi.github.io/"/>
-  <updated>2016-10-13T17:52:25+02:00</updated>
+  <updated>2016-10-13T17:54:39+02:00</updated>
   <id>http://xuanhuangyiqi.github.io/</id>
   <author>
     <name><![CDATA[htedsv]]></name>
@@ -30,9 +30,11 @@
   <li>training and validating</li>
 </ul>
 
-<p>From the view of performance, the most critical part is reading data from disk. Because all the other parts are executed in memory, while reading data is from the disk. Thus paralleling the reading can lead to a significant performance improvement.
+<p>From the view of performance, the most critical part is reading data from disk. Because all the other parts are executed in memory, while reading data is from the disk. Thus paralleling the reading can lead to a significant performance improvement.</p>
+
 <!--more-->
-<strong>Approach 1 (wrong):</strong> paralleling <em>read_csv</em> of a large csv file by <em>chuncksize</em> parameter:</p>
+
+<p><strong>Approach 1 (wrong):</strong> paralleling <em>read_csv</em> of a large csv file by <em>chuncksize</em> parameter:</p>
 
 <p>This approach is already introduced in (http://gouthamanbalaraman.com/blog/distributed-processing-pandas.html). The basic idea is to read chunks from a large csv file asynchronously, and append new DataFrames to the main DataFrame. If you know how the <em>apply_async</em> works, you will know the code is wrong, because in the appending function is executed before the processing function is done.</p>
 
